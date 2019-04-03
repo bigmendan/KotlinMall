@@ -1,4 +1,4 @@
-package com.kotlin.baselib;
+package com.kotlin.base;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
