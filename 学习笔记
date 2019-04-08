@@ -1,0 +1,12 @@
+区别 applicaiton  和 Library
+设置两套 AndroidManifest
+
+ButterKnife 和 AndroidExtractors
+
+Anko ：一个 Kotlin 扩展库
+  |------- Anko Commons
+  |------- Anko Layouts       一般还是使用 xml 布局
+  |------- Anko SQLite         还是一般使用三方库
+  |------- Anko Coroutiones   基于Kotlin协程 做了一层封装， 一般还是使用第三方协程
+  配置： 引入相对应依赖包
+
