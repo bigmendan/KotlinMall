@@ -5,6 +5,7 @@ import com.kotlin.base.presenter.view.BaseView
 /**
  *  BasePresenter 中引用 BaseView
  */
-class BasePresenter<T:BaseView> {
-    lateinit var mView:T
+open class BasePresenter<T : BaseView> {
+    // 因为不确定他的子类是什么
+    lateinit var mView: T
 }
