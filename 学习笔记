@@ -10,3 +10,23 @@ Anko ：一个 Kotlin 扩展库
   |------- Anko Coroutiones   基于Kotlin协程 做了一层封装， 一般还是使用第三方协程
   配置： 引入相对应依赖包
 
+
+
+mvp 配置 :
+ 新建BaseActivity 和BaseView接口，新建BaseMvpActivity 继承BaseActivity,并实现BaseView
+ 新建BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity中使用泛型引用BasePresenter
+
+  实际应用 继承 对应的 Base ,并实现方法
+
+
+
+RxKotlin 和 RxAndroid 配置
+    |----- RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
+    |------ 也是基于RxJava 的扩展库，更好的兼容 Android 开发
+
+
+
+
+
+
+

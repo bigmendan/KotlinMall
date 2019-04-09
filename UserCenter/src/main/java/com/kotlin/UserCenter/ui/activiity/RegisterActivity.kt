@@ -13,19 +13,25 @@ import org.jetbrains.anko.toast
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
 
-    // 注册
+    // 注册   在Activity 中 具体实现 RegisterView 中的方法 ;
     override fun onRegisterResult(result: Boolean) {
+
+        toast("注册成功")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        // 因为BaseMvpActivity 中传入的 是一个泛型，需要实例化 ;
+        mPresenter = RegisterPresenter()
+
+        // presenter 中的 View 引用 赋值;
+        mPresenter.mView = this
+
         // 直接使用控件ID 进行事件监听
         register.setOnClickListener(View.OnClickListener {
-            //            startActivity(intentFor<TestActivity>("id" to 8))
-            startActivity<TestActivity>()
-            toast("监听注册按钮")
+            mPresenter.register("", "")
         })
     }
 
