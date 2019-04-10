@@ -9,10 +9,10 @@ import io.reactivex.Observable
  * des    :
  */
 class UserServiceImpl : UserService {
+
+    // 注册流程的具体实现
     override fun register(mobile: String, verifyCode: String, pwd: String): Observable<Boolean> {
-
         return Observable.just(true)
-
 
     }
 }
