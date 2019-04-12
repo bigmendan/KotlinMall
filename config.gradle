@@ -1,0 +1,29 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: '28.0.3',
+            applicationId    : 'com.kotlin.mall',
+            minSdkVersion    : 15,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0",
+
+    ]
+
+    dependencies = [
+            "appcompat"                : 'androidx.appcompat:appcompat:1.0.0-beta01',
+            "kotlin-stdlib-jdk7"       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "anko-commons"             : "org.jetbrains.anko:anko-commons:$anko_version",
+            "anko-appcompat-v7-commons": "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version",
+            "anko-support-v4-commons"  : "org.jetbrains.anko:anko-support-v4-commons:$anko_version",
+            "rxkotlin"                 : "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version",
+            "rxandroid"                : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
+            "retrofit"                 : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            "converter-gson"           : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            "converter-scalars"        : "com.squareup.retrofit2:converter-scalars:$retrofit_version",
+            "adapter-rxjava2"          : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+            "retrofit-converters"      : "com.squareup.retrofit2:retrofit-converters:$retrofit_version",
+            "logging-interceptor"      : "com.squareup.okhttp3:logging-interceptor:$ok_http_version"
+
+    ]
+}

@@ -3,20 +3,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
-
-
-
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -28,41 +24,26 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation rootProject.ext.dependencies["appcompat"]
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 
-    // Anko Commons
-    api "org.jetbrains.anko:anko-commons:$anko_version"
+    api rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
+    api rootProject.ext.dependencies["anko-commons"]
+    api rootProject.ext.dependencies["anko-appcompat-v7-commons"]
+    api rootProject.ext.dependencies["anko-support-v4-commons"]
+    api rootProject.ext.dependencies["rxkotlin"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["converter-scalars"]
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["retrofit-converters"]
+    api rootProject.ext.dependencies["logging-interceptor"]
 
-    // Anko Layouts
-    api "org.jetbrains.anko:anko-sdk25:$anko_version"
-
-    // sdk15, sdk19, sdk21, sdk23 are also available
-    api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
-
-    // Coroutine listeners for Anko Layouts
-    api "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
-    api "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
-
-    // Appcompat-v7 (only Anko Commons)
-    api "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
-
-    // Support-v4 (only Anko Commons)
-    api "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
-
-    // RxKotlin  和  RxAndroid  的 依赖包
-    api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
-    api "io.reactivex.rxjava2:rxandroid:$rx_android_version"
-
-    // 引入Retrofit
-    api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    api "com.squareup.retrofit2:converter-scalars:$retrofit_version"
-    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    api "com.squareup.retrofit2:retrofit-converters:$retrofit_version"
 
 }
 repositories {

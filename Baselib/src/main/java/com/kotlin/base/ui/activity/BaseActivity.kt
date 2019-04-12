@@ -1,6 +1,6 @@
 package com.kotlin.base.ui.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  *  有的页面是静态的 不需要继承 MVP ,

@@ -11,7 +11,6 @@ Anko ：一个 Kotlin 扩展库
   配置： 引入相对应依赖包
 
 
-
 mvp 配置 :
  新建BaseActivity 和BaseView接口，新建BaseMvpActivity 继承BaseActivity,并实现BaseView
  新建BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity中使用泛型引用BasePresenter
@@ -19,11 +18,22 @@ mvp 配置 :
   实际应用 继承 对应的 Base ,并实现方法
 
 
-
 RxKotlin 和 RxAndroid 配置
     |----- RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
     |------ 也是基于RxJava 的扩展库，更好的兼容 Android 开发
 
+
+转移到 Android X
+  博客  ： https://www.jianshu.com/p/773e231daed4
+
+   在 gradle.properties 文件中添加
+
+       android.useAndroidX=true
+       android.enableJetifier=true
+   如果你想使用AndroidX，但是之前的不迁移，可以这样配置：
+
+       android.useAndroidX=true
+       android.enableJetifier=false
 
 
 
