@@ -31,8 +31,9 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
         // 直接使用控件ID 进行事件监听
         register.setOnClickListener(View.OnClickListener {
-            mPresenter.register("", "","")
+            mPresenter.register("", "", "")
         })
+
     }
 
 
