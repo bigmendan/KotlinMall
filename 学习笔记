@@ -37,6 +37,42 @@ RxKotlin 和 RxAndroid 配置
 
 
 
+引入 Retrofit 网络框架 结合 RxJava2 的使用
+
+
+引入 Dagger2 注解框架
+        |
+        |------- @Inject
+                 @Component  注入器，连接目标类 和依赖实例的桥梁
+                             以@Component标注的类必须是接口或者抽象类
+                             Component 依赖关系通过dependencies 属性添加
+                             App 必须有一个全局Component 用来管理全局实例;
+
+        |------- @Module      第三方库无法修改，不能再其构造函数添加 @Inject
+                              接口不能实例化，只能通过实现类实例化
+                              Module 是一个简单工厂，创建类实例的方法
+                              Component 通过modules 属性加入多个Module
+                 @Provides    在Module中，使用@Provides 标注创建实例的方法
+                              实例化流程 ：Component 搜索@Inject 注解 的属性
+                                          Component 查找Module 中以@Provides 注解的对应方法，创建实例;
+
+        |------- @Scope       @Singleton
+        |------- @Qualifier   @Named
+
+
+
+
+
+基本控件封装
+  AppManager 封装
+        |
+        |-- 实现自己的栈结构 来管理 Activity  (单例)
+  HeaderBar   封装
+  ProgressLoading 封装
+
+
+
+
 
 
 

@@ -17,6 +17,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     override fun onRegisterResult(result: Boolean) {
 
         toast("注册成功")
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +32,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
         // 直接使用控件ID 进行事件监听
         register.setOnClickListener(View.OnClickListener {
-            mPresenter.register("", "", "")
+            mPresenter.register("zahowenjie1", "123", "123")
+
         })
 
     }

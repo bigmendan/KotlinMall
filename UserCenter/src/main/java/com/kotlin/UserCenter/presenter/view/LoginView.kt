@@ -1,6 +1,7 @@
 package com.kotlin.UserCenter.presenter.view
 
 import com.kotlin.base.presenter.view.BaseView
+import okhttp3.ResponseBody
 import javax.net.ssl.SSLEngineResult
 
 /**
