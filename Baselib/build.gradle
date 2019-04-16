@@ -2,6 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+kapt {
+    generateStubs = true
+}
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
@@ -29,7 +33,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-
     api rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
     api rootProject.ext.dependencies["anko-commons"]
     api rootProject.ext.dependencies["anko-appcompat-v7-commons"]
@@ -44,7 +47,8 @@ dependencies {
     api rootProject.ext.dependencies["retrofit-converters"]
     api rootProject.ext.dependencies["logging-interceptor"]
 
-
+    api rootProject.ext.dependencies["dagger"]
+    kapt  rootProject.ext.dependencies["dagger-compiler"]
 }
 repositories {
     google()

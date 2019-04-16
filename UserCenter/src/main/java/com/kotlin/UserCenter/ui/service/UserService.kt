@@ -18,7 +18,7 @@ interface UserService {
 
     // 注册 方法
     fun register(mobile: String, pwd: String, rePwd: String)
-            : Flowable<Boolean>
+            : Observable<Boolean>
 
     fun register2(username: String, password: String, repassword: String)
             : Observable<ResponseBody>

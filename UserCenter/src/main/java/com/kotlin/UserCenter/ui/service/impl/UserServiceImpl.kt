@@ -10,13 +10,19 @@ import io.reactivex.functions.Function
 import okhttp3.ResponseBody
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber
+import javax.inject.Inject
 
 /**
  * time   :  2019/4/9
  * author :  Z
  * des    :
  */
-class UserServiceImpl : UserService {
+
+class UserServiceImpl @Inject constructor() : UserService {
+
+    @Inject
+    lateinit var repository: UserRepository
+
     override fun register2(mobile: String, pwd: String, rePwd: String): Observable<ResponseBody> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -27,11 +33,11 @@ class UserServiceImpl : UserService {
     override fun register(
         mobile: String, pwd: String,
         rePwd: String
-    ): Flowable<Boolean> {
+    ): Observable<Boolean> {
 
         val repository = UserRepository()
 
-        return Flowable.just(true)
+        return Observable.just(true)
 
 
 //        return repository.register(mobile, pwd, rePwd)

@@ -56,10 +56,18 @@ RxKotlin 和 RxAndroid 配置
                               实例化流程 ：Component 搜索@Inject 注解 的属性
                                           Component 查找Module 中以@Provides 注解的对应方法，创建实例;
 
+                Module 的优先级高于  Inject构造函数  （如果两者都有会先使用Module,然后是 Inject）
+                 查找到实例，依次查看参数
+
+                需要添加 依赖  和  插件
+                 apply plugin 'kotlin-kapt'  在哪个module中使用都要添加 插件
+                 并且在 module下的 dependencies 中添加    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+                 还要新建一个UserComponent 接口 ，加上 @Component 注解，创建一个 fun  inject() ,构建一下，
+                 在 将要使用的 Activity 中使用    DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+
+
         |------- @Scope       @Singleton
         |------- @Qualifier   @Named
-
-
 
 
 

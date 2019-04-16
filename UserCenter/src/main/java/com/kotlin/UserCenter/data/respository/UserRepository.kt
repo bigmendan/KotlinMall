@@ -9,13 +9,14 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import java.util.*
+import javax.inject.Inject
 
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/15 10:39:50
  * @Des    :  这个文件是真正做访问的
  */
-class UserRepository {
+class UserRepository @Inject  constructor() {
 
     fun register(mobile: String, pwd: String, rePwd: String)
             : Flowable<BaseResp<String>> {

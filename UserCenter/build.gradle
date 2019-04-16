@@ -7,7 +7,10 @@ if (isUserModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android-extensions'       // 自动引入插件  findViewById
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
+kapt {
+    generateStubs = true
+}
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
@@ -61,6 +64,7 @@ dependencies {
 
     implementation project(':Provider')
 
+    kapt rootProject.ext.dependencies["dagger-compiler"]
 
 }
 repositories {
