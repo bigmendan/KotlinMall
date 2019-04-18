@@ -21,15 +21,24 @@ class AppManager private constructor() {
         }
     }
 
+    /**
+     *  向栈内添加 Activity;
+     */
     fun addActivity(activity: Activity) {
         activityStack.add(activity)
     }
 
+    /**
+     *  移除所有的Activity ;
+     */
     fun finishActivity(activity: Activity) {
         activity.finish()
         activityStack.remove(activity)
     }
 
+    /**
+     * 当前栈顶的 Activity
+     */
     fun currentActivity(activity: Activity): Activity {
         return activityStack.lastElement()
     }

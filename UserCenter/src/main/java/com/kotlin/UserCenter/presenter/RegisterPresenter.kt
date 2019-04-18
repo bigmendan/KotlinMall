@@ -19,23 +19,26 @@ import javax.inject.Inject
 class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
     @Inject
-    lateinit var userService: UserService
+    lateinit var userService: UserServiceImpl
 
-    fun register(mobile: String, verifyCode: String, pwd: String) {
+    fun register(username: String, password: String, repassword: String) {
 
         // 业务逻辑
         // Observable 被观察者   对应一个观察者  Observer
 //        val userService = UserServiceImpl()
 
+        // 网络请求之前先开启弹窗
 
-        userService.register(mobile, verifyCode, pwd)
-            .execute(object : BaseObserver<Boolean>() {
+        mView.showLoading()
+
+        userService.register(username, password, repassword)
+            .execute(object : BaseObserver<Boolean>(mView) {
                 override fun onNext(t: Boolean) {
-                    mView.onRegisterResult(true)
+//                    mView.onRegisterResult(true)
                 }
 
                 override fun onError(e: Throwable) {
-
+                    Log.e("===", "请求错误 = ${e.message}")
                 }
 
             })

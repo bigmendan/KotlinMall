@@ -18,12 +18,7 @@ import java.util.*
 interface UserApi {
 
     @POST("user/register")
-    fun register(@Body req: RegisterReq): Flowable<BaseResp<String>>
+    fun register(@Body req: RegisterReq): Observable<BaseResp<String>>
 
 
-//    @POST("user/register")
-//    fun register2(@Body req: Register2Req): Observable<BaseResp<String>>
-
-    @POST("user/register")
-    fun register2(@Body req: Register2Req): Observable<ResponseBody>
 }

@@ -25,7 +25,7 @@ open abstract class BaseSubscriber<T> : Subscriber<T> {
 
     abstract fun onSuccess(result: T)
 
-    abstract fun onFail(error: Throwable?)
+    abstract fun onFail(e: Throwable?)
 
 
 }

@@ -16,23 +16,16 @@ import javax.inject.Inject
  * @Date   : 2019/4/15 10:39:50
  * @Des    :  这个文件是真正做访问的
  */
-class UserRepository @Inject  constructor() {
+class UserRepository @Inject constructor() {
 
-    fun register(mobile: String, pwd: String, rePwd: String)
-            : Flowable<BaseResp<String>> {
+    // 将 Retrofit 做网络请求 封装起来
+    fun register(username: String, password: String, repassword: String)
+            : Observable<BaseResp<String>> {
 
         return RetrofitFactory.instance
             .create(UserApi::class.java)
-            .register(RegisterReq(mobile, pwd, rePwd))
+            .register(RegisterReq(username, password, repassword))
 
     }
-
-
-    fun register2(username: String, pwd: String, rePwd: String): Observable<ResponseBody> {
-        return RetrofitFactory.instance
-            .create(UserApi::class.java)
-            .register2(Register2Req(username, pwd, rePwd))
-    }
-
 
 }

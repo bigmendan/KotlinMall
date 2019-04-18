@@ -7,7 +7,7 @@ import dagger.Component
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/16 12:00:53
- * @Des    :
+ * @Des    :  使用这个方式 在 RegisterActivity 中引用 注解
  */
 @Component(modules = arrayOf(UserModule::class))
 interface UserComponent {
