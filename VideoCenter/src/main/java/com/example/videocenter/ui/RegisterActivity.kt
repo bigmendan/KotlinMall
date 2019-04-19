@@ -9,7 +9,6 @@ import com.example.videocenter.presenter.RegisterPresenter
 import com.example.videocenter.presenter.view.RegisterView
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_register.*
-import javax.net.ssl.SSLEngineResult
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
