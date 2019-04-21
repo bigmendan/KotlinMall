@@ -1,7 +1,18 @@
-区别 applicaiton  和 Library
+区别 Application  和 Library
+    |
+    |-- 当 Module 的 build.gradle最上面使用 plugin 是 application ,就是一个可以独立运行的module ;
+                如果是 library,就是以库的形式存在;
+
 设置两套 AndroidManifest
+    |
+    |-- 在main 文件夹下新建 release  和 debug 文件夹  中都放上 AndroidManifest 文件，
+        区别在于 debug下的manifest文件中有 theme 和 默认启动Activity
+        release 中的 Manifest 文件中没有Theme  和 默认启动 Activity ;
+
 
 ButterKnife 和 AndroidExtractors
+    如果在 Kotlin 项目中使用ButterKnife 是有 bug 的，如果使用R2 的形式也不行，
+    现在 Android Studio 中默认支持 AndroidExtractors ;
 
 Anko ：一个 Kotlin 扩展库
   |------- Anko Commons
@@ -11,7 +22,6 @@ Anko ：一个 Kotlin 扩展库
   配置： 引入相对应依赖包
 
 
-
 mvp 配置 :
  新建BaseActivity 和BaseView接口，新建BaseMvpActivity 继承BaseActivity,并实现BaseView
  新建BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity中使用泛型引用BasePresenter
@@ -19,10 +29,84 @@ mvp 配置 :
   实际应用 继承 对应的 Base ,并实现方法
 
 
-
 RxKotlin 和 RxAndroid 配置
     |----- RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
     |------ 也是基于RxJava 的扩展库，更好的兼容 Android 开发
+
+
+转移到 Android X
+  博客  ： https://www.jianshu.com/p/773e231daed4
+
+   在 gradle.properties 文件中添加
+
+       android.useAndroidX=true
+       android.enableJetifier=true
+   如果你想使用AndroidX，但是之前的不迁移，可以这样配置：
+
+       android.useAndroidX=true
+       android.enableJetifier=false
+
+
+
+引入 Retrofit 网络框架 结合 RxJava2 的使用
+
+
+引入 Dagger2 注解框架
+        |
+        |------- @Inject
+                 @Component  注入器，连接目标类 和依赖实例的桥梁
+                             以@Component标注的类必须是接口或者抽象类
+                             Component 依赖关系通过dependencies 属性添加
+                             App 必须有一个全局Component 用来管理全局实例;
+
+        |------- @Module      第三方库无法修改，不能在其构造函数添加 @Inject
+                              接口不能实例化，只能通过实现类实例化
+                              Module 是一个简单工厂，创建类实例的方法
+                              Component 通过modules 属性加入多个Module
+                 @Provides    在Module中，使用@Provides 标注创建实例的方法
+                              实例化流程 ：Component 搜索@Inject 注解 的属性
+                                          Component 查找Module 中以@Provides 注解的对应方法，创建实例;
+
+                Module 的优先级高于  Inject构造函数  （如果两者都有会先使用Module,然后是 Inject）
+                 查找到实例，依次查看参数
+                 Module 中存在创建实例方法，停止查找 Inject，如果没有，查找Inject构造函数
+
+                需要添加 依赖 和 插件
+                 apply plugin 'kotlin-kapt'  在哪个module中使用都要添加 插件
+                 并且在 module下的 dependencies 中添加    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+                 还要新建一个UserComponent 接口 ，加上 @Component 注解，创建一个 fun  inject() ,构建一下，
+                 在 将要使用的 Activity 中使用    DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+
+
+    注解使用方式 :
+           (1)在需要添加住的类的 构造函数 中 添加 @Inject  ,
+           (2)在会使用到注解的该类变量上添加 @Inject
+           (3)还需要新建一个 UserModule 类, 类上添加 @Module 注解，使用@Provides 标注创建实例的方法;
+           (4)新建一个接口，使用@Commponent （module = UserModule:class.java）,新建inject()函数，参数为需要使用到注解类的activity
+
+        重新构建一下项目，生成DaggerMainComponent ，在需要使用注解的 Activity 中
+        调用   DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+
+
+
+        |------- @Scope       @Singleton
+        |------- @Qualifier   @Named
+
+
+
+基本控件封装
+  AppManager 封装
+        |
+        |-- 实现自己的栈结构 来管理 Activity  (单例)
+  HeaderBar   封装
+  ProgressLoading 封装
+
+
+
+
+
+
+
 
 
 

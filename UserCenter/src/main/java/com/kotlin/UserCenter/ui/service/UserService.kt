@@ -1,6 +1,12 @@
 package com.kotlin.UserCenter.ui.service
 
+import io.reactivex.Flowable
 import io.reactivex.Observable
+import okhttp3.ResponseBody
+import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 import java.util.*
 
 /**
@@ -10,5 +16,11 @@ import java.util.*
  */
 interface UserService {
 
-    fun register(mobile:String,verifyCode:String,pwd:String ):Observable<Boolean>
+    // 注册 方法
+    fun register(username: String, password: String, repassword: String)
+            : Observable<Boolean>
+
+
+
+
 }
