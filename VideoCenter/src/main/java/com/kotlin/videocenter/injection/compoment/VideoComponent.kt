@@ -1,9 +1,8 @@
-package com.example.videocenter.injection.compoment
+package com.kotlin.videocenter.injection.compoment
 
-import com.example.videocenter.injection.module.VideoModule
-import com.example.videocenter.ui.RegisterActivity
+import com.kotlin.videocenter.injection.module.VideoModule
+import com.kotlin.videocenter.ui.RegisterActivity
 import com.kotlin.base.injection.component.ActivityComponent
-import com.kotlin.base.injection.module.ActivityModule
 import com.kotlin.base.injection.scope.PerComponentScope
 import dagger.Component
 

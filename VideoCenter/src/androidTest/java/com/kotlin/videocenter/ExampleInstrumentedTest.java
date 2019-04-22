@@ -1,4 +1,4 @@
-package com.example.videocenter;
+package com.kotlin.videocenter;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

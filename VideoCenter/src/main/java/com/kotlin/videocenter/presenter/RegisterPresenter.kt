@@ -1,8 +1,8 @@
-package com.example.videocenter.presenter
+package com.kotlin.videocenter.presenter
 
 import android.util.Log
-import com.example.videocenter.data.VideoApi
-import com.example.videocenter.presenter.view.RegisterView
+import com.kotlin.videocenter.data.VideoApi
+import com.kotlin.videocenter.presenter.view.RegisterView
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter

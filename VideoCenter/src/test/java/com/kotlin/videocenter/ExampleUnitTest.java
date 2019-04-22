@@ -1,4 +1,4 @@
-package com.example.videocenter;
+package com.kotlin.videocenter;
 
 import org.junit.Test;
 

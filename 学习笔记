@@ -79,7 +79,7 @@ RxKotlin 和 RxAndroid 配置
 
 
     注解使用方式 :
-           (1)在需要添加住的类的 构造函数 中 添加 @Inject  ,
+           (1)在需要添加注解类的 构造函数 中 添加 @Inject  ,
            (2)在会使用到注解的该类变量上添加 @Inject
            (3)还需要新建一个 UserModule 类, 类上添加 @Module 注解，使用@Provides 标注创建实例的方法;
            (4)新建一个接口，使用@Commponent （module = UserModule:class.java）,新建inject()函数，参数为需要使用到注解类的activity
@@ -96,6 +96,12 @@ RxKotlin 和 RxAndroid 配置
                               他是 Scope 的一种默认实现
                               Singleton 并没有实现单例的能力，它并不是单例。
                               ApplicationComponent 单例是由代码控制实现，并不是通过注解实现的
+
+
+               Scope 表示了一个层级关系  ActivityComponent 依赖于 AppComponent ,UserActivityComponent 依赖于 ActivityComponent
+                    没有作用域修饰的Component 不能去依赖一个有 Scope 修饰的 Component
+
+
               自定义Scope:
                 以Component 组织方式自定义Scope
                         @Scope

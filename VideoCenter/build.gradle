@@ -16,7 +16,7 @@ kapt {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
 
 

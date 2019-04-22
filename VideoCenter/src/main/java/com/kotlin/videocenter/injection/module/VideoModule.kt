@@ -1,7 +1,6 @@
-package com.example.videocenter.injection.module
+package com.kotlin.videocenter.injection.module
 
-import com.example.videocenter.presenter.view.LoginView
-import com.example.videocenter.presenter.view.RegisterView
+import com.kotlin.videocenter.presenter.view.RegisterView
 import dagger.Module
 import dagger.Provides
 

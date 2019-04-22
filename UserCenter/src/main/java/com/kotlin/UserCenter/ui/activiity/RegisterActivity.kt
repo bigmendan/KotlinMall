@@ -39,11 +39,17 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     private fun initInjection() {
         // 因为BaseMvpActivity 中传入的 是一个泛型，需要实例化 ;
 //        mPresenter = RegisterPresenter()    // 目前是 通过实例化的方法，引入Dagger2 可以直接 使用这个对象
-
         // presenter 中的 View 引用 赋值;
 //        mPresenter.mView = this
 
+        /**
+         *  引入 Dagger2 的作用是为了给应用的各部分解耦
+         *    如果一个功能需要实例化另外一个对象来完成，这就是耦合， Dagger2 的引入就是为了解除这种耦合
+         */
+
         DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+
+        // mPresenter 已经在BaseMvpActivity 中被声明 ;
         mPresenter.mView = this
 
     }

@@ -1,9 +1,7 @@
-package com.example.videocenter.data
+package com.kotlin.videocenter.data
 
-import com.kotlin.base.data.protocol.BaseResp
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

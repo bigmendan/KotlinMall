@@ -12,9 +12,7 @@ import dagger.Component
  * @Date   : 2019/4/16 12:00:53
  * @Des    :  使用这个方式 在 RegisterActivity 中引用 注解
  *
- *   原本 UserComponent 没有作用域，不可以依赖有作用域的ActivityComponent;
- *
- *    去依赖的 Component 有一个Scope,本身也需要去有一个Scope;
+ *    @PerComponentScope 是 一个自定义 Scope ,因为 ActivityComponent 中也是有 Scope(ActivityScope) 修饰的
  */
 @PerComponentScope
 @Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(UserModule::class))

@@ -1,4 +1,4 @@
-package com.example.videocenter.presenter.view
+package com.kotlin.videocenter.presenter.view
 
 import com.kotlin.base.presenter.view.BaseView
 

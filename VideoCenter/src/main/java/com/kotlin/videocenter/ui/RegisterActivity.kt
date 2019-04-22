@@ -1,12 +1,12 @@
-package com.example.videocenter.ui
+package com.kotlin.videocenter.ui
 
 import android.os.Bundle
 import android.util.Log
-import com.example.videocenter.R
-import com.example.videocenter.injection.compoment.DaggerVideoComponent
-import com.example.videocenter.injection.module.VideoModule
-import com.example.videocenter.presenter.RegisterPresenter
-import com.example.videocenter.presenter.view.RegisterView
+import com.kotlin.videocenter.R
+import com.kotlin.videocenter.injection.compoment.DaggerVideoComponent
+import com.kotlin.videocenter.injection.module.VideoModule
+import com.kotlin.videocenter.presenter.RegisterPresenter
+import com.kotlin.videocenter.presenter.view.RegisterView
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_register.*
 
