@@ -1,10 +1,11 @@
-//if (isVideoModule) {
-//    apply plugin: 'com.android.library'
-//} else {
-//    apply plugin: 'com.android.application'
-//
-//}
-apply plugin: 'com.android.application'
+if (isVideoModule.toBoolean()
+) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+
+}
+//apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
