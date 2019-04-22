@@ -84,13 +84,49 @@ RxKotlin 和 RxAndroid 配置
            (3)还需要新建一个 UserModule 类, 类上添加 @Module 注解，使用@Provides 标注创建实例的方法;
            (4)新建一个接口，使用@Commponent （module = UserModule:class.java）,新建inject()函数，参数为需要使用到注解类的activity
 
-        重新构建一下项目，生成DaggerMainComponent ，在需要使用注解的 Activity 中
+        重新构建一下项目，生成DaggerUserComponent ，在需要使用注解的 Activity 中
         调用   DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
 
 
 
-        |------- @Scope       @Singleton
-        |------- @Qualifier   @Named
+        |------- @Scope      主要用于 Component 的组织方式  不同的模块也可能有自己的Component，
+                            Scope就是用来表示什么级别的作用域，仅仅是标注
+                            管理Component 和  Module 之间的匹配关系
+                 @Singleton   作用域的一种实现方式  类似   Scope是一个接口，Singleton 是他的实现类
+                              他是 Scope 的一种默认实现
+                              Singleton 并没有实现单例的能力，它并不是单例。
+                              ApplicationComponent 单例是由代码控制实现，并不是通过注解实现的
+              自定义Scope:
+                以Component 组织方式自定义Scope
+                        @Scope
+                        @Retention(RetentionPolicy.RUNTIME)
+                        annotation class ActivityScope
+                         就是在 Activity 级别使用的 Scope
+
+
+                  每个App 需要一个全局的Component
+
+
+        |------- @Qualifier  注解迷失： 同一个接口有多个实现类，编译报错，分不清是用哪一个实现类
+                            使用限定符来
+                @Named  Qualifier 的一种实现方式
+                        以名称区分使用哪种注解方式
+
+                        自定义Qualifier
+                        @Qualifier
+                        @Retention(RetentionPolicy.RUNTIME)
+                        annotation class ActivityQualifier
+
+
+
+RxLifecycle
+      解决 Rx内存泄漏
+      通过监听Activity/Fragment生命周期，自动断开Rx绑定
+      结合Dagger2 实现通用配置 ，不用 在Activity 或者Fragment 中去配置
+
+
+      用BaseActivity 继承 rxLifeRecycle 中 的 RxAppcompatActivity
+
 
 
 
@@ -99,6 +135,7 @@ RxKotlin 和 RxAndroid 配置
         |
         |-- 实现自己的栈结构 来管理 Activity  (单例)
   HeaderBar   封装
+
   ProgressLoading 封装
 
 

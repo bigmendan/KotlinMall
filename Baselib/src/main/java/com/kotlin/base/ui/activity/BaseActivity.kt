@@ -7,12 +7,13 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kotlin.base.common.AppManager
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 /**
  *  有的页面是静态的 不需要继承 MVP ,
- *  只是需要有个静态资源，所有就有个 BaseActivity
+ *  只是需要有个静态资源，所有就有个 BaseActivity  继承使用 RxLifecycle 的Activity
  */
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : RxAppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

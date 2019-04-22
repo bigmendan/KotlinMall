@@ -26,7 +26,10 @@ ext {
             "logging-interceptor"      : "com.squareup.okhttp3:logging-interceptor:$ok_http_version",
 
             "dagger"                   : "com.google.dagger:dagger:$dagger_version",
-            "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version"
+            "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version",
 
+            "rxlifecycle-components"              : "com.trello.rxlifecycle3:rxlifecycle-components:$rxlifecycle_version" ,
+            "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version"
     ]
+
 }

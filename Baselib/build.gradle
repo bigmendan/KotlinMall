@@ -46,9 +46,12 @@ dependencies {
     api rootProject.ext.dependencies["adapter-rxjava2"]
     api rootProject.ext.dependencies["retrofit-converters"]
     api rootProject.ext.dependencies["logging-interceptor"]
-
     api rootProject.ext.dependencies["dagger"]
-    kapt  rootProject.ext.dependencies["dagger-compiler"]
+    kapt rootProject.ext.dependencies["dagger-compiler"]
+
+    //RxLifecycle
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["rxlefecycle-kotlin"]
 }
 repositories {
     google()

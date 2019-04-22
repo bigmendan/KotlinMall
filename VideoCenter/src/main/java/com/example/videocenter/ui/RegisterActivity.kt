@@ -33,7 +33,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     // 用来实例化 Presenter  ;
     private fun initDagger() {
         // 这里 的viewModule 划横线是个什么意思
-        DaggerVideoComponent.builder().videoModule(VideoModule()).build().inject(this)
+        DaggerVideoComponent.builder().activityComponent(activityComponent).videoModule(VideoModule()).build().inject(this)
         mPresenter.mView = this
 
     }

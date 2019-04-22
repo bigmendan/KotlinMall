@@ -43,7 +43,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         // presenter 中的 View 引用 赋值;
 //        mPresenter.mView = this
 
-        DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
         mPresenter.mView = this
 
     }

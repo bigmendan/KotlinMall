@@ -34,6 +34,7 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
                 override fun onError(e: Throwable) {
                     Log.e("==", "返回错误 = ${e.message}")
+                    mView.hideLoading()
                 }
 
             })
