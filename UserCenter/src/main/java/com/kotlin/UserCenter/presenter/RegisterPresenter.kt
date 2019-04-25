@@ -58,24 +58,6 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
     fun register2(username: String, password: String, repassword: String) {
         mView.showLoading()
 
-
-//        repository.register2(username, password, repassword)
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe(object : BaseObserver<ResponseBody>(mView) {
-//
-//                override fun onNext(t: ResponseBody) {
-//                    super.onNext(t)
-//                    Log.e("===", "${t.string()}")
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                    super.onError(e)
-//                    Log.e("===", "${e.message}")
-//                }
-//            })
-
-
         repository.register2(username, password, repassword)
             .execute2(object : NormalObserver<UserRegisterModel>(mView) {
                 override fun onSuccess(t: UserRegisterModel?) {
