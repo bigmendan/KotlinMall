@@ -8,15 +8,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.RegisterActivity">
 
+
     <com.kotlin.base.widgets.HeaderBar
             style="@style/MatchWrap"
             app:isShowBack="false"
             app:titleText="注册"
+            app:rightText="deng"/>
 
-            app:rightText="deng"
-
-
-    />
 
     <LinearLayout
             android:layout_marginTop="20dp"

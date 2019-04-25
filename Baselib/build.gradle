@@ -48,10 +48,11 @@ dependencies {
     api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["dagger"]
     kapt rootProject.ext.dependencies["dagger-compiler"]
-
     //RxLifecycle
     api rootProject.ext.dependencies["rxlifecycle-components"]
     api rootProject.ext.dependencies["rxlefecycle-kotlin"]
+    // BottomNavigation
+    api rootProject.ext.dependencies["bottom-navigation-bar"]
 }
 repositories {
     google()

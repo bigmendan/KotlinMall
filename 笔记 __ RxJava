@@ -1,0 +1,23 @@
+
+
+ 使用 RxJava 做一个定时器  可以替换 Handler
+  Observable.timer(2, TimeUnit.SECONDS)
+             .observeOn(AndroidSchedulers.mainThread())
+             .subscribe {
+                 bottomNavBar.checkCartBadge(3)
+             }
+
+       === 表示在主线程中 延时操作 2 秒
+       |
+       |== RxJava 线程切换  就是靠 observeOn ()  和 subscribeOn()
+               |
+               |== ObserveOn 指定一个观察者在哪个调度器上观察这个Observable
+               |
+               |== subscribeOn 指定Observable 自身在哪个调度器上执行
+
+
+        比如 在 结合 Retrofit 使用时经常用到
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+
+               就是说做网络请求时 本身是在异步 一个IO线程中进行的，网络请求完成需要切换到主线程，所以观察者观察主线程

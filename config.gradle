@@ -28,8 +28,11 @@ ext {
             "dagger"                   : "com.google.dagger:dagger:$dagger_version",
             "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version",
 
-            "rxlifecycle-components"              : "com.trello.rxlifecycle3:rxlifecycle-components:$rxlifecycle_version" ,
-            "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version"
+            "rxlifecycle-components"   : "com.trello.rxlifecycle3:rxlifecycle-components:$rxlifecycle_version",
+            "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version",
+
+            "bottom-navigation-bar"    : "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version",
+            "banner"                   : "com.youth.banner:banner:${banner_version}"
     ]
 
 }

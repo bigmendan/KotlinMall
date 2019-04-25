@@ -32,7 +32,7 @@ fun <T> Observable<T>.execute(observer: BaseObserver<T>, lifecycleProvider: Life
 fun <T> Observable<BaseResp<T>>.execute2(observer: NormalObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
 
     this.observeOn(AndroidSchedulers.mainThread())
-//        .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
+        .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
         .subscribeOn(Schedulers.io())
         .subscribe(observer)
 

@@ -15,6 +15,10 @@ buildscript {
 
     ext.rxlifecycle_version = '3.0.0'
 
+    ext.bottom_navigation_bar_version = '2.1.0'
+
+    ext.banner_version = '1.4.10'
+
     repositories {
         google()
         mavenCentral()

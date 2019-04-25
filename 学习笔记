@@ -150,6 +150,20 @@ RxLifecycle
 
 
 
+ 首页封装
+    |
+    |== 底部栏 : 谷歌推荐的(com.ashokvarma.android:bottom-navigation-bar)
+    |
+    |== Banner : com.youth.banner:banner:1.4.10  // 最新版本  github 上面找
+
+
+
+问题 : 在 Fragment 的  onCreateView( ) 中直接使用 Kotlin 的扩展 获取不到 Id
+       原因是 xml没有载入，会导致使用id 报空指针，所以需要在 onViewCreate()中去获取id
+       当视图加载出来以后才可以获取到 id ;
+
+
+
 
 
 
