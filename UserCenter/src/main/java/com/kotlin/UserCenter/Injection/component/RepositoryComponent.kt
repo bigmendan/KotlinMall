@@ -1,9 +1,8 @@
 package com.kotlin.UserCenter.Injection.component
 
-import com.kotlin.UserCenter.Injection.module.UserModule
-import com.kotlin.UserCenter.ui.activiity.RegisterActivity
+import com.kotlin.UserCenter.Injection.module.UserRepositoryModule
+import com.kotlin.UserCenter.ui.activity.RegisterActivity
 import com.kotlin.base.injection.component.ActivityComponent
-import com.kotlin.base.injection.module.ActivityModule
 import com.kotlin.base.injection.scope.PerComponentScope
 import dagger.Component
 
@@ -15,8 +14,8 @@ import dagger.Component
  *    @PerComponentScope 是 一个自定义 Scope ,因为 ActivityComponent 中也是有 Scope(ActivityScope) 修饰的
  */
 @PerComponentScope
-@Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(UserModule::class))
-interface UserComponent {
+@Component(dependencies = arrayOf(ActivityComponent::class), modules = arrayOf(UserRepositoryModule::class))
+interface RepositoryComponent {
 
     fun inject(activity: RegisterActivity)
 

@@ -11,9 +11,9 @@
             android:name="com.kotlin.base.common.BaseApplication"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.activiity.TestActivity">
+        <activity android:name=".ui.activity.TestActivity">
         </activity>
-        <activity android:name=".ui.activiity.RegisterActivity">
+        <activity android:name=".ui.activity.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

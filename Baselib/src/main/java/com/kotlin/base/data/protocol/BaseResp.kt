@@ -4,7 +4,9 @@ package com.kotlin.base.data.protocol
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/15 10:26:36
- * @Des    :  平时做网络请求 都会有的 几个参数 status ,message ，data
+ * @Des    :   这里的字段名 和返回参数 要和后台商量好，写一致
  */
-class BaseResp<out T>(val status: Int, val message: String,
-                      val data: T)
+data class BaseResp<out T>(
+    var errorCode: Int, var errorMsg: String,
+    val data: T?
+)

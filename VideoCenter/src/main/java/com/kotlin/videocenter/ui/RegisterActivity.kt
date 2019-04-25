@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
+
     override fun registerResult(result: Boolean) {
 
         Log.e("===", " 执行到 register +$result")
@@ -22,20 +23,17 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        initDagger()
-
         registerBtn.setOnClickListener {
             mPresenter.register("zhaowenjie", "232323", "232323")
         }
 
     }
 
-    // 用来实例化 Presenter  ;
-    private fun initDagger() {
+    override fun injectionComponent() {
         // 这里 的viewModule 划横线是个什么意思
-        DaggerVideoComponent.builder().activityComponent(activityComponent).videoModule(VideoModule()).build().inject(this)
+        DaggerVideoComponent.builder().activityComponent(activityComponent).videoModule(VideoModule()).build()
+            .inject(this)
         mPresenter.mView = this
-
     }
 
 

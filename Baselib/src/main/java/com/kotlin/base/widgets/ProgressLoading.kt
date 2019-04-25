@@ -2,7 +2,7 @@ package com.kotlin.base.widgets
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.ImageDecoder
+
 import android.graphics.drawable.AnimationDrawable
 import android.view.Gravity
 import android.widget.ImageView

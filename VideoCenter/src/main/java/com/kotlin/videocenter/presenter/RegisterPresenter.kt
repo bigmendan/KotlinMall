@@ -37,7 +37,7 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
                     mView.hideLoading()
                 }
 
-            })
+            }, lifecycleProvider)
 
     }
 

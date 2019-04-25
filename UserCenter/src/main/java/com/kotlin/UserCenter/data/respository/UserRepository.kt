@@ -1,14 +1,11 @@
 package com.kotlin.UserCenter.data.respository
 
 import com.kotlin.UserCenter.data.api.UserApi
-import com.kotlin.UserCenter.data.protocol.Register2Req
-import com.kotlin.UserCenter.data.protocol.RegisterReq
+import com.kotlin.UserCenter.data.module.UserRegisterModel
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.data.protocol.BaseResp
-import io.reactivex.Flowable
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -18,14 +15,23 @@ import javax.inject.Inject
  */
 class UserRepository @Inject constructor() {
 
-    // 将 Retrofit 做网络请求 封装起来
-    fun register(username: String, password: String, repassword: String)
-            : Observable<BaseResp<String>> {
+    fun register(mobile: String, verifyCode: String, pwd: String)
+            : Observable<ResponseBody> {
 
         return RetrofitFactory.instance
             .create(UserApi::class.java)
-            .register(RegisterReq(username, password, repassword))
+            .register(mobile, verifyCode, pwd)
 
     }
+
+    fun register2(mobile: String, verifyCode: String, pwd: String)
+            : Observable<BaseResp<UserRegisterModel>> {
+
+        return RetrofitFactory.instance
+            .create(UserApi::class.java)
+            .register2(mobile, verifyCode, pwd)
+
+    }
+
 
 }

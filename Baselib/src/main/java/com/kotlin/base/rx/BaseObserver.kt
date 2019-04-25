@@ -9,20 +9,30 @@ import io.reactivex.disposables.Disposable
  *
  */
 
-open class BaseObserver<T>(val baseView: BaseView) : Observer<T> {
+open abstract class BaseObserver<T>(val baseView: BaseView) : Observer<T> {
     override fun onComplete() {
         baseView.hideLoading()
     }
 
     override fun onSubscribe(d: Disposable) {
+        baseView.showLoading()
     }
 
     override fun onNext(t: T) {
+
     }
 
+    // 在error 里面把异常都处理了
     override fun onError(e: Throwable) {
         baseView.hideLoading()
+
+        if (e is BaseException) {
+
+        }
     }
 
 
 }
+
+
+
