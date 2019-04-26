@@ -1,6 +1,8 @@
 package com.kotlin.base.ext
 
 import android.util.Log
+import android.view.OrientationEventListener
+import android.view.View
 import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.base.rx.BaseObserver
 import com.kotlin.base.rx.BaseSubscriber
@@ -38,3 +40,17 @@ fun <T> Flowable<T>.execute(subscriber: BaseSubscriber<T>) {
         .subscribeOn(Schedulers.io())
         .subscribe(subscriber)
 }
+
+
+fun View.onClick(listener: View.OnClickListener) {
+    this.setOnClickListener(listener)
+}
+
+/*
+    扩展点击事件，参数为方法
+ */
+fun View.onClick(method: () -> Unit): View {
+    setOnClickListener { method() }
+    return this
+}
+

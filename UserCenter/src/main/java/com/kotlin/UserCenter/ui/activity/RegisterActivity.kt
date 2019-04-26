@@ -9,7 +9,9 @@ import com.kotlin.UserCenter.R
 import com.kotlin.UserCenter.presenter.RegisterPresenter
 import com.kotlin.UserCenter.presenter.view.RegisterView
 import com.kotlin.base.common.AppManager
+import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.widgets.VerifyButton
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
@@ -36,11 +38,18 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
         // 直接使用控件ID 进行事件监听
         mRegisterBt.setOnClickListener(View.OnClickListener {
-            mPresenter.register("我是赵文杰爸爸3123", "123212", "123212")
+            //            mPresenter.register("我是赵文杰爸爸3123", "123212", "123212")
+
 
         })
 
+        mRegisterBt.onClick {
+            // 开启倒计时
+            mRegisterBt.requestSendVerifyNumber()
 
+            //TODO 同时 需要做请求发送短信验证码的接口请求，在返回结果中 做个 UI 提示 ;
+
+        }
 
 
     }
@@ -73,6 +82,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
     // 双击返回键退出 app
     private var preTime: Long = 0
+
     override fun onBackPressed() {
         val time = System.currentTimeMillis()
         if (time - preTime > 2000) {
