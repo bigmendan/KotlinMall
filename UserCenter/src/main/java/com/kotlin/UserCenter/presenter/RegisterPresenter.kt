@@ -24,11 +24,15 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
     // 封装了响应体
     fun register(username: String, password: String, repassword: String) {
 
+
+        if (!checkNetWork()) {
+            return
+        }
         repository.register(username, password, repassword)
             .execute(object : NormalObserver<UserRegisterModel>(mView) {
                 override fun onSuccess(t: UserRegisterModel?) {
 
-                    Log.e("===onSuccess", "返回 $t")
+                    mView.onRegisterResult(true)
                 }
 
             }, lifecycleProvider)

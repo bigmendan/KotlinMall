@@ -24,8 +24,6 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
     lateinit var mPresenter: T
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,7 +55,7 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
     override fun hideLoading() {
     }
 
-    override fun onError() {
+    override fun onError(msg: String) {
 
     }
 

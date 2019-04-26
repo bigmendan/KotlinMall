@@ -11,13 +11,14 @@ import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
 import com.kotlin.base.widgets.ProgressLoading
 import dagger.Module
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 
 /**
  * 继承BaseMvpActivity 中需要引用BasePresenter,用个*
  */
- abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
 
 
     // 其子类中需要传入的presenter 不确定，所以传入一个泛型
@@ -62,8 +63,9 @@ import javax.inject.Inject
         mLoadingDialog.hideLoading()
     }
 
-    override fun onError() {
+    override fun onError(msg: String) {
         mLoadingDialog.hideLoading()
+        toast(msg)
     }
 
 
