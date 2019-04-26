@@ -32,7 +32,10 @@ ext {
             "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version",
 
             "bottom-navigation-bar"    : "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version",
-            "banner"                   : "com.youth.banner:banner:${banner_version}"
+            "banner"                   : "com.youth.banner:banner:${banner_version}",
+            "recyclerView"             : "androidx.recyclerview:recyclerview:${recyclerview_version}",
+            "Glide"                    : "com.github.bumptech.glide:glide:${glide_version}"
+
     ]
 
 }

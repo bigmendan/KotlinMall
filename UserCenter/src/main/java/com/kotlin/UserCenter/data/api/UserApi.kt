@@ -24,14 +24,6 @@ interface UserApi {
     fun register(
         @Field("username") username: String, @Field("password") password: String,
         @Field("repassword") repassword: String
-    ): Observable<ResponseBody>
-
-
-    @FormUrlEncoded
-    @POST("user/register")
-    fun register2(
-        @Field("username") username: String, @Field("password") password: String,
-        @Field("repassword") repassword: String
     ): Observable<BaseResp<UserRegisterModel>>
 
 

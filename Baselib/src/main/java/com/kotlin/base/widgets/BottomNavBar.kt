@@ -17,6 +17,8 @@ class BottomNavBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : BottomNavigationBar(context, attrs, defStyleAttr) {
 
+
+
     private val mCartBadge: TextBadgeItem   // 显示数字
     private val mMsgBadge: ShapeBadgeItem      // 仅仅显示形状
 
@@ -51,7 +53,6 @@ class BottomNavBar @JvmOverloads constructor(
 
         mCartBadge = TextBadgeItem()
         cartItem.setBadgeItem(mCartBadge)
-
 
 
         //消息
@@ -89,7 +90,7 @@ class BottomNavBar @JvmOverloads constructor(
             .addItem(cartItem)
             .addItem(msgItem)
             .addItem(userItem)
-            .setFirstSelectedPosition(0)
+            .setFirstSelectedPosition(0)        // 默认选中第一个
             .initialise()           // 调用初始化方法;
 
     }

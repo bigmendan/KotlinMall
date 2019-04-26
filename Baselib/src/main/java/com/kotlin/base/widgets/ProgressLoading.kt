@@ -23,7 +23,7 @@ class ProgressLoading private constructor(context: Context, themeResId: Int) : D
         private var animDrawable: AnimationDrawable? = null
 
         fun create(context: Context): ProgressLoading {
-            mDialog = ProgressLoading(context, R.style.LightDialog)
+            mDialog = ProgressLoading(context, R.style.LightProgressDialog)
 
             mDialog.setContentView(R.layout.progress_dialog)
             mDialog.setCancelable(true)

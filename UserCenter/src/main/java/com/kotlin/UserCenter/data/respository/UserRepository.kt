@@ -15,21 +15,14 @@ import javax.inject.Inject
  */
 class UserRepository @Inject constructor() {
 
+
+
     fun register(mobile: String, verifyCode: String, pwd: String)
-            : Observable<ResponseBody> {
-
-        return RetrofitFactory.instance
-            .create(UserApi::class.java)
-            .register(mobile, verifyCode, pwd)
-
-    }
-
-    fun register2(mobile: String, verifyCode: String, pwd: String)
             : Observable<BaseResp<UserRegisterModel>> {
 
         return RetrofitFactory.instance
             .create(UserApi::class.java)
-            .register2(mobile, verifyCode, pwd)
+            .register(mobile, verifyCode, pwd)
 
     }
 

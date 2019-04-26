@@ -155,6 +155,8 @@ RxLifecycle
     |== 底部栏 : 谷歌推荐的(com.ashokvarma.android:bottom-navigation-bar)
     |
     |== Banner : com.youth.banner:banner:1.4.10  // 最新版本  github 上面找
+    |
+    |== 画廊 : github 开源框架 ： Android-CoverFlow
 
 
 

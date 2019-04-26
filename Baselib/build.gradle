@@ -53,6 +53,9 @@ dependencies {
     api rootProject.ext.dependencies["rxlefecycle-kotlin"]
     // BottomNavigation
     api rootProject.ext.dependencies["bottom-navigation-bar"]
+    // recyclerView
+    api rootProject.ext.dependencies["recyclerView"]
+    api rootProject.ext.dependencies["Glide"]
 }
 repositories {
     google()

@@ -8,6 +8,7 @@ import com.kotlin.UserCenter.Injection.module.UserRepositoryModule
 import com.kotlin.UserCenter.R
 import com.kotlin.UserCenter.presenter.RegisterPresenter
 import com.kotlin.UserCenter.presenter.view.RegisterView
+import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
@@ -34,10 +35,13 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         setContentView(R.layout.activity_register)
 
         // 直接使用控件ID 进行事件监听
-        register.setOnClickListener(View.OnClickListener {
-            mPresenter.register2("我是赵文杰爸爸3", "123212", "123212")
+        mRegisterBt.setOnClickListener(View.OnClickListener {
+            mPresenter.register("我是赵文杰爸爸3123", "123212", "123212")
 
         })
+
+
+
 
     }
 
@@ -66,5 +70,20 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         mPresenter.mView = this
     }
 
+
+    // 双击返回键退出 app
+    private var preTime: Long = 0
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - preTime > 2000) {
+            toast("再按一次退出")
+
+            preTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+
+        }
+
+    }
 
 }

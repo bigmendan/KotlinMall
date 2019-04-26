@@ -1,5 +1,5 @@
 
-
+RxJava 线程调度:
  使用 RxJava 做一个定时器  可以替换 Handler
   Observable.timer(2, TimeUnit.SECONDS)
              .observeOn(AndroidSchedulers.mainThread())
@@ -21,3 +21,12 @@
                 .subscribeOn(Schedulers.io())
 
                就是说做网络请求时 本身是在异步 一个IO线程中进行的，网络请求完成需要切换到主线程，所以观察者观察主线程
+
+  Kotlin中  by lazy 的 作用 ：
+        lazy 只能用于修饰常量 val，并且 lazy 是线程安全的。
+        lazy 在第一次被调用时就被初始化，以后调用该属性会返回之前的结果
+
+
+  let () 方法
+        str?.let{ mTv.text = it }   表示 如果str 不为空 就会执行后面的操作，
+                并把自身作为参数传递到方法中

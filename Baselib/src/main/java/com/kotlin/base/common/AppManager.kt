@@ -8,7 +8,7 @@ import java.util.*
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/15 16:50:53
- * @Des    :
+ * @Des    :  是一个 栈的管理 ;
  */
 class AppManager private constructor() {
 
@@ -22,14 +22,14 @@ class AppManager private constructor() {
     }
 
     /**
-     *  向栈内添加 Activity;
+     *   入栈  向栈内添加 Activity;
      */
     fun addActivity(activity: Activity) {
         activityStack.add(activity)
     }
 
     /**
-     *  移除所有的Activity ;
+     *   出栈 -- 移除Activity ;
      */
     fun finishActivity(activity: Activity) {
         activity.finish()
@@ -40,11 +40,11 @@ class AppManager private constructor() {
      * 当前栈顶的 Activity
      */
     fun currentActivity(activity: Activity): Activity {
-        return activityStack.lastElement()
+        return activityStack.lastElement()   // 压栈的形式
     }
 
     /**
-     *
+     *   清空栈 -- 结束所有Activity
      */
     fun finishAllActivity() {
         for (activity in activityStack) {
@@ -60,6 +60,7 @@ class AppManager private constructor() {
     fun exitApp(context: Context) {
         finishAllActivity()
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        // 杀死后台进程 ?
         activityManager.killBackgroundProcesses(context.packageName)
         System.exit(0)
 
