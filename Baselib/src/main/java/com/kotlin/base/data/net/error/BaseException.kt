@@ -1,4 +1,4 @@
-package com.kotlin.base.rx
+package com.kotlin.base.data.net.error
 
 /**
  * @author : ${Zhang}

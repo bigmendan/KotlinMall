@@ -20,7 +20,7 @@ interface UserApi {
 
 
     @FormUrlEncoded
-    @POST("user/register")
+    @POST("user/register2")
     fun register(
         @Field("username") username: String, @Field("password") password: String,
         @Field("repassword") repassword: String

@@ -3,6 +3,7 @@ package com.kotlin.base.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import com.kotlin.base.common.BaseApplication
 
 /*
     网络工具
@@ -17,6 +18,15 @@ object NetWorkUtils {
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }
+
+
+    fun isNetWorkAvailable(): Boolean {
+        val connectivityManager =
+            BaseApplication.context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
+    }
+
 
     /*
         检测wifi是否连接

@@ -23,7 +23,8 @@ class AppModule(private val context: BaseApplication) {
 
 
     /**
-     *  如果 @Providers 修饰的方法中需要用到其他 @Providers 修饰的 参数 ，直接传递进来就好
+     *  如果 @Providers 修饰的方法中需要用到其他 @Providers 修饰的 参数 ，
+     *  直接传递进来就好
      */
 
 

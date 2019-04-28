@@ -20,6 +20,9 @@ open class BasePresenter<T : BaseView> {
     @Inject
     lateinit var context: Context
 
+    /**
+     *   检查网络 是否可用 ;
+     */
     fun checkNetWork(): Boolean {
         return if (NetWorkUtils.isNetWorkAvailable(context)) {
 

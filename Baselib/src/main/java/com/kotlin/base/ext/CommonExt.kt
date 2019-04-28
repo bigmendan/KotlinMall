@@ -1,22 +1,17 @@
 package com.kotlin.base.ext
 
-import android.util.Log
-import android.view.OrientationEventListener
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import com.kotlin.base.data.protocol.BaseResp
-import com.kotlin.base.rx.BaseObserver
 import com.kotlin.base.rx.BaseSubscriber
-import com.kotlin.base.rx.NormalObserver
+import com.kotlin.base.rx.BaseObserver
+import com.kotlin.base.widgets.DefaultWatcher
 import com.trello.rxlifecycle3.LifecycleProvider
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.Flowable
 import io.reactivex.Observable
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
 
 
 /**
@@ -24,7 +19,7 @@ import org.reactivestreams.Subscription
  */
 
 
-fun <T> Observable<BaseResp<T>>.execute(observer: NormalObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
+fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
 
     this.observeOn(AndroidSchedulers.mainThread())
         .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
@@ -52,5 +47,22 @@ fun View.onClick(listener: View.OnClickListener) {
 fun View.onClick(method: () -> Unit): View {
     setOnClickListener { method() }
     return this
+}
+
+
+/**
+ *  Button 扩展 ，根据 EditText 和 传入对EditText的相应判断，来判断按钮是否可用
+ */
+fun Button.enable(et: EditText, method: () -> Boolean) {
+    val btn = this
+    et.addTextChangedListener(object : DefaultWatcher() {
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            // btn 是否可用 ，取决于 第二个参数传入的方法的返回值;
+            btn.isEnabled = method()
+
+        }
+    })
 }
 

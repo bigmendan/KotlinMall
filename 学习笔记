@@ -129,14 +129,15 @@ RxLifecycle
       通过监听Activity/Fragment生命周期，自动断开Rx绑定
       结合Dagger2 实现通用配置 ，不用 在Activity 或者Fragment 中去配置
 
-      用BaseActivity 继承 rxLifeRecycle 中 的 RxAppcompatActivity
-       重要方法 bindToLifecycle()
-          需要在 Observable的扩展方法中添加compose(bindToLifecycle(参数)) ，就需要一个参数 对象，
-       正常做法是在Activity中给Presenter传递一个参数,在presenter中再给扩展方法传递一个 参数。就得一步步传进来
-       然后就可以使用dagger 注入   第三方库不能直接通过构造函数来注解，就使用 @Module 来注入
+      用BaseActivity 继承 rxLifeRecycle 中的 RxAppcompatActivity
 
-         通过点击查看源码，presenter 中需要一个 LifecycleProvider.bindToLifecycle()，可以将该对象注解在
-         BasePresenter 中
+          重要方法 bindToLifecycle()
+          需要在 Observable的扩展方法中添加compose(bindToLifecycle(参数)) ，就需要一个参数 对象，
+      正常做法是在Activity中给Presenter传递一个参数,在presenter中再给扩展方法传递一个 参数。就得一步步传进来
+      然后就可以使用dagger 注入   第三方库不能直接通过构造函数来注解，就使用 @Module 来注入
+
+      通过点击查看源码，presenter 中需要一个 LifecycleProvider.bindToLifecycle()，可以将该对象注解在
+      BasePresenter 中
 
 
 

@@ -1,12 +1,11 @@
 package com.kotlin.UserCenter.presenter
 
-import android.util.Log
 import com.kotlin.UserCenter.data.module.UserRegisterModel
 import com.kotlin.UserCenter.data.respository.UserRepository
 import com.kotlin.UserCenter.presenter.view.RegisterView
 import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter
-import com.kotlin.base.rx.NormalObserver
+import com.kotlin.base.rx.BaseObserver
 import javax.inject.Inject
 
 
@@ -25,11 +24,8 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
     fun register(username: String, password: String, repassword: String) {
 
 
-        if (!checkNetWork()) {
-            return
-        }
         repository.register(username, password, repassword)
-            .execute(object : NormalObserver<UserRegisterModel>(mView) {
+            .execute(object : BaseObserver<UserRegisterModel>(mView) {
                 override fun onSuccess(t: UserRegisterModel?) {
 
                     mView.onRegisterResult(true)

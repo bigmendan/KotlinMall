@@ -11,7 +11,6 @@ import com.kotlin.UserCenter.presenter.view.RegisterView
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
-import com.kotlin.base.widgets.VerifyButton
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
@@ -37,17 +36,19 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         setContentView(R.layout.activity_register)
 
         // 直接使用控件ID 进行事件监听
-        mRegisterBt.setOnClickListener(View.OnClickListener {
+        mVerifyCodeBtn.setOnClickListener(View.OnClickListener {
             //            mPresenter.register("我是赵文杰爸爸3123", "123212", "123212")
 
 
         })
 
-        mRegisterBt.onClick {
+        mVerifyCodeBtn.onClick {
             // 开启倒计时
-            mRegisterBt.requestSendVerifyNumber()
+            mVerifyCodeBtn.requestSendVerifyNumber()
 
             //TODO 同时 需要做请求发送短信验证码的接口请求，在返回结果中 做个 UI 提示 ;
+
+            mPresenter.register("张文杰sb", "111111", "111111")
 
         }
 
@@ -57,6 +58,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
     override fun injectionComponent() {
 
+        lifecycle
         DaggerRepositoryComponent.builder().activityComponent(activityComponent)
             .userRepositoryModule(UserRepositoryModule()).build().inject(this)
         // mPresenter 已经在BaseMvpActivity 中被声明 ;
@@ -91,9 +93,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
             preTime = time
         } else {
             AppManager.instance.exitApp(this)
-
         }
 
     }
+
+
+    // 监听输入框内容是否为空
+    fun isBtmEnable(): Boolean {
+        return !mUserEt.text.isNullOrEmpty()
+    }
+
 
 }
