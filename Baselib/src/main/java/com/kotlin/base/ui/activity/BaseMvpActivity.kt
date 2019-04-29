@@ -25,9 +25,7 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
     @Inject
     lateinit var mPresenter: T
 
-
     private lateinit var mLoadingDialog: ProgressLoading
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +61,10 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
         mLoadingDialog.hideLoading()
     }
 
+    /**
+     *  在 BaseActivity 中将  onError() 中的 错误提示信息 Toast 出来
+     *  只要是 BaseView 的onError() 被执行到，这里都会有 Toast;
+     */
     override fun onError(msg: String) {
         mLoadingDialog.hideLoading()
         toast(msg)

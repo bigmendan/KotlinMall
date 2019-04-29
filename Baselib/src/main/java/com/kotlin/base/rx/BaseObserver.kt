@@ -37,7 +37,7 @@ abstract class BaseObserver<T>(private val baseView: BaseView) : Observer<BaseRe
         if (t.errorCode == ResultCode.SUCCESS) {
             onSuccess(t.data)
         } else {
-            Toast.makeText(mContext, t.errorMsg, Toast.LENGTH_SHORT).show()
+            baseView.onError(t.errorMsg)
         }
     }
 
@@ -45,7 +45,7 @@ abstract class BaseObserver<T>(private val baseView: BaseView) : Observer<BaseRe
         baseView.hideLoading()
 
         val rx = BaseThrowable.retrofitException(e)
-        Toast.makeText(BaseApplication.context, rx.message, Toast.LENGTH_SHORT).show()
+        baseView.onError(rx.message)
     }
 
     abstract fun onSuccess(t: T?)
