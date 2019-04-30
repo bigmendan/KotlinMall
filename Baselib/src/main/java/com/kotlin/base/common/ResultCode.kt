@@ -6,7 +6,7 @@ package com.kotlin.base.common
 class ResultCode {
     companion object {
 
-        const val SUCCESS = 1
+        const val SUCCESS = 0
 
         /**
          * 未知错误

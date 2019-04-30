@@ -65,6 +65,7 @@ class VerifyButton(mContext: Context, attrs: AttributeSet) : Button(mContext, at
         } else {
             this.text = "重获验证码"
         }
+        
         this.setBackgroundColor(resources.getColor(R.color.transparent))
         this.setTextColor(resources.getColor(R.color.common_blue))
         mCount = 60

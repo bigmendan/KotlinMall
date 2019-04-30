@@ -22,6 +22,10 @@ buildscript {
     ext.recyclerview_version = '1.0.0'
     ext.glide_version = '4.9.0'
 
+    // TakePhoto
+    ext.takephoto_version = '4.1.0'
+
+
     repositories {
         google()
         mavenCentral()

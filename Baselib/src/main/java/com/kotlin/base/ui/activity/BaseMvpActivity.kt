@@ -1,7 +1,7 @@
 package com.kotlin.base.ui.activity
 
+import android.app.Activity
 import android.os.Bundle
-import android.os.PersistableBundle
 import com.kotlin.base.common.BaseApplication
 import com.kotlin.base.injection.component.ActivityComponent
 import com.kotlin.base.injection.component.DaggerActivityComponent
@@ -10,8 +10,8 @@ import com.kotlin.base.injection.module.LifecycleProviderModule
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
 import com.kotlin.base.widgets.ProgressLoading
-import dagger.Module
 import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import javax.inject.Inject
 
 
@@ -26,6 +26,7 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
     lateinit var mPresenter: T
 
     private lateinit var mLoadingDialog: ProgressLoading
+    lateinit var activityComponent: ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,6 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
         injectionComponent()
     }
 
-    lateinit var activityComponent: ActivityComponent
 
     private fun initActivityInjection() {
         activityComponent =
@@ -46,11 +46,9 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
                 .lifecycleProviderModule(LifecycleProviderModule(this))    // 因为 RxAppCompatActivity 实现了 LifecycleProvider 接口 ;
                 .build()
 
-
     }
 
     abstract fun injectionComponent()
-
 
     override fun showLoading() {
 
@@ -69,6 +67,7 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
         mLoadingDialog.hideLoading()
         toast(msg)
     }
+
 
 
 }

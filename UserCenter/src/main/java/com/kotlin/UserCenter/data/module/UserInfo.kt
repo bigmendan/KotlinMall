@@ -5,7 +5,7 @@ package com.kotlin.UserCenter.data.module
  * @Date   : 2019/4/24 15:26:24
  * @Des    :
  */
-data class UserRegisterModel(
+data class UserInfo(
     val chapterTops: List<Any>,
     val collectIds: List<Any>,
     val email: String,

@@ -1,9 +1,9 @@
 package com.kotlin.UserCenter.data.api
 
-import com.kotlin.UserCenter.data.module.UserRegisterModel
+import com.kotlin.UserCenter.data.module.UserInfo
+import com.kotlin.UserCenter.data.module.UserRegister
 import com.kotlin.base.data.protocol.BaseResp
 import io.reactivex.Observable
-import okhttp3.ResponseBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -22,9 +22,16 @@ interface UserApi {
     @FormUrlEncoded
     @POST("user/register")
     fun register(
-        @Field("username") username: String, @Field("password") password: String,
+        @Field("username") username: String,
+        @Field("password") password: String,
         @Field("repassword") repassword: String
-    ): Observable<BaseResp<UserRegisterModel>>
+    ): Observable<BaseResp<UserRegister>>
 
 
+    @FormUrlEncoded
+    @POST("user/login")
+    fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): Observable<BaseResp<UserInfo>>
 }

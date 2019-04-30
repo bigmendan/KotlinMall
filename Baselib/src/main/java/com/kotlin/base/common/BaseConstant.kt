@@ -10,6 +10,8 @@ class BaseConstant {
 
         const val TABLE_PREFS = "KOTLIN_MALL"
 
+        const val KEY_SP_TOKEN = "token"
+
 
     }
 

@@ -43,7 +43,6 @@ dependencies {
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["converter-scalars"]
     api rootProject.ext.dependencies["adapter-rxjava2"]
-    api rootProject.ext.dependencies["adapter-rxjava2"]
     api rootProject.ext.dependencies["retrofit-converters"]
     api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["dagger"]
@@ -55,6 +54,8 @@ dependencies {
     api rootProject.ext.dependencies["bottom-navigation-bar"]
     // recyclerView
     api rootProject.ext.dependencies["recyclerView"]
+    api rootProject.ext.dependencies["Glide"]
+    // TakePhoto
     api rootProject.ext.dependencies["Glide"]
 }
 repositories {

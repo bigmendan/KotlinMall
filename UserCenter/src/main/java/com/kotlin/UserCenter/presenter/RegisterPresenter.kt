@@ -1,6 +1,6 @@
 package com.kotlin.UserCenter.presenter
 
-import com.kotlin.UserCenter.data.module.UserRegisterModel
+import com.kotlin.UserCenter.data.module.UserRegister
 import com.kotlin.UserCenter.data.respository.UserRepository
 import com.kotlin.UserCenter.presenter.view.RegisterView
 import com.kotlin.base.ext.execute
@@ -25,10 +25,10 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
 
         repository.register(username, password, repassword)
-            .execute(object : BaseObserver<UserRegisterModel>(mView) {
-                override fun onSuccess(t: UserRegisterModel?) {
+            .execute(object : BaseObserver<UserRegister>(mView) {
+                override fun onSuccess(t: UserRegister?) {
 
-                    mView.onRegisterResult(true)
+                    mView.onRegisterResult("注册成功")
                 }
 
             }, lifecycleProvider)

@@ -3,11 +3,14 @@ package com.kotlin.mall.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManagerNonConfig
+import androidx.fragment.app.FragmentTransaction
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import java.util.*
 
 
@@ -39,12 +42,12 @@ class MainActivity : AppCompatActivity() {
 
         val manager = fragmentManager.beginTransaction()
         manager.add(R.id.mContainer, mHomeFragment)
-            .add(R.id.mContainer, mCategoryFragment)
-            .add(R.id.mContainer, mCartFragment)
-            .add(R.id.mContainer, mMsgFragment)
-            .add(R.id.mContainer, mMeFragment)
-
+        manager.add(R.id.mContainer, mCategoryFragment)
+        manager.add(R.id.mContainer, mCartFragment)
+        manager.add(R.id.mContainer, mMsgFragment)
+        manager.add(R.id.mContainer, mMeFragment)
         manager.commit()
+
 
         mStack.add(mHomeFragment)
         mStack.add(mCategoryFragment)
@@ -83,5 +86,21 @@ class MainActivity : AppCompatActivity() {
         }
         manager.show(mStack[position])
         manager.commit()
+    }
+
+    /**
+     *  重写 back 返回事件;
+     */
+    private var preTime: Long = 0
+
+    override fun onBackPressed() {
+        var time = System.currentTimeMillis()
+        if (time - preTime > 2000) {
+            toast(" 再按一次退出")
+            preTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+        }
+
     }
 }

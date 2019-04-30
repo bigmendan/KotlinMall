@@ -17,8 +17,6 @@ import io.reactivex.schedulers.Schedulers
 /**
  * 封装所有 Observable.subscribe(Observer)重复过程;
  */
-
-
 fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
 
     this.observeOn(AndroidSchedulers.mainThread())
@@ -28,14 +26,12 @@ fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProv
 
 }
 
-
 // 支持背压的 链式 ;
 fun <T> Flowable<T>.execute(subscriber: BaseSubscriber<T>) {
     this.observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(subscriber)
 }
-
 
 fun View.onClick(listener: View.OnClickListener) {
     this.setOnClickListener(listener)
@@ -49,7 +45,6 @@ fun View.onClick(method: () -> Unit): View {
     return this
 }
 
-
 /**
  *  Button 扩展 ，根据 EditText 和 传入对EditText的相应判断，来判断按钮是否可用
  */
@@ -60,6 +55,8 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
             // btn 是否可用 ，取决于 第二个参数传入的方法的返回值;
+            // 这个方法又需要在外面定义
+            // 这里为什么是用一个方法,而不是用一个 变量
             btn.isEnabled = method()
 
         }
