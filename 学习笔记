@@ -167,6 +167,34 @@ RxLifecycle
 
 
 
+导入ARouter 的使用;
+    模块间通讯  跨模块接口调用
+     kotlin 中配置：
+        baseLib 中添加依赖 api com.alibaba:arouter-api:${ext.ARouter_api_version}
+        在需要用到夸模块通讯的 模块中 添加
+            kapt{
+                 // 添加上 ARouter 配置
+                arguments {
+                    arg("AROUTER_MODULE_NAME", project.getName())
+                }
+            }
+         并且在对应的 dependencies中添加
+            kapt 'com.alibaba:arouter-compiler:x.x.x'
+
+         ARouter 的使用 :
+
+            在将要跳转到的 页面 添加注解
+            Route(path = "/**/**")
+            Activity/Fragment()
+
+            在需要跳转的页面 使用
+             ARouter.getInstance().build("/**/**").navigation()
+
+             一定要注意app工程要全部依赖 所有用到 跨模块跳转的 model, 还有Manifest文件中是否注册 需要跳转的 Activity;
+
+
+
+
 
 
 

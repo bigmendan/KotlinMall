@@ -35,7 +35,9 @@ ext {
             "banner"                   : "com.youth.banner:banner:${banner_version}",
             "recyclerView"             : "androidx.recyclerview:recyclerview:${recyclerview_version}",
             "Glide"                    : "com.github.bumptech.glide:glide:${glide_version}",
-            "TakePhoto"                : " com.jph.takephoto:takephoto_library:${takephoto_version}"
+            "TakePhoto"                : " com.jph.takephoto:takephoto_library:${takephoto_version}",
+            "ARouter-Api"              : "com.alibaba:arouter-api:${ext.arouter_api_version}",
+            "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}"
 
     ]
 

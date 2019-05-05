@@ -22,14 +22,8 @@ class CategoryActivity : BaseMvpActivity<CategoryPresenter>(), CategoryView {
 
 
     override fun injectionComponent() {
-        DaggerCategoryComponent
-            .builder()
-            .activityComponent(activityComponent)
-            .categoryRepositoryModule(CategoryRepositoryModule())
-            .build()
-            .inject(this)
-
-        mPresenter.mView = this
 
     }
+
+
 }

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManagerNonConfig
 import androidx.fragment.app.FragmentTransaction
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.fragment.BaseFragment
+import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -76,6 +78,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        // 点击的时候没有水波纹效果
+        mBottomNavBar.setBackgroundStyle(BACKGROUND_STYLE_STATIC)
     }
 
     private fun changeFragment(position: Int) {

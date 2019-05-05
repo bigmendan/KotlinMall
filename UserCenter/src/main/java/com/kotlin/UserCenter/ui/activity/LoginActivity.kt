@@ -1,6 +1,7 @@
 package com.kotlin.UserCenter.ui.activity
 
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin.UserCenter.Injection.component.DaggerRepositoryComponent
 import com.kotlin.UserCenter.Injection.module.UserRepositoryModule
 import com.kotlin.UserCenter.R
@@ -16,6 +17,7 @@ import org.jetbrains.anko.toast
 /**
  *  Login
  */
+@Route(path = "/UserCenter/Login")
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
 
     override fun onCreate(savedInstanceState: Bundle?) {

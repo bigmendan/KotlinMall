@@ -5,6 +5,7 @@ import com.kotlin.base.injection.scope.ActivityScope
 import com.kotlin.base.injection.scope.PerComponentScope
 import com.kotlin.goodscenter.injection.module.CategoryRepositoryModule
 import com.kotlin.goodscenter.ui.activity.CategoryActivity
+import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import dagger.Component
 
 /**
@@ -19,6 +20,6 @@ import dagger.Component
 )
 interface CategoryComponent {
 
-    fun inject(activity: CategoryActivity)
+    fun inject(fragment: CategoryFragment)
 
 }
