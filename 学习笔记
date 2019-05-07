@@ -165,7 +165,20 @@ RxLifecycle
        原因是 xml没有载入，会导致使用id 报空指针，所以需要在 onViewCreate()中去获取id
        当视图加载出来以后才可以获取到 id ;
 
+RxBus 的使用:
+    在 BaseLib 中 实现一个 Utils RxBus ，
+    发送事件 :   新建一个事件 Event
+            RxBus.send(event : Any)
+    接收事件 :
+            RxBus.observe<UserEvent>()
+                 .subscribe { t: UserEvent? ->
+                        kotlin.run {
+                            mContent.text = "name:${t?.user?.name} age:${t?.user?.age}"
+                        }
+                    }
+                 .registerInBus(this)
 
+         在 onDestroy() 中 注销;   RxBus.unRegister(this)
 
 导入ARouter 的使用;
     模块间通讯  跨模块接口调用
@@ -191,7 +204,7 @@ RxLifecycle
              ARouter.getInstance().build("/**/**").navigation()
 
              一定要注意app工程要全部依赖 所有用到 跨模块跳转的 model, 还有Manifest文件中是否注册 需要跳转的 Activity;
-
+            传递参数
 
 
 

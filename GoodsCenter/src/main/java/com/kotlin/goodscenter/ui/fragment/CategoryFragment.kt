@@ -35,7 +35,9 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
 
         ARouter.getInstance().inject(this)
         mLoginTv.onClick {
-            ARouter.getInstance().build("/UserCenter/Login").navigation()
+            ARouter.getInstance()
+                .build("/UserCenter/Login")
+                .navigation()
         }
     }
 

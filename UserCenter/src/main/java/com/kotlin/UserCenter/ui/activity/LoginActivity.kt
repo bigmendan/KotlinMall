@@ -45,7 +45,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
     override fun loginResult(info: UserInfo) {
         toast("登录成功")
         // 登录成功以后保存用户信息
-//        UserPrefsUtils.putUserInfo()
+        UserPrefsUtils.putUserInfo(info)
         finish()
     }
 

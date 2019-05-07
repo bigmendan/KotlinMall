@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.kotlin.base.common.AppManager
+import com.kotlin.base.ui.activity.BaseActivity
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
@@ -16,7 +17,7 @@ import org.jetbrains.anko.toast
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val mStack = Stack<BaseFragment>()
     private val mHomeFragment by lazy { HomeFragment() }
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         changeFragment(0)    // 默认使用第一个 ;
 
         initBottomNav()
+
+
     }
 
     private fun initFragment() {
