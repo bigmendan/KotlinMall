@@ -3,6 +3,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -31,9 +38,11 @@ dependencies {
     implementation project(':Provider')
     if (isUserModule.toBoolean()) {
         implementation project(':UserCenter')
-
     }
     implementation project(':GoodsCenter')
+
+    kapt rootProject.ext.dependencies["ARouter-Compilder"]
+
 }
 repositories {
     mavenCentral()

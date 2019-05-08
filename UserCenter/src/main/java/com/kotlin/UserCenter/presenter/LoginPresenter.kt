@@ -24,7 +24,7 @@ class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
         repository.login(username, password)
             .execute(object : BaseObserver<UserInfo>(mView) {
                 override fun onSuccess(t: UserInfo?) {
-//                    Log.e("===", " 登录 ${t!!.username}")
+                    Log.e("===", " 登录 ${t!!.username}")
                     mView.loginResult(t!!)
                 }
 

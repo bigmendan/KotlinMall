@@ -1,9 +1,7 @@
 package com.kotlin.mall.ui.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManagerNonConfig
-import androidx.fragment.app.FragmentTransaction
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.kotlin.base.common.AppManager
@@ -12,11 +10,13 @@ import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.*
+import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import java.util.*
 
 
+@Route(path = RouterPath.Main.PATH_MAIN)
 class MainActivity : BaseActivity() {
 
     private val mStack = Stack<BaseFragment>()

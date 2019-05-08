@@ -12,6 +12,7 @@ import com.kotlin.goodscenter.injection.component.DaggerCategoryComponent
 import com.kotlin.goodscenter.injection.module.CategoryRepositoryModule
 import com.kotlin.goodscenter.presenter.CategoryPresenter
 import com.kotlin.goodscenter.presenter.view.CategoryView
+import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
@@ -36,7 +37,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
         ARouter.getInstance().inject(this)
         mLoginTv.onClick {
             ARouter.getInstance()
-                .build("/UserCenter/Login")
+                .build(RouterPath.UserCenter.PATH_LOGIN)
                 .navigation()
         }
     }

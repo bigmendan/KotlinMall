@@ -79,7 +79,7 @@ class BaseThrowable {
                 return ex
             } else {
                 ex = BaseThrowable(e, ResultCode.UNKNOWN)
-                ex.message = "未知错误"
+                ex.message = "${ex.code} = 未知错误"
                 return ex
             }
         }

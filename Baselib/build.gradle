@@ -58,7 +58,7 @@ dependencies {
     // TakePhoto
     api rootProject.ext.dependencies["Glide"]
 
-    api  rootProject.ext.dependencies["ARouter-Api"]
+    api rootProject.ext.dependencies["ARouter-Api"]
 }
 repositories {
     google()
