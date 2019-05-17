@@ -3,11 +3,22 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
-
-    <TextView android:layout_width="match_parent"
-              android:text="Home"
-              android:layout_height="match_parent"
-    />
+	
+	
+	<androidx.appcompat.widget.Toolbar
+			android:id="@+id/mHomeToolbar"
+			android:layout_width="match_parent"
+			android:background="@color/common_blue"
+			android:layout_height="50dp">
+	
+	
+	</androidx.appcompat.widget.Toolbar>
+	
+	
+	<androidx.recyclerview.widget.RecyclerView
+			android:layout_width="match_parent"
+			android:id="@+id/mRecyclerView"
+			android:overScrollMode="never"
+			android:layout_height="match_parent"/>
 
 </LinearLayout>

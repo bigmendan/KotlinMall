@@ -12,6 +12,7 @@ import com.kotlin.UserCenter.presenter.view.LoginView
 import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.provider.router.RouterPath
 import com.kotlin.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_login.*
@@ -28,18 +29,25 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
         setContentView(R.layout.activity_login)
 
 
+        StatusBarUtils.darkMode(this)
+        StatusBarUtils.setPaddingSmart(this, mToolBar)
+
+
         mLoginBtn.isEnabled = false
         mLoginBtn.enable(mUserEt) { isEnable() }
         mLoginBtn.enable(mPasswordEt) { isEnable() }
 
-
         mLoginBtn.onClick {
 
-            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())
+            ARouter.getInstance()
+                .build(RouterPath.Main.PATH_MAIN)
+                .navigation()
+
+//            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())
         }
 
-
     }
+
 
     override fun injectionComponent() {
         DaggerRepositoryComponent

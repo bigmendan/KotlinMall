@@ -6,16 +6,31 @@
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		
 		tools:context=".ui.activity.LoginActivity">
 	
 	
-	<com.kotlin.base.widgets.HeaderBar
-			android:layout_width="match_parent"
-			app:titleText="登录"
-			app:rightText="注册"
-			android:layout_height="wrap_content"/>
+	<!--<com.kotlin.base.widgets.HeaderBar-->
+	<!--android:layout_width="match_parent"-->
+	<!--app:titleText="登录"-->
+	<!--android:id="@+id/mHeaderBar"-->
+	<!--app:rightText="注册"-->
+	<!--android:layout_height="wrap_content"/>-->
 	
+	<androidx.appcompat.widget.Toolbar
+			android:layout_width="match_parent"
+			android:background="@color/common_red"
+			android:id="@+id/mToolBar"
+			android:layout_height="?attr/actionBarSize">
+		
+		<TextView
+				android:layout_width="match_parent"
+				android:text="TEST"
+				android:textSize="25sp"
+				android:textColor="@color/common_white"
+				android:gravity="center"
+				android:layout_height="match_parent"/>
+	
+	</androidx.appcompat.widget.Toolbar>
 	
 	<LinearLayout
 			android:layout_width="match_parent"

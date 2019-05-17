@@ -17,8 +17,8 @@ object UserPrefsUtils {
      */
     fun putUserInfo(userInfo: UserInfo?) {
         // 在登录信息中获取到 token  并且存储;
-//        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo.id : "")
-//
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.id.toString() ?: "")
+
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.userIcon ?: "")
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NAME, userInfo?.userName ?: "")
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, userInfo?.userMobile ?: "")

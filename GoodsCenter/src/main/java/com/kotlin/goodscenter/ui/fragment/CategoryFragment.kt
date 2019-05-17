@@ -35,11 +35,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
         super.onViewCreated(view, savedInstanceState)
 
         ARouter.getInstance().inject(this)
-        mLoginTv.onClick {
-            ARouter.getInstance()
-                .build(RouterPath.UserCenter.PATH_LOGIN)
-                .navigation()
-        }
+
     }
 
     override fun injectionComponent() {
@@ -53,4 +49,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
 
         mPresenter.mView = this
     }
+
+
+
 }

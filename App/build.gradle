@@ -41,6 +41,7 @@ dependencies {
     }
     implementation project(':GoodsCenter')
 
+    //需要在 跳转目标所在的model 中 添加  kapt
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
 
 }

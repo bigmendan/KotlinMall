@@ -7,11 +7,13 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STAT
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseActivity
 import com.kotlin.base.ui.fragment.BaseFragment
+import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.*
 import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -29,6 +31,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
 
         // 在底部栏 添加一个 带数字的Badge

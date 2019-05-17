@@ -1,18 +1,28 @@
 package com.kotlin.mall.ui.adapter
 
 import android.content.Context
+import android.os.Build
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.kotlin.mall.R
 
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/26 09:57:44
  * @Des    :  简单实现一个 BaseRecyclerViewAdapter ;
+ *
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>
     (var mContext: Context) : RecyclerView.Adapter<VH>() {
 
-    var mItemClickListener: OnItemClickListener<T>? = null
+
+    var inflater: LayoutInflater = LayoutInflater.from(mContext)
+
+
+    private var mItemClickListener: OnItemClickListener<T>? = null
 
     //数据集合
     var dataList: MutableList<T> = mutableListOf()
@@ -26,7 +36,10 @@ abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>
         notifyDataSetChanged()
     }
 
+
     override fun onBindViewHolder(holder: VH, position: Int) {
+
+        holder.itemView.background = mContext.resources.getDrawable(R.drawable.click_item_wave)
         holder.itemView.setOnClickListener {
             if (mItemClickListener != null)
                 mItemClickListener!!.onItemClick(dataList[position], position)
@@ -47,4 +60,6 @@ abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>
     fun setOnItemClickListener(listener: OnItemClickListener<T>) {
         this.mItemClickListener = listener
     }
+
+
 }

@@ -8,4 +8,7 @@ import com.trello.rxlifecycle3.components.RxFragment
  * @Des    : BaseFragment
  */
 open class BaseFragment : RxFragment() {
+
+
+
 }
