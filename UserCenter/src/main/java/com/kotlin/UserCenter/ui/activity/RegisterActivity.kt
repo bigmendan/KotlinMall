@@ -17,7 +17,8 @@ import org.jetbrains.anko.startActivity
 
 /**
  *  引入 Dagger2 的作用是为了给应用的各部分解耦
- *    如果一个功能需要实例化另外一个对象来完成，这就是耦合， Dagger2 的引入就是为了解除这种耦合
+ *    如果一个功能需要实例化另外一个对象来完成，这就是耦合，
+ *    Dagger2 的引入就是为了解除这种耦合
  */
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
 

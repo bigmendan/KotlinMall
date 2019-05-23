@@ -25,19 +25,14 @@ import kotlinx.android.synthetic.main.fragment_home.*
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeFragment : BaseFragment() {
 
-
-    lateinit var homeTestAdapter: HomeTestAdapter
+    private lateinit var homeTestAdapter: HomeTestAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         return inflater?.inflate(R.layout.fragment_home, null)
-
     }
-
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         StatusBarUtils.darkMode(activity)
         StatusBarUtils.setPaddingSmart(activity, mHomeToolbar)
@@ -45,31 +40,30 @@ class HomeFragment : BaseFragment() {
         initRecyclerView()
     }
 
-
     private fun initRecyclerView() {
-        mRecyclerView.layoutManager = LinearLayoutManager(activity)
 
+        mRecyclerView.layoutManager = LinearLayoutManager(activity)
         homeTestAdapter = HomeTestAdapter(activity)
 
         mRecyclerView.adapter = homeTestAdapter
 
         mRecyclerView.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
 
-        homeTestAdapter.setData(
-            mutableListOf(
-                "测试文档",
-                "测试文件",
-                "测试文档",
-                "测试文件",
-                "dd",
-                "测试文档",
-                "测试文件",
-                "sss",
-                "测试文档",
-                "测试文件",
-                "tes"
-            )
+        var list = mutableListOf(
+            "测试文档",
+            "测试文件",
+            "测试文档",
+            "测试文件",
+            "dd",
+            "测试文档",
+            "测试文件",
+            "sss",
+            "测试文档",
+            "测试文件",
+            "tes"
         )
+
+        homeTestAdapter.setData(list)
 
         homeTestAdapter.setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener<String> {
             override fun onItemClick(item: String, position: Int) {
@@ -78,7 +72,6 @@ class HomeFragment : BaseFragment() {
 
 
         })
-
 
     }
 

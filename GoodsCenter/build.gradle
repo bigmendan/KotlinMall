@@ -36,4 +36,5 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

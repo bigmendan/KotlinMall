@@ -19,4 +19,12 @@ object RouterPath {
     }
 
 
+    class WanAndroid{
+        companion object {
+            const val PATH_HOME = "/WanAndroid/homeActivity"
+        }
+    }
+
+
+
 }

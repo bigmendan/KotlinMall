@@ -23,28 +23,28 @@ Anko ：一个 Kotlin 扩展库
 
 
 mvp 配置 :
- 新建BaseActivity 和BaseView接口，新建BaseMvpActivity 继承BaseActivity,并实现BaseView
- 新建BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity中使用泛型引用BasePresenter
+ 新建 BaseActivity 和 BaseView 接口，新建 BaseMvpActivity 继承 BaseActivity,并实现 BaseView
+ 新建 BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity 中使用泛型引用 BasePresenter
 
   实际应用 继承 对应的 Base ,并实现方法
 
 
 RxKotlin 和 RxAndroid 配置
-    |----- RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
+    |------ RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
     |------ 也是基于RxJava 的扩展库，更好的兼容 Android 开发
 
 
 转移到 Android X
-  博客  ： https://www.jianshu.com/p/773e231daed4
+  博客  :  https://www.jianshu.com/p/773e231daed4
 
    在 gradle.properties 文件中添加
 
-       android.useAndroidX=true
-       android.enableJetifier=true
+       android.useAndroidX = true
+       android.enableJetifier = true
    如果你想使用AndroidX，但是之前的不迁移，可以这样配置：
 
-       android.useAndroidX=true
-       android.enableJetifier=false
+       android.useAndroidX = true
+       android.enableJetifier = false
 
 
 引入 Retrofit 网络框架 结合 RxJava2 的使用
@@ -86,8 +86,6 @@ RxKotlin 和 RxAndroid 配置
         重新构建一下项目，生成DaggerUserComponent ，在需要使用注解的 Activity 中
         调用   DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
 
-
-
         |------- @Scope      主要用于 Component 的组织方式  不同的模块也可能有自己的Component，
                             Scope就是用来表示什么级别的作用域，仅仅是标注
                             管理Component 和  Module 之间的匹配关系
@@ -98,10 +96,8 @@ RxKotlin 和 RxAndroid 配置
 
                               如果需要实现单例的就加上@Sington 注解;
 
-
                Scope 表示了一个层级关系  ActivityComponent 依赖于 AppComponent ,UserActivityComponent 依赖于 ActivityComponent
                     没有作用域修饰的Component 不能去依赖一个有 Scope 修饰的 Component
-
 
               自定义Scope:
                 以Component 组织方式自定义Scope
@@ -109,7 +105,6 @@ RxKotlin 和 RxAndroid 配置
                         @Retention(RetentionPolicy.RUNTIME)
                         annotation class ActivityScope
                         就是在 Activity 级别使用的 Scope
-
 
                   每个App 需要一个全局的Component
 

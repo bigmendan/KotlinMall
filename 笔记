@@ -30,3 +30,8 @@ RxJava 线程调度:
   let () 方法
         str?.let{ mTv.text = it }   表示 如果str 不为空 就会执行后面的操作，
                 并把自身作为参数传递到方法中
+
+
+   mutableList.all{ }   这个方法使用来判断集合中所有元素怎么怎么样 ,返回值是 Boolean;
+    mutableList.filter{ it.xxx } 过滤 括号里面的条件
+    mutableList.map{  }  数据转换一下   map{ it.goodsCount * it.goodsPrice }.sum()

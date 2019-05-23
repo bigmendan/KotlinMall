@@ -1,1 +1,1 @@
-include ':App', ':Baselib', ':Provider', ':UserCenter', ':MessageCenter', ':GoodsCenter'
+include ':App', ':Baselib', ':Provider', ':UserCenter', ':MessageCenter', ':GoodsCenter', ':WanAndroid'

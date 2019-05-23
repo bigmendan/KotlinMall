@@ -1,6 +1,9 @@
 package com.kotlin.mall.ui.activity
 
+import android.annotation.TargetApi
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
@@ -18,6 +21,7 @@ import org.jetbrains.anko.toast
 import java.util.*
 
 
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 @Route(path = RouterPath.Main.PATH_MAIN)
 class MainActivity : BaseActivity() {
 
@@ -31,7 +35,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
 
         // 在底部栏 添加一个 带数字的Badge

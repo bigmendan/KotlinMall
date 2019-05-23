@@ -40,7 +40,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
         mLoginBtn.onClick {
 
             ARouter.getInstance()
-                .build(RouterPath.Main.PATH_MAIN)
+                .build(RouterPath.WanAndroid.PATH_HOME)
                 .navigation()
 
 //            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())

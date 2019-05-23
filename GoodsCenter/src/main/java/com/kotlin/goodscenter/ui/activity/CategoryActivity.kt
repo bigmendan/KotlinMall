@@ -12,6 +12,9 @@ import com.kotlin.goodscenter.presenter.view.CategoryView
 import javax.inject.Inject
 
 
+/**
+ *  分类 Activity
+ */
 class CategoryActivity : BaseMvpActivity<CategoryPresenter>(), CategoryView {
 
 

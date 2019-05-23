@@ -59,6 +59,7 @@ dependencies {
     api rootProject.ext.dependencies["Glide"]
 
     api rootProject.ext.dependencies["ARouter-Api"]
+    api "com.google.android.material:material:1.0.0"
 }
 repositories {
     google()

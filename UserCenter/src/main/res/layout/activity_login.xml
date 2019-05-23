@@ -9,13 +9,6 @@
 		tools:context=".ui.activity.LoginActivity">
 	
 	
-	<!--<com.kotlin.base.widgets.HeaderBar-->
-	<!--android:layout_width="match_parent"-->
-	<!--app:titleText="登录"-->
-	<!--android:id="@+id/mHeaderBar"-->
-	<!--app:rightText="注册"-->
-	<!--android:layout_height="wrap_content"/>-->
-	
 	<androidx.appcompat.widget.Toolbar
 			android:layout_width="match_parent"
 			android:background="@color/common_red"

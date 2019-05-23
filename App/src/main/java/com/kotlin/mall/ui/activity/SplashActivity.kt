@@ -1,6 +1,7 @@
 package com.kotlin.mall.ui.activity
 
 import android.os.Bundle
+import com.kotlin.WanAndroid.ui.activity.HomeActivity
 import com.kotlin.base.ext.onClick
 
 import com.kotlin.base.ui.activity.BaseActivity
@@ -34,7 +35,8 @@ class SplashActivity : BaseActivity() {
         mToBtn.onClick {
             timer!!.cancel()
             afterLogin {
-                startActivity<MainActivity>()
+//                startActivity<MainActivity>()
+                startActivity<HomeActivity>()
             }
             finish()
         }
@@ -54,7 +56,8 @@ class SplashActivity : BaseActivity() {
             override fun onFinish() {
 
                 afterLogin {
-                    startActivity<MainActivity>()
+//                    startActivity<MainActivity>()
+                    startActivity<HomeActivity>()
                 }
                 finish()
             }
