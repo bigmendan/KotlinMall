@@ -1,14 +1,16 @@
 if (isUserModule.toBoolean()) {
     apply plugin: 'com.android.library'
-
 } else {
     apply plugin: 'com.android.application'
-
 }
 apply plugin: 'kotlin-android-extensions'       // 自动引入插件  findViewById
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
 kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
     generateStubs = true
 }
 android {
@@ -54,16 +56,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 
     implementation project(':Provider')
-
     kapt rootProject.ext.dependencies["dagger-compiler"]
+    kapt rootProject.ext.dependencies["ARouter-Compilder"]
 
 }
 repositories {

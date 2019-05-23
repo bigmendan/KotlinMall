@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">KotlinMall</string>
+	<string name="app_name">KotlinMall</string>
+	
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	
+	
+	<string name="home_fragment">主页</string>
+	<string name="category_fragment">分类</string>
+	<string name="cart_fragment">购物车</string>
+	<string name="msg_fragment">消息</string>
+	<string name="me_fragment">我的</string>
+
+
 </resources>

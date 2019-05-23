@@ -23,29 +23,28 @@ Anko ：一个 Kotlin 扩展库
 
 
 mvp 配置 :
- 新建BaseActivity 和BaseView接口，新建BaseMvpActivity 继承BaseActivity,并实现BaseView
- 新建BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity中使用泛型引用BasePresenter
+ 新建 BaseActivity 和 BaseView 接口，新建 BaseMvpActivity 继承 BaseActivity,并实现 BaseView
+ 新建 BasePresenter,并使用泛型形式引用 BaseView ,BaseMvpActivity 中使用泛型引用 BasePresenter
 
   实际应用 继承 对应的 Base ,并实现方法
 
 
 RxKotlin 和 RxAndroid 配置
-    |----- RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
+    |------ RxKotlin 是基于RxJava 的扩展库 ，响应式编程 ，观察者模式，订阅&监听
     |------ 也是基于RxJava 的扩展库，更好的兼容 Android 开发
 
 
 转移到 Android X
-  博客  ： https://www.jianshu.com/p/773e231daed4
+  博客  :  https://www.jianshu.com/p/773e231daed4
 
    在 gradle.properties 文件中添加
 
-       android.useAndroidX=true
-       android.enableJetifier=true
+       android.useAndroidX = true
+       android.enableJetifier = true
    如果你想使用AndroidX，但是之前的不迁移，可以这样配置：
 
-       android.useAndroidX=true
-       android.enableJetifier=false
-
+       android.useAndroidX = true
+       android.enableJetifier = false
 
 
 引入 Retrofit 网络框架 结合 RxJava2 的使用
@@ -79,18 +78,61 @@ RxKotlin 和 RxAndroid 配置
 
 
     注解使用方式 :
-           (1)在需要添加住的类的 构造函数 中 添加 @Inject  ,
+           (1)在需要添加注解类的 构造函数 中 添加 @Inject  ,
            (2)在会使用到注解的该类变量上添加 @Inject
            (3)还需要新建一个 UserModule 类, 类上添加 @Module 注解，使用@Provides 标注创建实例的方法;
            (4)新建一个接口，使用@Commponent （module = UserModule:class.java）,新建inject()函数，参数为需要使用到注解类的activity
 
-        重新构建一下项目，生成DaggerMainComponent ，在需要使用注解的 Activity 中
+        重新构建一下项目，生成DaggerUserComponent ，在需要使用注解的 Activity 中
         调用   DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
 
+        |------- @Scope      主要用于 Component 的组织方式  不同的模块也可能有自己的Component，
+                            Scope就是用来表示什么级别的作用域，仅仅是标注
+                            管理Component 和  Module 之间的匹配关系
+                 @Singleton   作用域的一种实现方式  类似   Scope是一个接口，Singleton 是他的实现类
+                              他是 Scope 的一种默认实现
+                              Singleton 并没有实现单例的能力，它并不是单例。
+                              ApplicationComponent 单例是由代码控制实现，并不是通过注解实现的
+
+                              如果需要实现单例的就加上@Sington 注解;
+
+               Scope 表示了一个层级关系  ActivityComponent 依赖于 AppComponent ,UserActivityComponent 依赖于 ActivityComponent
+                    没有作用域修饰的Component 不能去依赖一个有 Scope 修饰的 Component
+
+              自定义Scope:
+                以Component 组织方式自定义Scope
+                        @Scope
+                        @Retention(RetentionPolicy.RUNTIME)
+                        annotation class ActivityScope
+                        就是在 Activity 级别使用的 Scope
+
+                  每个App 需要一个全局的Component
 
 
-        |------- @Scope       @Singleton
-        |------- @Qualifier   @Named
+        |------- @Qualifier  注解迷失： 同一个接口有多个实现类，编译报错，分不清是用哪一个实现类
+                            使用限定符来
+                @Named  Qualifier 的一种实现方式
+                        以名称区分使用哪种注解方式
+
+                        自定义Qualifier
+                        @Qualifier
+                        @Retention(RetentionPolicy.RUNTIME)
+                        annotation class ActivityQualifier
+
+RxLifecycle
+      解决 Rx内存泄漏
+      通过监听Activity/Fragment生命周期，自动断开Rx绑定
+      结合Dagger2 实现通用配置 ，不用 在Activity 或者Fragment 中去配置
+
+      用BaseActivity 继承 rxLifeRecycle 中的 RxAppcompatActivity
+
+          重要方法 bindToLifecycle()
+          需要在 Observable的扩展方法中添加compose(bindToLifecycle(参数)) ，就需要一个参数 对象，
+      正常做法是在Activity中给Presenter传递一个参数,在presenter中再给扩展方法传递一个 参数。就得一步步传进来
+      然后就可以使用dagger 注入   第三方库不能直接通过构造函数来注解，就使用 @Module 来注入
+
+      通过点击查看源码，presenter 中需要一个 LifecycleProvider.bindToLifecycle()，可以将该对象注解在
+      BasePresenter 中
 
 
 
@@ -99,7 +141,65 @@ RxKotlin 和 RxAndroid 配置
         |
         |-- 实现自己的栈结构 来管理 Activity  (单例)
   HeaderBar   封装
+
   ProgressLoading 封装
+
+
+
+ 首页封装
+    |
+    |== 底部栏 : 谷歌推荐的(com.ashokvarma.android:bottom-navigation-bar)
+    |
+    |== Banner : com.youth.banner:banner:1.4.10  // 最新版本  github 上面找
+    |
+    |== 画廊 : github 开源框架 ： Android-CoverFlow
+
+
+
+问题 : 在 Fragment 的  onCreateView( ) 中直接使用 Kotlin 的扩展 获取不到 Id
+       原因是 xml没有载入，会导致使用id 报空指针，所以需要在 onViewCreate()中去获取id
+       当视图加载出来以后才可以获取到 id ;
+
+RxBus 的使用:
+    在 BaseLib 中 实现一个 Utils RxBus ，
+    发送事件 :   新建一个事件 Event
+            RxBus.send(event : Any)
+    接收事件 :
+            RxBus.observe<UserEvent>()
+                 .subscribe { t: UserEvent? ->
+                        kotlin.run {
+                            mContent.text = "name:${t?.user?.name} age:${t?.user?.age}"
+                        }
+                    }
+                 .registerInBus(this)
+
+         在 onDestroy() 中 注销;   RxBus.unRegister(this)
+
+导入ARouter 的使用;
+    模块间通讯  跨模块接口调用
+     kotlin 中配置：
+        baseLib 中添加依赖 api com.alibaba:arouter-api:${ext.ARouter_api_version}
+        在需要用到夸模块通讯的 模块中 添加
+            kapt{
+                 // 添加上 ARouter 配置
+                arguments {
+                    arg("AROUTER_MODULE_NAME", project.getName())
+                }
+            }
+         并且在对应的 dependencies中添加
+            kapt 'com.alibaba:arouter-compiler:x.x.x'
+
+         ARouter 的使用 :
+
+            在将要跳转到的 页面 添加注解
+            Route(path = "/**/**")
+            Activity/Fragment()
+
+            在需要跳转的页面 使用
+             ARouter.getInstance().build("/**/**").navigation()
+
+             一定要注意app工程要全部依赖 所有用到 跨模块跳转的 model, 还有Manifest文件中是否注册 需要跳转的 Activity;
+            传递参数
 
 
 

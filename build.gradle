@@ -13,6 +13,21 @@ buildscript {
 
     ext.dagger_version = '2.22.1'
 
+    ext.rxlifecycle_version = '3.0.0'
+
+    ext.bottom_navigation_bar_version = '2.1.0'
+
+    ext.banner_version = '1.4.10'
+
+    ext.recyclerview_version = '1.0.0'
+    ext.glide_version = '4.9.0'
+
+    // TakePhoto
+    ext.takephoto_version = '4.1.0'
+
+    ext.arouter_api_version = '1.4.1'
+    ext.arouter_compiler_version = '1.2.2'
+
     repositories {
         google()
         mavenCentral()

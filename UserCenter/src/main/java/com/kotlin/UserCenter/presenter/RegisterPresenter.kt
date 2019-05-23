@@ -1,13 +1,11 @@
 package com.kotlin.UserCenter.presenter
 
-import android.util.Log
+import com.kotlin.UserCenter.data.module.UserRegister
+import com.kotlin.UserCenter.data.respository.UserRepository
 import com.kotlin.UserCenter.presenter.view.RegisterView
-import com.kotlin.UserCenter.ui.service.UserService
-import com.kotlin.UserCenter.ui.service.impl.UserServiceImpl
 import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseObserver
-import com.kotlin.base.rx.BaseSubscriber
 import javax.inject.Inject
 
 
@@ -19,32 +17,26 @@ import javax.inject.Inject
 class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
     @Inject
-    lateinit var userService: UserServiceImpl
+    lateinit var repository: UserRepository
 
+
+    // 封装了响应体
     fun register(username: String, password: String, repassword: String) {
 
-        // 业务逻辑
-        // Observable 被观察者   对应一个观察者  Observer
-//        val userService = UserServiceImpl()
 
-        // 网络请求之前先开启弹窗
+        repository.register(username, password, repassword)
+            .execute(object : BaseObserver<UserRegister>(mView) {
+                override fun onSuccess(t: UserRegister?) {
 
-        mView.showLoading()
-
-        userService.register(username, password, repassword)
-            .execute(object : BaseObserver<Boolean>(mView) {
-                override fun onNext(t: Boolean) {
-//                    mView.onRegisterResult(true)
+                    mView.onRegisterResult("注册成功")
                 }
 
-                override fun onError(e: Throwable) {
-                    Log.e("===", "请求错误 = ${e.message}")
-                }
-
-            })
+            }, lifecycleProvider)
 
 
     }
+
+
 }
 
 

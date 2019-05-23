@@ -1,6 +1,7 @@
 package com.kotlin.base.data.net
 
 import com.kotlin.base.common.BaseConstant
+import com.kotlin.base.utils.AppPrefsUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,13 +39,14 @@ class RetrofitFactory private constructor() {
 
     // 初始化时调用;
     init {
-        // Header 现骨干的拦截器
+        // Header 相关的拦截器
         intereceptor = Interceptor { chain ->
 
             val request = chain.request()
                 .newBuilder()
                 .addHeader("Content-Type", "application/json")
-                .addHeader("charset", "utf-8")
+                .addHeader("charset", "utf-8")          // 编码格式
+//                .addHeader("token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                 .build()
             chain.proceed(request)
 
@@ -62,7 +64,7 @@ class RetrofitFactory private constructor() {
 
     private fun initClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(intereceptor)      // Header 现骨干的拦截器
+            .addInterceptor(intereceptor)      // Header 相关的拦截器
             .addInterceptor(initLogInterceptor())// 日志拦截器
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)

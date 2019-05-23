@@ -17,10 +17,8 @@ import java.util.*
 interface UserService {
 
     // 注册 方法
-    fun register(username: String, password: String, repassword: String)
+    fun register(mobile: String, vertifyCode: String, pwd: String)
             : Observable<Boolean>
-
-
 
 
 }

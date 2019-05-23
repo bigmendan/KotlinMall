@@ -9,7 +9,7 @@
     <dimen name="common_margin">15dp</dimen>
     <dimen name="common_margin_middle">10dp</dimen>
     <dimen name="common_margin_small">5dp</dimen>
-    <dimen name="common_padding">15dp</dimen>
+    <dimen name="common_padding">12dp</dimen>
     <dimen name="common_padding_middle">10dp</dimen>
     <dimen name="common_padding_small">5dp</dimen>
     <dimen name="common_radius">6dp</dimen>

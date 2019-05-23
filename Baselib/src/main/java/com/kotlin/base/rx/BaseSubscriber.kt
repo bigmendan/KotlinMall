@@ -8,7 +8,7 @@ import org.reactivestreams.Subscription
  * @Date   : 2019/4/12 18:08:55
  * @Des    :   观察者 ，支持背压策略 ;
  */
-open abstract class BaseSubscriber<T> : Subscriber<T> {
+abstract class BaseSubscriber<T> : Subscriber<T> {
     override fun onComplete() {
     }
 

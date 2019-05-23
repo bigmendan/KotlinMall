@@ -2,7 +2,7 @@ package com.kotlin.base.widgets
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.ImageDecoder
+
 import android.graphics.drawable.AnimationDrawable
 import android.view.Gravity
 import android.widget.ImageView
@@ -23,7 +23,7 @@ class ProgressLoading private constructor(context: Context, themeResId: Int) : D
         private var animDrawable: AnimationDrawable? = null
 
         fun create(context: Context): ProgressLoading {
-            mDialog = ProgressLoading(context, R.style.LightDialog)
+            mDialog = ProgressLoading(context, R.style.LightProgressDialog)
 
             mDialog.setContentView(R.layout.progress_dialog)
             mDialog.setCancelable(true)

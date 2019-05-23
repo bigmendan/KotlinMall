@@ -4,7 +4,7 @@ ext {
             buildToolsVersion: '28.0.3',
             applicationId    : 'com.kotlin.mall',
             minSdkVersion    : 15,
-            targetSdkVersion : 28,
+            targetSdkVersion : 27,
             versionCode      : 1,
             versionName      : "1.0",
 
@@ -26,7 +26,19 @@ ext {
             "logging-interceptor"      : "com.squareup.okhttp3:logging-interceptor:$ok_http_version",
 
             "dagger"                   : "com.google.dagger:dagger:$dagger_version",
-            "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version"
+            "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version",
+
+            "rxlifecycle-components"   : "com.trello.rxlifecycle3:rxlifecycle-components:$rxlifecycle_version",
+            "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version",
+
+            "bottom-navigation-bar"    : "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version",
+            "banner"                   : "com.youth.banner:banner:${banner_version}",
+            "recyclerView"             : "androidx.recyclerview:recyclerview:${recyclerview_version}",
+            "Glide"                    : "com.github.bumptech.glide:glide:${glide_version}",
+            "TakePhoto"                : " com.jph.takephoto:takephoto_library:${takephoto_version}",
+            "ARouter-Api"              : "com.alibaba:arouter-api:${ext.arouter_api_version}",
+            "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}"
 
     ]
+
 }
