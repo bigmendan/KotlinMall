@@ -11,9 +11,9 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.ArticleData
 import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
+import com.kotlin.WanAndroid.data.module.Data
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.injection.module.WAModule
 import com.kotlin.WanAndroid.presenter.HomePresenter
@@ -69,7 +69,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
         for (index in 0 until list.size) {
             var bannerModel = list[index]
-            bannerList.add(bannerModel.url)
+            bannerList.add(bannerModel.imagePath)
         }
         initBanner(bannerList)
 
@@ -78,7 +78,8 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
 
     override fun articleResult(t: ArticleModel) {
-        var datas = t.articleDatas
+        var datas = t.datas
+
 
         initRecyclerView(datas)
 
@@ -93,7 +94,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
 
 
-    private  fun  initRecyclerView(list:List<ArticleData>){
+    private  fun  initRecyclerView(list:List<Data>){
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         articleAdapter = HomeArticleAdapter(activity!!)
 

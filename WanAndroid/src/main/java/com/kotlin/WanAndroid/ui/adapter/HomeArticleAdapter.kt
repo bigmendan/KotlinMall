@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.ArticleData
-import com.kotlin.WanAndroid.utils.GlideImageLoader
+import com.kotlin.WanAndroid.data.module.Data
+import com.kotlin.base.ext.loge
 import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
 import com.kotlin.base.utils.GlideUtils
 import kotlinx.android.synthetic.main.adapter_home_article.view.*
@@ -18,13 +18,11 @@ import kotlinx.android.synthetic.main.adapter_home_article.view.*
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeArticleAdapter(mContext: Context) :
-    BaseRecyclerAdapter<ArticleData, HomeArticleAdapter.ViewHolder>(mContext) {
+    BaseRecyclerAdapter<Data, HomeArticleAdapter.ViewHolder>(mContext) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = inflater.inflate(R.layout.adapter_home_article, parent, false)
-
         return ViewHolder(view)
-
     }
 
 
@@ -33,6 +31,7 @@ class HomeArticleAdapter(mContext: Context) :
 
 
         var articleData = dataList[position]
+        loge("填充数据 = $articleData" )
         holder.itemView.mTitleTv.text = articleData.title
         holder.itemView.mDecTv.text = articleData.desc
         GlideUtils.loadImage(mContext,articleData.envelopePic,holder.itemView.mRightIv)
