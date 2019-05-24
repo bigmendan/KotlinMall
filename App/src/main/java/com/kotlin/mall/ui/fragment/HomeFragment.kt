@@ -11,10 +11,10 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
 import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.mall.R
-import com.kotlin.mall.ui.adapter.BaseRecyclerAdapter
 import com.kotlin.mall.ui.adapter.HomeTestAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 

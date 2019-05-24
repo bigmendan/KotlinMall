@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
 import com.kotlin.mall.R
 import kotlinx.android.synthetic.main.adapter_home_test.view.*
 

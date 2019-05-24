@@ -1,4 +1,4 @@
-package com.kotlin.mall.ui.adapter
+package com.kotlin.base.ui.adapter
 
 import android.content.Context
 import android.os.Build
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.kotlin.mall.R
+import com.kotlin.base.R
 
 /**
  * @author : ${Zhang}
@@ -25,13 +25,13 @@ abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>
     private var mItemClickListener: OnItemClickListener<T>? = null
 
     //数据集合
-    var dataList: MutableList<T> = mutableListOf()
+    var dataList: List<T> = mutableListOf()
 
     /*
         设置数据
         Presenter处理过为null的情况，所以为不会为Null
      */
-    fun setData(sources: MutableList<T>) {
+    fun setData(sources: List<T>) {
         dataList = sources
         notifyDataSetChanged()
     }
