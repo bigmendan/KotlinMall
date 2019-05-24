@@ -60,9 +60,9 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
         var bannerList:MutableList<String> = ArrayList()
 
         // 请求返回 Banner 数据以后
-        for (index in 0..list.size){
+        for (index in 0 until list.size){
             var bannerModel = list[index]
-            bannerList.add(bannerModel.url)
+            bannerList.add(bannerModel.imagePath)
         }
         initBanner(bannerList)
 
