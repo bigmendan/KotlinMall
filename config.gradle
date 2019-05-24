@@ -37,7 +37,9 @@ ext {
             "Glide"                    : "com.github.bumptech.glide:glide:${glide_version}",
             "TakePhoto"                : " com.jph.takephoto:takephoto_library:${takephoto_version}",
             "ARouter-Api"              : "com.alibaba:arouter-api:${ext.arouter_api_version}",
-            "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}"
+            "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}",
+            "banner"                   : "com.youth.banner:banner:${ext.banner}",
+            "materil":"com.google.android.material:material:${ext.materil}"
 
     ]
 

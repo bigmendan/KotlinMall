@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.FragmentActivity
 import java.util.regex.Pattern
 
 /**
@@ -96,11 +97,11 @@ class StatusBarUtils {
         /**
          * 设置状态栏darkMode,字体颜色及icon变黑(目前支持MIUI6以上,Flyme4以上,Android M以上)
          */
-        fun darkMode(activity: Activity) {
+        fun darkMode(activity: FragmentActivity) {
             darkMode(activity.window, DEFAULT_COLOR, DEFAULT_ALPHA)
         }
 
-        fun darkMode(activity: Activity, color: Int, alpha: Float) {
+        fun darkMode(activity: FragmentActivity, color: Int, alpha: Float) {
             darkMode(activity.window, color, alpha)
         }
 

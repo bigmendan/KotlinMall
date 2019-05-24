@@ -1,5 +1,6 @@
 package com.kotlin.base.ext
 
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -13,14 +14,25 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+//
+///**
+// * 封装所有 Observable.subscribe(Observer)重复过程;
+// */
+//fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
+//
+//    this.observeOn(AndroidSchedulers.mainThread())
+//        .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
+//        .subscribeOn(Schedulers.io())
+//        .subscribe(observer)
+//
+//}
 
 /**
- * 封装所有 Observable.subscribe(Observer)重复过程;
+ *  不添加生命周期
  */
-fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
+fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>) {
 
     this.observeOn(AndroidSchedulers.mainThread())
-        .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
         .subscribeOn(Schedulers.io())
         .subscribe(observer)
 
@@ -61,5 +73,40 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
 
         }
     })
+}
+
+
+const val TAG = "== test"
+
+fun logv(msg: String) {
+    Log.v(TAG, msg)
+}
+
+fun logd(msg: String) {
+    Log.d(TAG, msg)
+}
+
+fun logi(msg: String) {
+    Log.i(TAG, msg)
+}
+
+fun logw(msg: String) {
+    Log.w(TAG, msg)
+}
+
+fun logw(tr: Throwable) {
+    Log.w(TAG, tr)
+}
+
+fun logw(msg: String, tr: Throwable) {
+    Log.w(TAG, msg, tr)
+}
+
+fun loge(msg: String) {
+    Log.e(TAG, msg)
+}
+
+fun loge(msg: String, tr: Throwable) {
+    Log.e(TAG, msg, tr)
 }
 

@@ -3,20 +3,17 @@ package com.kotlin.mall.ui.activity
 import android.annotation.TargetApi
 import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseActivity
 import com.kotlin.base.ui.fragment.BaseFragment
-import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.goodscenter.ui.fragment.CategoryFragment
 import com.kotlin.mall.R
 import com.kotlin.mall.ui.fragment.*
 import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -51,7 +48,9 @@ class MainActivity : BaseActivity() {
 
     private fun initFragment() {
 
-        val manager = fragmentManager.beginTransaction()
+
+        var manager = supportFragmentManager.beginTransaction()
+
         manager.add(R.id.mContainer, mHomeFragment)
         manager.add(R.id.mContainer, mCategoryFragment)
         manager.add(R.id.mContainer, mCartFragment)
@@ -94,7 +93,7 @@ class MainActivity : BaseActivity() {
 
     private fun changeFragment(position: Int) {
 
-        val manager = fragmentManager.beginTransaction()
+        val manager = supportFragmentManager.beginTransaction()
         for (fragment in mStack) {
             manager.hide(fragment)
         }

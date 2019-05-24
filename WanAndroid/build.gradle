@@ -56,6 +56,7 @@ android {
 
 dependencies {
     implementation project(':Provider')
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
 
 }

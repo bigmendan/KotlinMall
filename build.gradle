@@ -28,6 +28,11 @@ buildscript {
     ext.arouter_api_version = '1.4.1'
     ext.arouter_compiler_version = '1.2.2'
 
+
+    // banner
+    ext.banner = '1.4.10'
+    ext.materil = '1.0.0'
+
     repositories {
         google()
         mavenCentral()

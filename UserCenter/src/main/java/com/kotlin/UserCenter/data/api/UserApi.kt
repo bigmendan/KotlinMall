@@ -20,7 +20,7 @@ interface UserApi {
 
 
     @FormUrlEncoded
-    @POST("user/register")
+    @POST("/user/register")
     fun register(
         @Field("username") username: String,
         @Field("password") password: String,
@@ -29,9 +29,10 @@ interface UserApi {
 
 
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("/user/login")
     fun login(
         @Field("username") username: String,
         @Field("password") password: String
     ): Observable<BaseResp<UserInfo>>
+
 }

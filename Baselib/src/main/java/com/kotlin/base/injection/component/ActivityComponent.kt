@@ -1,11 +1,9 @@
 package com.kotlin.base.injection.component
 
-import android.app.Activity
 import android.content.Context
+import androidx.fragment.app.FragmentActivity
 import com.kotlin.base.injection.scope.ActivityScope
 import com.kotlin.base.injection.module.ActivityModule
-import com.kotlin.base.injection.module.LifecycleProviderModule
-import com.trello.rxlifecycle3.LifecycleProvider
 import dagger.Component
 
 /**
@@ -18,12 +16,11 @@ import dagger.Component
 @ActivityScope
 @Component(
     dependencies = [AppComponent::class],
-    modules = [ActivityModule::class, LifecycleProviderModule::class]
+    modules = [ActivityModule::class]
 )
 interface ActivityComponent {
 
-    fun activity(): Activity      // 可以在所有 Activity 中 提供 Activity 对象 ;
+    fun activity(): FragmentActivity      // 可以在所有 Activity 中 提供 Activity 对象 ;
     fun context(): Context       // 在 所有 Activity 中可以提供一个 Context 对象 ;
-    fun lifecycleProvider(): LifecycleProvider<*>
 
 }

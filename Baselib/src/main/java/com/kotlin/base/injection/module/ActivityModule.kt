@@ -1,6 +1,7 @@
 package com.kotlin.base.injection.module
 
-import android.app.Activity
+
+import androidx.fragment.app.FragmentActivity
 import dagger.Module
 import dagger.Provides
 
@@ -12,10 +13,10 @@ import dagger.Provides
  */
 
 @Module
-class ActivityModule(private val activity: Activity) {
+class ActivityModule(private val activity: FragmentActivity) {
 
     @Provides
-    fun providesActivity(): Activity {
+    fun providesActivity(): FragmentActivity {
         return activity
     }
 }

@@ -1,17 +1,14 @@
 package com.kotlin.base.ui.activity
 
-import android.app.Activity
 import android.os.Bundle
 import com.kotlin.base.common.BaseApplication
 import com.kotlin.base.injection.component.ActivityComponent
 import com.kotlin.base.injection.component.DaggerActivityComponent
 import com.kotlin.base.injection.module.ActivityModule
-import com.kotlin.base.injection.module.LifecycleProviderModule
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
 import com.kotlin.base.widgets.ProgressLoading
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.startActivity
 import javax.inject.Inject
 
 
@@ -43,7 +40,6 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
             DaggerActivityComponent.builder()
                 .appComponent((application as BaseApplication).appComponent)
                 .activityModule(ActivityModule(this))
-                .lifecycleProviderModule(LifecycleProviderModule(this))    // 因为 RxAppCompatActivity 实现了 LifecycleProvider 接口 ;
                 .build()
 
     }

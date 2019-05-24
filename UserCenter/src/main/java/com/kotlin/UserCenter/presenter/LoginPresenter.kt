@@ -28,7 +28,7 @@ class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
                     mView.loginResult(t!!)
                 }
 
-            }, lifecycleProvider)
+            })
 
     }
 }

@@ -31,7 +31,7 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
                     mView.onRegisterResult("注册成功")
                 }
 
-            }, lifecycleProvider)
+            })
 
 
     }

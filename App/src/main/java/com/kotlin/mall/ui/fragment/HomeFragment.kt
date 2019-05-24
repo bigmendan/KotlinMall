@@ -1,5 +1,6 @@
 package com.kotlin.mall.ui.fragment
 
+
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -27,23 +28,27 @@ class HomeFragment : BaseFragment() {
 
     private lateinit var homeTestAdapter: HomeTestAdapter
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_home, null)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        StatusBarUtils.darkMode(activity)
-        StatusBarUtils.setPaddingSmart(activity, mHomeToolbar)
+        StatusBarUtils.darkMode(activity!!)
+        StatusBarUtils.setPaddingSmart(activity!!, mHomeToolbar)
 
         initRecyclerView()
     }
 
+
     private fun initRecyclerView() {
 
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
-        homeTestAdapter = HomeTestAdapter(activity)
+        homeTestAdapter = HomeTestAdapter(activity!!)
 
         mRecyclerView.adapter = homeTestAdapter
 

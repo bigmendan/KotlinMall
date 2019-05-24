@@ -5,11 +5,8 @@ import com.kotlin.base.common.BaseApplication
 import com.kotlin.base.injection.component.ActivityComponent
 import com.kotlin.base.injection.component.DaggerActivityComponent
 import com.kotlin.base.injection.module.ActivityModule
-import com.kotlin.base.injection.module.LifecycleProviderModule
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
-import com.kotlin.base.widgets.ProgressLoading
-import dagger.Module
 import javax.inject.Inject
 
 
@@ -37,9 +34,8 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
     private fun initActivityInjection() {
         activityComponent =
             DaggerActivityComponent.builder()
-                .appComponent((activity.application as BaseApplication).appComponent)
-                .activityModule(ActivityModule(activity))
-                .lifecycleProviderModule(LifecycleProviderModule(this))    // 因为 RxAppCompatActivity 实现了 LifecycleProvider 接口 ;
+                .appComponent((activity!!.application as BaseApplication).appComponent)
+                .activityModule(ActivityModule(activity!!))
                 .build()
 
 

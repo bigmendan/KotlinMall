@@ -96,7 +96,7 @@ RxKotlin 和 RxAndroid 配置
 
                               如果需要实现单例的就加上@Sington 注解;
 
-               Scope 表示了一个层级关系  ActivityComponent 依赖于 AppComponent ,UserActivityComponent 依赖于 ActivityComponent
+              Scope 表示了一个层级关系  ActivityComponent 依赖于 AppComponent ,UserActivityComponent 依赖于 ActivityComponent
                     没有作用域修饰的Component 不能去依赖一个有 Scope 修饰的 Component
 
               自定义Scope:
@@ -119,7 +119,7 @@ RxKotlin 和 RxAndroid 配置
                         @Retention(RetentionPolicy.RUNTIME)
                         annotation class ActivityQualifier
 
-RxLifecycle
+RxLifecycle     但是需要继承 其他的 Activity  或者Fragment 带来了 很多限制， 又去掉了  不用了
       解决 Rx内存泄漏
       通过监听Activity/Fragment生命周期，自动断开Rx绑定
       结合Dagger2 实现通用配置 ，不用 在Activity 或者Fragment 中去配置

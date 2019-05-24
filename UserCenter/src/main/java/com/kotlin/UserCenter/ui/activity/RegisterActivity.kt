@@ -57,6 +57,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
     }
 
     override fun injectionComponent() {
+
         DaggerRepositoryComponent
             .builder()
             .activityComponent(activityComponent)
