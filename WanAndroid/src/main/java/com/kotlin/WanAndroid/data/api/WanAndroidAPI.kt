@@ -13,10 +13,10 @@ interface WanAndroidAPI {
      * Banner
      */
     @GET("/banner/json")
-    fun getBanner():Observable<BaseResp<BannerModel>>
+    fun getBanner():Observable<BaseResp<List<BannerModel>>>
 
-    @GET("/banner/json")
-    fun getBanner2():Observable<ResponseBody>
+//    @GET("/banner/json")
+//    fun getBanner2():Observable<ResponseBody>
 
 
 

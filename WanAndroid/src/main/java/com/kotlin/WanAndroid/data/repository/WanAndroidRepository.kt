@@ -13,7 +13,7 @@ class WanAndroidRepository  @Inject  constructor() {
     /**
      *  首页轮播
      */
-    fun getBanner() :Observable<BaseResp<BannerModel>>{
+    fun getBanner() :Observable<BaseResp<List<BannerModel>>>{
        return service().getBanner()
     }
 

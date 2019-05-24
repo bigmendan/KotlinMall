@@ -5,7 +5,7 @@ import com.kotlin.base.presenter.view.BaseView
 
 interface HomeView:BaseView {
 
-    fun  bannerResult(t:BannerModel)
+    fun  bannerResult(list: List<BannerModel>)
     fun  getArticle()
 
 }
