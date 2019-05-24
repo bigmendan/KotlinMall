@@ -12,16 +12,16 @@ import javax.inject.Inject
 /**
  *  首页 的 Presenter
  */
-class HomePresenter @Inject constructor():BasePresenter<HomeView>(){
+class HomePresenter @Inject constructor() : BasePresenter<HomeView>() {
 
 
     @Inject
     lateinit var repository: WanAndroidRepository
 
 
-    fun  getBanner(){
+    fun getBanner() {
         repository.getBanner()
-            .execute(object :BaseObserver<List<BannerModel>>(mView){
+            .execute(object : BaseObserver<List<BannerModel>>(mView) {
                 override fun onSuccess(list: List<BannerModel>?) {
                     mView.bannerResult(list!!)
                 }
@@ -29,14 +29,12 @@ class HomePresenter @Inject constructor():BasePresenter<HomeView>(){
             })
 
 
-
     }
 
 
-
-    fun   getArticle(page :Int){
+    fun getArticle(page: Int) {
         repository.getArticle(page)
-            .execute(object :BaseObserver<ArticleModel>(mView){
+            .execute(object : BaseObserver<ArticleModel>(mView) {
                 override fun onSuccess(t: ArticleModel?) {
                     mView.articleResult(t!!)
                 }
@@ -44,9 +42,7 @@ class HomePresenter @Inject constructor():BasePresenter<HomeView>(){
             })
 
 
-
     }
-
 
 
 }
