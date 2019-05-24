@@ -10,7 +10,7 @@
     <com.youth.banner.Banner
             android:layout_width="match_parent"
             android:id="@+id/mBanner"
-            android:layout_height="300dp"/>
+            android:layout_height="240dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
