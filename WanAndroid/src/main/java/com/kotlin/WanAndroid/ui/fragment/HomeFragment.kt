@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.fragment_wan_home.*
 class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_wan_home, container, false)
@@ -49,13 +48,24 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     }
 
 
-    private  fun  loadData(){
+    private fun loadData() {
         mPresenter.getBanner()
     }
 
-    override fun bannerResult(t: BannerModel) {
 
-            loge("请求banner =$t")
+    override fun bannerResult(list: List<BannerModel>) {
+
+//        loge("请求banner =$list")
+
+        var bannerList:MutableList<String> = ArrayList()
+
+        // 请求返回 Banner 数据以后
+        for (index in 0..list.size){
+            var bannerModel = list[index]
+            bannerList.add(bannerModel.url)
+        }
+        initBanner(bannerList)
+
 
     }
 
@@ -65,8 +75,10 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     }
 
 
-    private  fun initBanner(){
+    private fun initBanner(list:MutableList<String>) {
         mBanner.setImageLoader(GlideImageLoader())
+        mBanner.setImages(list)
+        mBanner.start()
 
     }
 

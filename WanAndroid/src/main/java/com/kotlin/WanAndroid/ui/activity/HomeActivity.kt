@@ -42,6 +42,7 @@ class HomeActivity : BaseActivity() {
 
     private fun initTabLayout() {
 
+
         var tabList = mutableListOf<String>("主页", "项目", "热门", "动态", "体系")
 
         var fragmentList =
