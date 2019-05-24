@@ -1,5 +1,6 @@
 package com.kotlin.WanAndroid.presenter
 
+import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
 import com.kotlin.WanAndroid.data.repository.WanAndroidRepository
 import com.kotlin.WanAndroid.presenter.view.HomeView
@@ -33,7 +34,16 @@ class HomePresenter @Inject constructor():BasePresenter<HomeView>(){
 
 
 
-    fun   getArticle(){
+    fun   getArticle(page :Int){
+        repository.getArticle(page)
+            .execute(object :BaseObserver<ArticleModel>(mView){
+                override fun onSuccess(t: ArticleModel?) {
+                    mView.articleResult(t!!)
+                }
+
+            })
+
+
 
     }
 

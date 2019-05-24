@@ -1,6 +1,7 @@
 package com.kotlin.WanAndroid.data.repository
 
 import com.kotlin.WanAndroid.data.api.WanAndroidAPI
+import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.data.protocol.BaseResp
@@ -21,8 +22,8 @@ class WanAndroidRepository  @Inject  constructor() {
     /**
      *  首页获取文章列表
      */
-    fun getArticle() {
-        service().getArticle()
+    fun getArticle(page:Int) :Observable<BaseResp<ArticleModel>>{
+        return service().getArticle(page)
 
     }
 

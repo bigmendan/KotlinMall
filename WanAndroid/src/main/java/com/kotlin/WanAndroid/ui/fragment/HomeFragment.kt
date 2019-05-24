@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.kotlin.WanAndroid.R
+import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.injection.module.WAModule
@@ -50,17 +51,16 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
     private fun loadData() {
         mPresenter.getBanner()
+        mPresenter.getArticle(0)
     }
 
 
     override fun bannerResult(list: List<BannerModel>) {
 
-//        loge("请求banner =$list")
 
-        var bannerList:MutableList<String> = ArrayList()
+        var bannerList: MutableList<String> = ArrayList()
 
-        // 请求返回 Banner 数据以后
-        for (index in 0..list.size){
+        for (index in 0..list.size) {
             var bannerModel = list[index]
             bannerList.add(bannerModel.url)
         }
@@ -70,16 +70,15 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     }
 
 
-    override fun getArticle() {
-
+    override fun articleResult(t: ArticleModel) {
+        loge("获取文章列表 $t")
     }
 
 
-    private fun initBanner(list:MutableList<String>) {
+    private fun initBanner(list: MutableList<String>) {
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setImages(list)
         mBanner.start()
-
     }
 
 }
