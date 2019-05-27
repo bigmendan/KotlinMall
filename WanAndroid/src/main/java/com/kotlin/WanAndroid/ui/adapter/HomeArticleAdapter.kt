@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.ArticleData
-import com.kotlin.WanAndroid.utils.GlideImageLoader
+import com.kotlin.WanAndroid.data.module.Data
+import com.kotlin.base.ext.loge
+import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
-import com.kotlin.base.utils.GlideUtils
 import kotlinx.android.synthetic.main.adapter_home_article.view.*
 
 /**
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.adapter_home_article.view.*
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeArticleAdapter(mContext: Context) :
-    BaseRecyclerAdapter<ArticleData, HomeArticleAdapter.ViewHolder>(mContext) {
+    BaseRecyclerAdapter<Data, HomeArticleAdapter.ViewHolder>(mContext) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = inflater.inflate(R.layout.adapter_home_article, parent, false)
@@ -28,21 +28,31 @@ class HomeArticleAdapter(mContext: Context) :
     }
 
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
 
-
-        var articleData = dataList[position]
-        holder.itemView.mTitleTv.text = articleData.title
-        holder.itemView.mDecTv.text = articleData.desc
-        GlideUtils.loadImage(mContext,articleData.envelopePic,holder.itemView.mRightIv)
+        var article = dataList[position]
 
 
+        holder.itemView.mAuthor.text = article.author
+        holder.itemView.mTitleTv.text = article.title
+        holder.itemView.mSChatName.text = article.superChapterName
+        holder.itemView.mChatName.text = article.chapterName
+
+        holder.itemView.mCollecIv.onClick {
+            loge("点击了收藏按钮")
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
     }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
+
 
 }

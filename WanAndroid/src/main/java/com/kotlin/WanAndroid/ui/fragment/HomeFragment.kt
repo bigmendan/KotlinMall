@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.ArticleData
+import com.kotlin.WanAndroid.data.module.Data
 import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
@@ -22,6 +24,7 @@ import com.kotlin.WanAndroid.ui.adapter.HomeArticleAdapter
 import com.kotlin.WanAndroid.utils.GlideImageLoader
 import com.kotlin.base.ext.loge
 import com.kotlin.base.ui.fragment.BaseMvpFragment
+import com.kotlin.base.widgets.RecyclerItemDecoration
 import kotlinx.android.synthetic.main.fragment_wan_home.*
 
 /**
@@ -30,7 +33,7 @@ import kotlinx.android.synthetic.main.fragment_wan_home.*
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
-    private lateinit  var articleAdapter:HomeArticleAdapter
+    private lateinit var articleAdapter: HomeArticleAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -44,6 +47,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
         loadData()
 
     }
+
 
     override fun injectionComponent() {
 
@@ -69,8 +73,9 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
         for (index in 0 until list.size) {
             var bannerModel = list[index]
-            bannerList.add(bannerModel.url)
+            bannerList.add(bannerModel.imagePath)
         }
+
         initBanner(bannerList)
 
 
@@ -78,7 +83,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
 
     override fun articleResult(t: ArticleModel) {
-        var datas = t.articleDatas
+        var datas = t.datas
 
         initRecyclerView(datas)
 
@@ -92,12 +97,17 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     }
 
 
-
-    private  fun  initRecyclerView(list:List<ArticleData>){
+    private fun initRecyclerView(list: List<Data>) {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         articleAdapter = HomeArticleAdapter(activity!!)
 
+        mRecyclerView.addItemDecoration(DividerItemDecoration(activity,LinearLayout.VERTICAL))
+
+
+        mRecyclerView.adapter = articleAdapter
         articleAdapter.setData(list)
+
+
 
     }
 
