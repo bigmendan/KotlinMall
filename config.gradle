@@ -39,7 +39,9 @@ ext {
             "ARouter-Api"              : "com.alibaba:arouter-api:${ext.arouter_api_version}",
             "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}",
             "banner"                   : "com.youth.banner:banner:${ext.banner}",
-            "materil":"com.google.android.material:material:${ext.materil}"
+            "materil":"com.google.android.material:material:${ext.materil}",
+
+            "loadMore":"cn.bingoogolapple:bga-refreshlayout:${ext.loadmore}"
 
     ]
 

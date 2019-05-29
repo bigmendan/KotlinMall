@@ -65,6 +65,8 @@ dependencies {
     api rootProject.ext.dependencies["materil"]
 
     api rootProject.ext.dependencies["banner"]
+
+    api rootProject.ext.dependencies["loadMore"]
 }
 repositories {
     google()
