@@ -25,7 +25,7 @@ public class GlideImageLoader : ImageLoader() {
 
         //用fresco加载图片简单用法，记得要写下面的createImageView方法
         var uri = Uri.parse(path as String?)
-        imageView.scaleType = ImageView.ScaleType.FIT_XY
+        imageView.scaleType = ImageView.ScaleType.CENTER
         imageView.setImageURI(uri);
     }
 

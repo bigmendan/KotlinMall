@@ -3,7 +3,7 @@ package com.kotlin.WanAndroid.data.module
 
 data class ArticleModel(
     val curPage: Int,
-    val articleDatas: List<ArticleData>,
+    val datas: List<Data>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,
@@ -11,7 +11,7 @@ data class ArticleModel(
     val total: Int
 )
 
-data class ArticleData(
+data class Data(
     val apkLink: String,
     val author: String,
     val chapterId: Int,
