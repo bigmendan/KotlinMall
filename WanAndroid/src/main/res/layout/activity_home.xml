@@ -63,7 +63,8 @@
             android:id="@+id/mNavigation"
             android:layout_gravity="left"
             android:fitsSystemWindows="true"
-            android:background="@color/common_red"
+            app:headerLayout="@layout/header_navi"
+            app:menu="@menu/menu_navi"
             android:layout_height="match_parent">
 
     </com.google.android.material.navigation.NavigationView>

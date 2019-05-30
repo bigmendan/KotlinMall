@@ -23,6 +23,7 @@ import com.kotlin.WanAndroid.presenter.view.HomeView
 import com.kotlin.WanAndroid.ui.adapter.HomeArticleAdapter
 import com.kotlin.WanAndroid.utils.GlideImageLoader
 import com.kotlin.base.ext.loge
+import com.kotlin.base.ext.onClick
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
@@ -79,6 +80,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
 
     private fun loadData() {
+        showLoading()
         mPresenter.getBanner()
         mPresenter.getArticle(page)
 
@@ -91,7 +93,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
      */
     override fun onRefresh() {
         mRefreshLayout.isRefreshing = false
-        loge("刷新 ")
         page = 0
         mPresenter.getArticle(page)
 
@@ -129,7 +130,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         // 在这里应该修改 Wrapper 的 显示状态 ;
         if (wrapper != null) {
             wrapper.setLoadState(wrapper.LOADING_COMPLETE)
-            wrapper.notifyDataSetChanged()
         }
 
 
@@ -142,6 +142,8 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setImages(list)
         mBanner.start()
+
+
     }
 
 
@@ -164,7 +166,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
         mRecyclerView.addOnScrollListener(object : RecyclerViewScrollListener() {
             override fun loadMore() {
-                loge("执行加载更多...")
 
                 // 如果当前页数 小于 总页数 ，就是还没有加载完 ，否则 加载完成
                 if (page < articleModel.pageCount) {
@@ -174,10 +175,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
                     wrapper.setLoadState(wrapper.LOADING)
 
 
-
-
                 } else {
-
 
                     wrapper.setLoadState(wrapper.LOADING_END)
                 }

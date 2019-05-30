@@ -11,6 +11,8 @@ import com.kotlin.WanAndroid.data.module.Data
 import com.kotlin.base.ext.loge
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
+import com.kotlin.provider.common.afterLogin
+import com.kotlin.provider.common.isLogined
 import kotlinx.android.synthetic.main.adapter_home_article.view.*
 
 /**
@@ -40,7 +42,11 @@ class HomeArticleAdapter(mContext: Context) :
         holder.itemView.mChatName.text = article.chapterName
 
         holder.itemView.mCollecIv.onClick {
-            loge("点击了收藏按钮")
+
+            afterLogin {
+                loge("点击了收藏按钮")
+
+            }
         }
     }
 

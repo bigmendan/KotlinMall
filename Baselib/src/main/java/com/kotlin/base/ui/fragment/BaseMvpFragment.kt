@@ -7,6 +7,7 @@ import com.kotlin.base.injection.component.DaggerActivityComponent
 import com.kotlin.base.injection.module.ActivityModule
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.presenter.view.BaseView
+import com.kotlin.base.widgets.ProgressLoading
 import javax.inject.Inject
 
 
@@ -20,6 +21,9 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
     @Inject
     lateinit var mPresenter: T
 
+    private lateinit var mLoadingDialog: ProgressLoading
+    lateinit var activityComponent: ActivityComponent
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +31,9 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
         initActivityInjection()
 
         injectionComponent()
+        mLoadingDialog = ProgressLoading.create(activity!!)
     }
 
-    lateinit var activityComponent: ActivityComponent
 
     private fun initActivityInjection() {
         activityComponent =
@@ -45,10 +49,11 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
 
 
     override fun showLoading() {
-
+        mLoadingDialog.showLoading()
     }
 
     override fun hideLoading() {
+        mLoadingDialog.hideLoading()
     }
 
     override fun onError(msg: String) {

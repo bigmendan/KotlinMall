@@ -16,6 +16,7 @@ import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.provider.router.RouterPath
 import com.kotlin.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -42,8 +43,15 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
             ARouter.getInstance()
                 .build(RouterPath.WanAndroid.PATH_HOME)
                 .navigation()
+            finish()
+
 
 //            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())
+        }
+
+        mRegisterTv.onClick {
+            startActivity<RegisterActivity>()
+            finish()
         }
 
     }

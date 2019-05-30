@@ -98,7 +98,6 @@ public class LoadMoreWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolde
             switch (loadState) {
                 case LOADING:                   // 加载中
 
-                    Log.e(TAG, "加载中 为啥 不显示 ... ");
                     loadingHolder.mProgressBar.setVisibility(View.VISIBLE);
                     loadingHolder.mLoadingTv.setVisibility(View.VISIBLE);
                     loadingHolder.mEndTv.setVisibility(View.GONE);
