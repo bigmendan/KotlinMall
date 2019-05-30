@@ -37,6 +37,7 @@ class HomeArticleAdapter(mContext: Context) :
 
 
         holder.itemView.mAuthor.text = article.author
+        holder.itemView.mTimeTv.text = article.niceDate
         holder.itemView.mTitleTv.text = article.title
         holder.itemView.mSChatName.text = article.superChapterName
         holder.itemView.mChatName.text = article.chapterName

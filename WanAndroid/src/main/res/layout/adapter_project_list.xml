@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:padding="12dp"
+              android:layout_height="wrap_content">
+
+    <ImageView
+            android:layout_width="100dp"
+            android:scaleType="fitXY"
+            android:id="@+id/mProIv"
+            android:layout_height="170dp"/>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:textColor="#333"
+                android:id="@+id/mTitleTv"
+                android:layout_height="wrap_content"/>
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:maxLines="3"
+                android:id="@+id/mDescTv"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/mTitleTv"
+                android:ellipsize="end"
+                android:textSize="13sp"
+                android:textColor="#666"
+                android:layout_height="wrap_content"/>
+
+
+        <ImageView
+                android:layout_width="18dp"
+                android:src="@drawable/home_un_collec"
+                android:id="@+id/mCollectIv"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:layout_height="18dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="saff"
+                android:textSize="12sp"
+                android:id="@+id/mAuthor"
+                android:textColor="#999"
+                android:layout_above="@+id/mCollectIv"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="saff"
+                android:textSize="12sp"
+                android:textColor="#999"
+                android:id="@+id/mTimeTv"
+                android:layout_above="@+id/mCollectIv"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

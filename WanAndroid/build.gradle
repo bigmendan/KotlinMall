@@ -1,6 +1,6 @@
-if(isWanAndroidModule.toBoolean()){
+if (isWanAndroidModule.toBoolean()) {
     apply plugin: 'com.android.library'
-}else {
+} else {
     apply plugin: 'com.android.application'
 }
 
@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-kapt{
+kapt {
     // 添加上 ARouter 配置
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
@@ -17,7 +17,6 @@ kapt{
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-
 
 
     defaultConfig {
@@ -56,6 +55,7 @@ android {
 
 dependencies {
     implementation project(':Provider')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
 

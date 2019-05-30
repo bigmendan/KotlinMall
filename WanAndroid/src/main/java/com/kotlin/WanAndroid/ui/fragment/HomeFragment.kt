@@ -80,7 +80,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
 
     private fun loadData() {
-        showLoading()
+
         mPresenter.getBanner()
         mPresenter.getArticle(page)
 

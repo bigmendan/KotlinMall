@@ -54,6 +54,9 @@ class HomeActivity : BaseActivity() {
     }
 
 
+    /**
+     * 使用 TabLayout ;
+     */
     private fun initTabLayout() {
 
 
@@ -92,7 +95,7 @@ class HomeActivity : BaseActivity() {
     }
 
     /**
-     *  侧滑菜单 ，先等着吧
+     *  侧滑菜单
      */
     private fun initNavigation() {
 
@@ -128,7 +131,11 @@ class HomeActivity : BaseActivity() {
     }
 
 
+    /**
+     *  按两次退出 APP
+     */
     var lastTime: Long = 0
+
     override fun onBackPressed() {
 
 
