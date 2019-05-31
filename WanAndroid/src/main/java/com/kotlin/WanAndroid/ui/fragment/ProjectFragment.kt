@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.ProjectListModel
 import com.kotlin.WanAndroid.data.module.ProjectTreeModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.injection.module.WAModule
@@ -17,16 +16,16 @@ import com.kotlin.WanAndroid.presenter.ProjectPresenter
 import com.kotlin.WanAndroid.presenter.view.ProjectView
 import com.kotlin.WanAndroid.ui.adapter.HomeTabAdapter
 import com.kotlin.base.ext.loge
-import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.ui.fragment.BaseMvpFragment
+import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
 import kotlinx.android.synthetic.main.fragment_project.*
-import javax.inject.Inject
 
 
 /**
  *  ProjectFragment
  */
-class ProjectFragment : BaseMvpFragment<ProjectPresenter>(), ProjectView {
+class ProjectFragment : BaseMvpLazyFragment<ProjectPresenter>(), ProjectView {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +35,7 @@ class ProjectFragment : BaseMvpFragment<ProjectPresenter>(), ProjectView {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun initDatas() {
         loadData()
     }
 
@@ -104,7 +101,7 @@ class ProjectFragment : BaseMvpFragment<ProjectPresenter>(), ProjectView {
             var cid = p.id
 
             // 动态新建 Fragment ;
-            fragmentList.add(ProjectsFragment.instance(cid))
+            fragmentList.add(ProjectListFragment.instance(cid))
 
         }
 

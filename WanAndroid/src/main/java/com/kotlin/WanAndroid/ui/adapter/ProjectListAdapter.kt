@@ -4,12 +4,10 @@ import android.content.Context
 import android.os.Build
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.WanAndroid.R
 import com.kotlin.WanAndroid.data.module.ListData
-import com.kotlin.WanAndroid.data.module.ProjectListModel
 import com.kotlin.base.ext.loge
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
@@ -18,7 +16,7 @@ import com.kotlin.provider.common.afterLogin
 import kotlinx.android.synthetic.main.adapter_project_list.view.*
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-class ProjectsAdapter(mContext: Context) : BaseRecyclerAdapter<ListData, ProjectsAdapter.ViewHolder>(mContext) {
+class ProjectListAdapter(mContext: Context) : BaseRecyclerAdapter<ListData, ProjectListAdapter.ViewHolder>(mContext) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = inflater.inflate(R.layout.adapter_project_list, parent, false)

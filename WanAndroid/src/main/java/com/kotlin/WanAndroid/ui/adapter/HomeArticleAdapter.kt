@@ -22,6 +22,12 @@ import kotlinx.android.synthetic.main.adapter_home_article.view.*
 class HomeArticleAdapter(mContext: Context) :
     BaseRecyclerAdapter<Data, HomeArticleAdapter.ViewHolder>(mContext) {
 
+    private lateinit var collectionClickListener: CollectionClickListener
+
+    fun setCollectionClickListener(listener: CollectionClickListener) {
+        this.collectionClickListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = inflater.inflate(R.layout.adapter_home_article, parent, false)
 
@@ -42,10 +48,14 @@ class HomeArticleAdapter(mContext: Context) :
         holder.itemView.mSChatName.text = article.superChapterName
         holder.itemView.mChatName.text = article.chapterName
 
+        var id = article.id
+
         holder.itemView.mCollecIv.onClick {
 
             afterLogin {
-                loge("点击了收藏按钮")
+                if (collectionClickListener != null) {
+                    collectionClickListener.collection(id)
+                }
 
             }
         }
@@ -54,6 +64,11 @@ class HomeArticleAdapter(mContext: Context) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    }
+
+
+    interface CollectionClickListener {
+        fun collection(id: Int)
     }
 
 

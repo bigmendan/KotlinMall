@@ -133,9 +133,11 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         }
 
 
-
     }
 
+    override fun collectionResult(b: Boolean) {
+            loge("这里就是收藏成功了")
+    }
 
     private fun initBanner(list: MutableList<String>) {
 
@@ -163,6 +165,14 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
         mRecyclerView.adapter = wrapper
 
+        // 点击收藏
+        articleAdapter.setCollectionClickListener(object : HomeArticleAdapter.CollectionClickListener {
+            override fun collection(id: Int) {
+                mPresenter.setCollection(id)
+            }
+
+        })
+
 
         mRecyclerView.addOnScrollListener(object : RecyclerViewScrollListener() {
             override fun loadMore() {
@@ -183,7 +193,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
             }
 
         })
-
 
     }
 

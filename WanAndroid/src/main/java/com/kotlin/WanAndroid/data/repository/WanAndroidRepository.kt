@@ -1,10 +1,7 @@
 package com.kotlin.WanAndroid.data.repository
 
 import com.kotlin.WanAndroid.data.api.WanAndroidAPI
-import com.kotlin.WanAndroid.data.module.ArticleModel
-import com.kotlin.WanAndroid.data.module.BannerModel
-import com.kotlin.WanAndroid.data.module.ProjectListModel
-import com.kotlin.WanAndroid.data.module.ProjectTreeModel
+import com.kotlin.WanAndroid.data.module.*
 import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.data.protocol.BaseResp
 import io.reactivex.Observable
@@ -30,16 +27,18 @@ class WanAndroidRepository @Inject constructor() {
 
     }
 
+    /**
+     *  收藏文章
+     */
+    fun setCollection(cid: Int): Observable<ResponseBody> {
+        return service().collectionArticle(cid)
+    }
 
     /**
      *   项目分类
      */
     fun getProjectTree(): Observable<BaseResp<List<ProjectTreeModel>>> {
         return service().getProjectTree()
-    }
-
-    fun  getProjectTree2():Observable<ResponseBody>{
-        return  service().getProjectTree2()
     }
 
 
@@ -51,7 +50,13 @@ class WanAndroidRepository @Inject constructor() {
     }
 
 
+    /**
+     *  体系
+     */
+    fun getSystemTree(): Observable<BaseResp<List<SystemTreeModel>>> {
+        return service().getSystemTree()
 
+    }
 
     private fun service(): WanAndroidAPI {
         return RetrofitFactory.instance

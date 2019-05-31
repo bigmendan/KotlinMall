@@ -8,24 +8,20 @@ import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.base.rx.BaseSubscriber
 import com.kotlin.base.rx.BaseObserver
 import com.kotlin.base.widgets.DefaultWatcher
-import com.trello.rxlifecycle3.LifecycleProvider
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-//
-///**
-// * 封装所有 Observable.subscribe(Observer)重复过程;
-// */
-//fun <T> Observable<BaseResp<T>>.execute(observer: BaseObserver<T>, lifecycleProvider: LifecycleProvider<*>) {
-//
-//    this.observeOn(AndroidSchedulers.mainThread())
-//        .compose(lifecycleProvider.bindToLifecycle())     // 添加 RxLifecycle  管理生命周期 ;
-//        .subscribeOn(Schedulers.io())
-//        .subscribe(observer)
-//
-//}
+
+fun <T> Observable<T>.execute(observer: Observer<T>) {
+
+    this.observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(observer)
+
+}
 
 /**
  *  不添加生命周期

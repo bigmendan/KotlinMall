@@ -6,18 +6,26 @@ import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.kotlin.WanAndroid.R
+import com.kotlin.WanAndroid.common.Constant
 import com.kotlin.WanAndroid.ui.adapter.HomeTabAdapter
 import com.kotlin.WanAndroid.ui.fragment.*
 import com.kotlin.base.common.AppManager
+import com.kotlin.base.ext.loge
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseActivity
+import com.kotlin.base.utils.AppPrefsUtils
+import com.kotlin.base.utils.GlideUtils
 import com.kotlin.base.utils.StatusBarUtils
+import com.kotlin.base.widgets.CircleImageView
+import com.kotlin.provider.common.ProviderConstant
 import com.kotlin.provider.common.afterLogin
 import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_home.*
@@ -99,8 +107,29 @@ class HomeActivity : BaseActivity() {
      */
     private fun initNavigation() {
 
+
+        var mUserLogin = mNavigation.getHeaderView(0).findViewById<LinearLayout>(R.id.mUserLogin)
+        var mHeaderIv = mNavigation.getHeaderView(0).findViewById<CircleImageView>(R.id.mHeaderIv)
+        var mNameTv = mNavigation.getHeaderView(0).findViewById<TextView>(R.id.mNameTv)
+
+
+        var username = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
+        var icon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
+
+        loge("userName = $username , icon = $icon")
+
+        username.let {
+
+            mNameTv.text = it
+        }
+
+        icon.let {
+            GlideUtils.loadImage(this, icon, mHeaderIv)
+        }
+
+
         // HeaderView 里面的 空间需要使用 NavigationView 去 find 一下 ;
-        mNavigation.getHeaderView(0).findViewById<View>(R.id.mUserLogin).onClick {
+        mUserLogin.onClick {
             afterLogin {
 
             }

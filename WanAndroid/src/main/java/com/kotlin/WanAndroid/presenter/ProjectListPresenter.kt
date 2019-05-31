@@ -12,7 +12,7 @@ import javax.inject.Inject
 /**
  *  项目类别下的 FragmentPresenter
  */
-class ProjectsPresenter @Inject constructor() : BasePresenter<ProjectsView>() {
+class ProjectListPresenter @Inject constructor() : BasePresenter<ProjectsView>() {
 
 
     @Inject

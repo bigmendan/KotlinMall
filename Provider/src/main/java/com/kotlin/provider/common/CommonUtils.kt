@@ -3,6 +3,7 @@ package com.kotlin.provider.common
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.base.common.BaseConstant
+import com.kotlin.base.ext.loge
 import com.kotlin.base.utils.AppPrefsUtils
 import com.kotlin.provider.router.RouterPath
 
@@ -11,9 +12,9 @@ import com.kotlin.provider.router.RouterPath
  */
 fun isLogined(): Boolean {
 
-    Log.e("===ISlogin = ", " == token = ${AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN)}")
 
-    return AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN).isNotEmpty()
+    loge("是否登录 ${AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0}")
+    return AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0
 }
 
 /*

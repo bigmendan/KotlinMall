@@ -1,13 +1,11 @@
 package com.kotlin.WanAndroid.data.api
 
-import com.kotlin.WanAndroid.data.module.ArticleModel
-import com.kotlin.WanAndroid.data.module.BannerModel
-import com.kotlin.WanAndroid.data.module.ProjectListModel
-import com.kotlin.WanAndroid.data.module.ProjectTreeModel
+import com.kotlin.WanAndroid.data.module.*
 import com.kotlin.base.data.protocol.BaseResp
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -22,10 +20,17 @@ interface WanAndroidAPI {
 
 
     /**
-     *  文章列表
+     *  首页文章列表
      */
     @GET("article/list/{page}/json")
     fun getArticle(@Path("page") page: Int): Observable<BaseResp<ArticleModel>>
+
+
+    /**
+     *  收藏站内文章
+     */
+    @POST("lg/collect/{cid}/json")
+    fun collectionArticle(@Path("cid") cid: Int): Observable<ResponseBody>
 
     /**
      *  项目分类
@@ -33,13 +38,14 @@ interface WanAndroidAPI {
     @GET("project/tree/json")
     fun getProjectTree(): Observable<BaseResp<List<ProjectTreeModel>>>
 
-    @GET("project/tree/json")
-    fun getProjectTree2(): Observable<ResponseBody>
 
     /**
      * 项目列表数据
      */
-    @GET("https://www.wanandroid.com/project/list/{page}/json?")
+    @GET("project/list/{page}/json?")
     fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResp<ProjectListModel>>
 
+
+    @GET("https://www.wanandroid.com/tree/json")
+    fun getSystemTree(): Observable<BaseResp<List<SystemTreeModel>>>
 }

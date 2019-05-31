@@ -3,7 +3,6 @@ package com.kotlin.WanAndroid.ui.fragment
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.kotlin.WanAndroid.R
 import com.kotlin.WanAndroid.common.Constant
@@ -19,29 +17,26 @@ import com.kotlin.WanAndroid.data.module.ListData
 import com.kotlin.WanAndroid.data.module.ProjectListModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.injection.module.WAModule
-import com.kotlin.WanAndroid.presenter.ProjectsPresenter
+import com.kotlin.WanAndroid.presenter.ProjectListPresenter
 import com.kotlin.WanAndroid.presenter.view.ProjectsView
-import com.kotlin.WanAndroid.ui.adapter.ProjectsAdapter
-import com.kotlin.base.ext.loge
+import com.kotlin.WanAndroid.ui.adapter.ProjectListAdapter
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
-import com.kotlin.base.widgets.RecyclerItemDecoration
 import kotlinx.android.synthetic.main.fragment_projects.*
-import java.text.FieldPosition
 
 /**
  *  项目类别下的Fragment
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-class ProjectsFragment : BaseMvpFragment<ProjectsPresenter>(), ProjectsView {
+class ProjectListFragment : BaseMvpFragment<ProjectListPresenter>(), ProjectsView {
 
     private var page: Int = 1
     private var cid: Int = 0
     private var pageSize = 0
 
 
-    private lateinit var proListAdapter: ProjectsAdapter
+    private lateinit var proListAdapter: ProjectListAdapter
     private lateinit var wrapper: LoadMoreWrapper
     private var allDatas = mutableListOf<ListData>()
 
@@ -55,9 +50,9 @@ class ProjectsFragment : BaseMvpFragment<ProjectsPresenter>(), ProjectsView {
 
     companion object {
 
-        fun instance(id: Int): ProjectsFragment {
+        fun instance(id: Int): ProjectListFragment {
 
-            var f = ProjectsFragment()
+            var f = ProjectListFragment()
 
             var bundle = Bundle()
             bundle.putInt(Constant.FRAGMENT_CID, id)
@@ -126,7 +121,7 @@ class ProjectsFragment : BaseMvpFragment<ProjectsPresenter>(), ProjectsView {
 
         mRecyclerView.addItemDecoration(DividerItemDecoration(activity, LinearLayout.VERTICAL))
 
-        proListAdapter = ProjectsAdapter(activity!!)
+        proListAdapter = ProjectListAdapter(activity!!)
         wrapper = LoadMoreWrapper(proListAdapter)
         mRecyclerView.adapter = wrapper
 

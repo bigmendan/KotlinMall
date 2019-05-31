@@ -75,7 +75,8 @@
                 android:textColor="@color/common_white"
                 android:background="@drawable/btn_register_enable"
                 android:id="@+id/mRegisterBtn"
-                style="@style/MatchWrap"/>
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
 
     </LinearLayout>
 
