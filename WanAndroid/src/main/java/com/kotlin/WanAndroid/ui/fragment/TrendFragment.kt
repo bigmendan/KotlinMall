@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.kotlin.WanAndroid.R
-import com.kotlin.base.ext.loge
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_trend.*
