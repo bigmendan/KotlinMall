@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.kotlin.WanAndroid.R
 import com.kotlin.WanAndroid.data.module.ArticleData
 import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
+import com.kotlin.WanAndroid.data.module.Data
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.injection.module.WAModule
 import com.kotlin.WanAndroid.presenter.HomePresenter
@@ -34,10 +33,8 @@ import kotlinx.android.synthetic.main.fragment_wan_home.*
  *  首页 Fragment
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
-
-    private lateinit var mBanner: Banner
     private lateinit var articleAdapter: HomeArticleAdapter
     private lateinit var bannerList: MutableList<String>
 
@@ -59,14 +56,11 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         super.onViewCreated(view, savedInstanceState)
 
         loadData()
-        initRecyclerView()
-        mRefreshLayout.setOnRefreshListener(this)
 
 
 
 
     }
-
 
     override fun injectionComponent() {
 
@@ -81,27 +75,14 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
 
     private fun loadData() {
-
         mPresenter.getBanner()
-        mPresenter.getArticle(page)
-
-
+        mPresenter.getArticle(0)
     }
 
-
-    /*
-     下拉刷新
-     */
-    override fun onRefresh() {
-        mRefreshLayout.isRefreshing = false
-        page = 0
-        mPresenter.getArticle(page)
-
-    }
 
     override fun bannerResult(list: List<BannerModel>) {
 
-        bannerList = ArrayList()
+        var bannerList: MutableList<String> = ArrayList()
 
         for (index in 0 until list.size) {
             var bannerModel = list[index]
@@ -133,6 +114,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
             wrapper.setLoadState(wrapper.LOADING_COMPLETE)
         }
 
+        initRecyclerView(datas)
 
     }
 
@@ -146,56 +128,15 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         mBanner.setImages(list)
         mBanner.start()
 
-
     }
 
 
-    private fun initRecyclerView() {
+    private fun initRecyclerView(list: List<Data>) {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         articleAdapter = HomeArticleAdapter(activity!!)
 
-        mRecyclerView.addItemDecoration(DividerItemDecoration(activity, LinearLayout.VERTICAL))
-
-        wrapper = LoadMoreWrapper(articleAdapter)
-
-        mBanner = Banner(activity)
-        var layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2px(240f))
-        mBanner.layoutParams = layoutParams
-
-        wrapper.addHeader(mBanner)
-
-        mRecyclerView.adapter = wrapper
-
-        // 点击收藏
-        articleAdapter.setCollectionClickListener(object : HomeArticleAdapter.CollectionClickListener {
-            override fun collection(id: Int) {
-                mPresenter.setCollection(id)
-            }
-
-        })
-
-
-        mRecyclerView.addOnScrollListener(object : RecyclerViewScrollListener() {
-            override fun loadMore() {
-
-                // 如果当前页数 小于 总页数 ，就是还没有加载完 ，否则 加载完成
-                if (page < articleModel.pageCount) {
-                    page++
-
-                    mPresenter.getArticle(page)
-                    wrapper.setLoadState(wrapper.LOADING)
-
-
-                } else {
-
-                    wrapper.setLoadState(wrapper.LOADING_END)
-                }
-
-            }
-
-        })
+        articleAdapter.setData(list)
 
     }
-
 
 }
