@@ -94,7 +94,8 @@ object DateUtils {
      * *
      * @return
      */
-    @JvmOverloads fun format(date: Date?, pattern: String = datePattern): String {
+    @JvmOverloads
+    fun format(date: Date?, pattern: String = datePattern): String {
         var returnValue = ""
         if (date != null) {
             val df = SimpleDateFormat(pattern)
@@ -115,14 +116,15 @@ object DateUtils {
      * *
      * @return
      */
-    @JvmOverloads fun parse(strDate: String, pattern: String = datePattern): Date? {
+    @JvmOverloads
+    fun parse(strDate: String, pattern: String = datePattern): Date? {
         val df = SimpleDateFormat(pattern)
         df.timeZone = defTimeZone
-        try {
-            return df.parse(strDate)
+        return try {
+            df.parse(strDate)
         } catch (e: ParseException) {
             e.printStackTrace()
-            return null
+            null
         }
 
     }
@@ -192,15 +194,18 @@ object DateUtils {
     // date类型转换为String类型
     // formatType格式为yyyy-MM-dd HH:mm:ss//yyyy年MM月dd日 HH时mm分ss秒
     // data Date类型的时间
-    fun dateToString(date: Date, formatType: String): String {
+    private fun dateToString(date: Date, formatType: String): String {
         val sdf = SimpleDateFormat(formatType)
         sdf.timeZone = defTimeZone
         return sdf.format(date)
     }
 
-    // long类型转换为String类型
-    // currentTime要转换的long类型的时间
-    // formatType要转换的string类型的时间格式
+    /**
+     * long类型转换为String类型
+     * currentTime要转换的long类型的时间
+     * formatType要转换的string类型的时间格式
+     */
+
     @Throws(ParseException::class)
     fun longToString(currentTime: Long, formatType: String): String {
         val date = longToDate(currentTime, formatType) // long类型转成Date类型

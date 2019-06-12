@@ -68,6 +68,8 @@ dependencies {
 
     api rootProject.ext.dependencies["banner"]
 
+    api rootProject.ext.dependencies["flowlayout"]
+
 }
 repositories {
     google()

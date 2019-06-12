@@ -29,7 +29,7 @@ data class ListData(
     val publishTime: Long,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Tag>,
+    val tags: List<ProjectListTag>,
     val title: String,
     val type: Int,
     val userId: Int,
@@ -37,7 +37,7 @@ data class ListData(
     val zan: Int
 )
 
-data class Tag(
+data class ProjectListTag(
     val name: String,
     val url: String
 )

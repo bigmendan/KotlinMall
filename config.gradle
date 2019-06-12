@@ -24,13 +24,10 @@ ext {
             "adapter-rxjava2"          : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
             "retrofit-converters"      : "com.squareup.retrofit2:retrofit-converters:$retrofit_version",
             "logging-interceptor"      : "com.squareup.okhttp3:logging-interceptor:$ok_http_version",
-
             "dagger"                   : "com.google.dagger:dagger:$dagger_version",
             "dagger-compiler"          : "com.google.dagger:dagger-compiler:$dagger_version",
-
             "rxlifecycle-components"   : "com.trello.rxlifecycle3:rxlifecycle-components:$rxlifecycle_version",
             "rxlefecycle-kotlin"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxlifecycle_version",
-
             "bottom-navigation-bar"    : "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version",
             "banner"                   : "com.youth.banner:banner:${banner_version}",
             "recyclerView"             : "androidx.recyclerview:recyclerview:${recyclerview_version}",
@@ -39,9 +36,9 @@ ext {
             "ARouter-Api"              : "com.alibaba:arouter-api:${ext.arouter_api_version}",
             "ARouter-Compilder"        : "com.alibaba:arouter-compiler:${ext.arouter_compiler_version}",
             "banner"                   : "com.youth.banner:banner:${ext.banner}",
-            "materil":"com.google.android.material:material:${ext.materil}",
+            "materil"                  : "com.google.android.material:material:${ext.materil}",
+            "flowlayout"               : "com.hyman:flowlayout-lib:${ext.flowlayout}"
 
-            "loadMore":"cn.bingoogolapple:bga-refreshlayout:${ext.loadmore}"
 
     ]
 

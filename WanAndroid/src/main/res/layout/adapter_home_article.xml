@@ -23,7 +23,7 @@
                 android:maxLines="1"
                 android:textSize="14sp"
                 android:textColor="#666"
-                android:id="@+id/mAuthor"
+                android:id="@+id/mAuthorTv"
                 android:layout_height="wrap_content"/>
 
 

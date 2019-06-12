@@ -2,19 +2,14 @@ package com.kotlin.WanAndroid.ui.activity
 
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.common.Constant
 import com.kotlin.WanAndroid.ui.adapter.HomeTabAdapter
 import com.kotlin.WanAndroid.ui.fragment.*
 import com.kotlin.base.common.AppManager
@@ -29,7 +24,7 @@ import com.kotlin.provider.common.ProviderConstant
 import com.kotlin.provider.common.afterLogin
 import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.header_navi.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -59,6 +54,10 @@ class HomeActivity : BaseActivity() {
 
         initTabLayout()
         initNavigation()
+
+        mSearch.onClick {
+            startActivity<SearchActivity>()
+        }
     }
 
 
@@ -116,7 +115,6 @@ class HomeActivity : BaseActivity() {
         var username = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
         var icon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
 
-        loge("userName = $username , icon = $icon")
 
         username.let {
 

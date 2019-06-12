@@ -1,5 +1,5 @@
 
-RxJava 线程调度:
+RxJava(Kotlin) 线程调度:
  使用 RxJava 做一个定时器  可以替换 Handler
   Observable.timer(2, TimeUnit.SECONDS)
              .observeOn(AndroidSchedulers.mainThread())
@@ -22,7 +22,11 @@ RxJava 线程调度:
 
                就是说做网络请求时 本身是在异步 一个IO线程中进行的，网络请求完成需要切换到主线程，所以观察者观察主线程
 
-  Kotlin中  by lazy 的 作用 ：
+
+
+
+
+Kotlin中  by lazy 的 作用 ：
         lazy 只能用于修饰常量 val，并且 lazy 是线程安全的。
         lazy 在第一次被调用时就被初始化，以后调用该属性会返回之前的结果
 
@@ -32,6 +36,6 @@ RxJava 线程调度:
                 并把自身作为参数传递到方法中
 
 
-   mutableList.all{ }   这个方法使用来判断集合中所有元素怎么怎么样 ,返回值是 Boolean;
+    mutableList.all{ }   这个方法使用来判断集合中所有元素怎么怎么样 ,返回值是 Boolean;
     mutableList.filter{ it.xxx } 过滤 括号里面的条件
     mutableList.map{  }  数据转换一下   map{ it.goodsCount * it.goodsPrice }.sum()

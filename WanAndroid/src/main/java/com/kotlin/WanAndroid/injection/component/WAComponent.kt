@@ -1,6 +1,8 @@
 package com.kotlin.WanAndroid.injection.component
 
 import com.kotlin.WanAndroid.injection.module.WAModule
+import com.kotlin.WanAndroid.ui.activity.SearchActivity
+import com.kotlin.WanAndroid.ui.activity.SearchResultActivity
 import com.kotlin.WanAndroid.ui.fragment.HomeFragment
 import com.kotlin.WanAndroid.ui.fragment.ProjectFragment
 import com.kotlin.WanAndroid.ui.fragment.ProjectListFragment
@@ -20,4 +22,8 @@ interface WAComponent {
     fun inject(fragment: ProjectListFragment)
 
     fun inject(fragment: SystemFragment)
+
+    fun inject(activity: SearchActivity)
+
+    fun inject(activity: SearchResultActivity)
 }

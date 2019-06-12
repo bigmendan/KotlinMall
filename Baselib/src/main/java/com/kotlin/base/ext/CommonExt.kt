@@ -15,6 +15,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
+/**
+ *  不确定数据类型
+ */
 fun <T> Observable<T>.execute(observer: Observer<T>) {
 
     this.observeOn(AndroidSchedulers.mainThread())
@@ -70,6 +73,7 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
         }
     })
 }
+
 
 
 const val TAG = "== test"

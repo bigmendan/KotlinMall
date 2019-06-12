@@ -6,7 +6,10 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.youth.banner.loader.ImageLoader
 
-public class GlideImageLoader : ImageLoader() {
+/**
+ *  针对第三方 Banner 实现的一个 ImageLoader ;
+ */
+class GlideImageLoader : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
         /**
         注意：

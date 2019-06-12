@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.Data
-import com.kotlin.base.ext.loge
+import com.kotlin.WanAndroid.data.module.ArticleData
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.adapter.BaseRecyclerAdapter
 import com.kotlin.provider.common.afterLogin
-import com.kotlin.provider.common.isLogined
 import kotlinx.android.synthetic.main.adapter_home_article.view.*
 
 /**
@@ -20,7 +18,7 @@ import kotlinx.android.synthetic.main.adapter_home_article.view.*
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeArticleAdapter(mContext: Context) :
-    BaseRecyclerAdapter<Data, HomeArticleAdapter.ViewHolder>(mContext) {
+    BaseRecyclerAdapter<ArticleData, HomeArticleAdapter.ViewHolder>(mContext) {
 
     private lateinit var collectionClickListener: CollectionClickListener
 
@@ -42,7 +40,7 @@ class HomeArticleAdapter(mContext: Context) :
         var article = dataList[position - 1]
 
 
-        holder.itemView.mAuthor.text = article.author
+        holder.itemView.mAuthorTv.text = article.author
         holder.itemView.mTimeTv.text = article.niceDate
         holder.itemView.mTitleTv.text = article.title
         holder.itemView.mSChatName.text = article.superChapterName

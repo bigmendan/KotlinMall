@@ -1,9 +1,11 @@
 package com.kotlin.WanAndroid.data.module
 
-
-data class ArticleModel(
+/**
+ *  搜索结果
+ */
+data class SearchResultModel(
     val curPage: Int,
-    val datas: List<ArticleData>,
+    val datas: List<SearchResultData>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,
@@ -11,7 +13,7 @@ data class ArticleModel(
     val total: Int
 )
 
-data class ArticleData(
+data class SearchResultData(
     val apkLink: String,
     val author: String,
     val chapterId: Int,
@@ -30,10 +32,15 @@ data class ArticleData(
     val publishTime: Long,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+    val tags: List<SearchResultTag>,
     val title: String,
     val type: Int,
     val userId: Int,
     val visible: Int,
     val zan: Int
+)
+
+data class SearchResultTag(
+    val name: String,
+    val url: String
 )

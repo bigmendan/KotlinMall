@@ -204,6 +204,23 @@ RxBus 的使用:
 
 
 
+封装 BaseResp ,  跟后台协商好 返回数据 格式
+        {
+            status  : Int ，   需要和 后台协商好 这里返回的 成功码
+            message : "" ，
+            data    :   Any
+        }
+
+
+        生成   data class
+          Observable.execute(object:Observer<BaseResp<*Model>>(){
+                fun Success(){
+
+                }
+        }
+
+        如果 返回的数据是一个 [ ] , 那么 在BaseResp<List<*Model>>
+
 
 
 

@@ -23,6 +23,7 @@ import com.kotlin.WanAndroid.ui.adapter.ProjectListAdapter
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
+import com.kotlin.base.widgets.LinearItemDecoration
 import kotlinx.android.synthetic.main.fragment_projects.*
 
 /**
@@ -94,10 +95,7 @@ class ProjectListFragment : BaseMvpFragment<ProjectListPresenter>(), ProjectsVie
 
 
     override fun projectListResult(t: ProjectListModel) {
-
         pageSize = t.pageCount
-
-
 
         if (page == 0) {
             allDatas.clear()
@@ -119,7 +117,7 @@ class ProjectListFragment : BaseMvpFragment<ProjectListPresenter>(), ProjectsVie
     private fun initRecyclerView() {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-        mRecyclerView.addItemDecoration(DividerItemDecoration(activity, LinearLayout.VERTICAL))
+        mRecyclerView.addItemDecoration(LinearItemDecoration(activity!!, LinearLayout.VERTICAL))
 
         proListAdapter = ProjectListAdapter(activity!!)
         wrapper = LoadMoreWrapper(proListAdapter)
@@ -149,5 +147,6 @@ class ProjectListFragment : BaseMvpFragment<ProjectListPresenter>(), ProjectsVie
 
 
     }
+
 
 }

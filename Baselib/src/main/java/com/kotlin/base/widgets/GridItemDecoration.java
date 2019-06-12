@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * time   :  2018/12/21
  * author :  Z
- * des    :  自定义 一个 RecyclerView 的分割线
+ * des    :  这好像是一个 GridView 的分割线 ;
  */
-public class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
+public class GridItemDecoration extends RecyclerView.ItemDecoration {
 
     private int itemSpace;
     private int itemNum;
@@ -18,7 +18,7 @@ public class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
      * @param itemSpace item间隔
      * @param itemNum   每行item的个数
      */
-    public RecyclerItemDecoration(int itemSpace, int itemNum) {
+    public GridItemDecoration(int itemSpace, int itemNum) {
         this.itemSpace = itemSpace;
         this.itemNum = itemNum;
     }

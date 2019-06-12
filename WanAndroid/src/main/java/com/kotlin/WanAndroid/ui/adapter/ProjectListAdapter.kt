@@ -32,7 +32,7 @@ class ProjectListAdapter(mContext: Context) : BaseRecyclerAdapter<ListData, Proj
 
         holder.itemView.mTitleTv.text = listData.title
         holder.itemView.mDescTv.text = listData.desc
-        holder.itemView.mAuthor.text = listData.author
+        holder.itemView.mAuthorTv.text = listData.author
         holder.itemView.mTimeTv.text = listData.niceDate
 
 

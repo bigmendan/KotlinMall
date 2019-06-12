@@ -58,6 +58,21 @@ class WanAndroidRepository @Inject constructor() {
 
     }
 
+
+    /**
+     *  热门搜索
+     */
+    fun hotSearch(): Observable<BaseResp<List<HotSearchModel>>> {
+        return service().hotSearch()
+    }
+
+    /**
+     *  通过关键字搜索;
+     */
+    fun searchResult(page: Int, key: String): Observable<BaseResp<SearchResultModel>> {
+        return service().searchResult(page, key)
+    }
+
     private fun service(): WanAndroidAPI {
         return RetrofitFactory.instance
             .create(WanAndroidAPI::class.java)

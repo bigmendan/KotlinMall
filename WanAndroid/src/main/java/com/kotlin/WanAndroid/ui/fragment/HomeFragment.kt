@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.kotlin.WanAndroid.R
-import com.kotlin.WanAndroid.data.module.Data
+import com.kotlin.WanAndroid.data.module.ArticleData
 import com.kotlin.WanAndroid.data.module.ArticleModel
 import com.kotlin.WanAndroid.data.module.BannerModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
@@ -23,11 +23,9 @@ import com.kotlin.WanAndroid.presenter.view.HomeView
 import com.kotlin.WanAndroid.ui.adapter.HomeArticleAdapter
 import com.kotlin.WanAndroid.utils.GlideImageLoader
 import com.kotlin.base.ext.loge
-import com.kotlin.base.ext.onClick
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
-import com.kotlin.base.utils.RxBus
 import com.kotlin.base.utils.dp2px
 import com.youth.banner.Banner
 import kotlinx.android.synthetic.main.fragment_wan_home.*
@@ -48,7 +46,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
     private var page = 0
     private lateinit var wrapper: LoadMoreWrapper
-    var allDatas = mutableListOf<Data>()
+    var allDatas = mutableListOf<ArticleData>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -63,6 +61,9 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
         loadData()
         initRecyclerView()
         mRefreshLayout.setOnRefreshListener(this)
+
+
+
 
     }
 
@@ -118,7 +119,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
 
         if (page == 0) {
             allDatas.clear()
-            allDatas = t.datas as MutableList<Data>
+            allDatas = t.datas as MutableList<ArticleData>
 
         } else {
             allDatas.addAll(t.datas)
@@ -136,7 +137,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
     }
 
     override fun collectionResult(b: Boolean) {
-            loge("这里就是收藏成功了")
+        loge("这里就是收藏成功了")
     }
 
     private fun initBanner(list: MutableList<String>) {

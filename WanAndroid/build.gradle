@@ -56,6 +56,8 @@ android {
 dependencies {
     implementation project(':Provider')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
 

@@ -4,10 +4,7 @@ import com.kotlin.WanAndroid.data.module.*
 import com.kotlin.base.data.protocol.BaseResp
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface WanAndroidAPI {
 
@@ -46,6 +43,25 @@ interface WanAndroidAPI {
     fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResp<ProjectListModel>>
 
 
-    @GET("https://www.wanandroid.com/tree/json")
+    /**
+     *  体系
+     */
+    @GET("tree/json")
     fun getSystemTree(): Observable<BaseResp<List<SystemTreeModel>>>
+
+    /**
+     *  热门搜索
+     */
+    @GET("hotkey/json")
+    fun hotSearch(): Observable<BaseResp<List<HotSearchModel>>>
+
+
+    /**
+     *  搜索
+     */
+    @FormUrlEncoded
+    @POST("article/query/{page}/json")
+    fun searchResult(@Path("page") page: Int, @Field("k") k: String): Observable<BaseResp<SearchResultModel>>
+
+
 }
