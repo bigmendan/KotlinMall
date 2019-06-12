@@ -6,7 +6,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.youth.banner.loader.ImageLoader
 
-public class GlideImageLoader : ImageLoader() {
+ class GlideImageLoader : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
         /**
         注意：
@@ -15,7 +15,6 @@ public class GlideImageLoader : ImageLoader() {
         传输的到的是什么格式，那么这种就使用Object接收和返回，你只需要强转成你传输的类型就行，
         切记不要胡乱强转！
          */
-
 
         //Glide 加载图片简单用法
         Glide.with(context!!).load(path).into(imageView!!);

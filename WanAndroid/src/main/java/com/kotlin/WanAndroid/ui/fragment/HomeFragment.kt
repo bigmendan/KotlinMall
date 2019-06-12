@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.fragment_wan_home.*
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
-    private lateinit  var articleAdapter:HomeArticleAdapter
+    private lateinit var articleAdapter: HomeArticleAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -71,6 +71,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
             var bannerModel = list[index]
             bannerList.add(bannerModel.imagePath)
         }
+
         initBanner(bannerList)
 
 
@@ -80,21 +81,21 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     override fun articleResult(t: ArticleModel) {
         var datas = t.datas
 
-
         initRecyclerView(datas)
 
     }
 
 
     private fun initBanner(list: MutableList<String>) {
+
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setImages(list)
         mBanner.start()
+
     }
 
 
-
-    private  fun  initRecyclerView(list:List<Data>){
+    private fun initRecyclerView(list: List<Data>) {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         articleAdapter = HomeArticleAdapter(activity!!)
 
