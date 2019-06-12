@@ -17,10 +17,11 @@ object UserPrefsUtils {
      */
     fun putUserInfo(userInfo: UserInfo?) {
         // 在登录信息中获取到 token  并且存储;
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.id.toString() ?: "")
+        AppPrefsUtils.putInt(BaseConstant.KEY_SP_TOKEN, userInfo?.id ?: 0)
 
-//        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.userIcon ?: "")
-//        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NAME, userInfo?.userName ?: "")
+        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.icon ?: "")
+        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NAME, userInfo?.username ?: "")
+
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, userInfo?.userMobile ?: "")
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_GENDER, userInfo?.userGender ?: "")
 //        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_SIGN, userInfo?.userSign ?: "")

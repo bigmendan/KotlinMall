@@ -10,12 +10,14 @@ import com.kotlin.UserCenter.data.module.UserInfo
 import com.kotlin.UserCenter.presenter.LoginPresenter
 import com.kotlin.UserCenter.presenter.view.LoginView
 import com.kotlin.base.ext.enable
+import com.kotlin.base.ext.loge
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.base.utils.StatusBarUtils
 import com.kotlin.provider.router.RouterPath
 import com.kotlin.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -39,11 +41,18 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
 
         mLoginBtn.onClick {
 
-            ARouter.getInstance()
-                .build(RouterPath.WanAndroid.PATH_HOME)
-                .navigation()
+            //            ARouter.getInstance()
+//                .build(RouterPath.WanAndroid.PATH_HOME)
+//                .navigation()
+//            finish()
 
-//            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())
+
+            mPresenter.login(mUserEt.text.toString(), mPasswordEt.text.toString())
+        }
+
+        mRegisterTv.onClick {
+            startActivity<RegisterActivity>()
+            finish()
         }
 
     }
@@ -64,10 +73,11 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
     override fun loginResult(info: UserInfo) {
         toast("登录成功")
         // 登录成功以后保存用户信息
+        loge("存入 userInfo = $info")
         UserPrefsUtils.putUserInfo(info)
         ARouter.getInstance().inject(this)
         ARouter.getInstance()
-            .build(RouterPath.Main.PATH_MAIN)
+            .build(RouterPath.WanAndroid.PATH_HOME)
             .navigation()
 
         finish()

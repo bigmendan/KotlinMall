@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:paddingLeft="12dp"
               android:paddingRight="12dp"
@@ -8,39 +8,85 @@
               android:paddingBottom="10dp"
               android:layout_height="wrap_content">
 
-    <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginRight="15dp"
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
             android:layout_height="match_parent">
 
         <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/mTitleTv"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:ellipsize="end"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:layout_width="match_parent"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:maxLines="1"
+                android:textSize="14sp"
                 android:textColor="#666"
-                android:id="@+id/mDecTv"
+                android:id="@+id/mAuthor"
                 android:layout_height="wrap_content"/>
-    </LinearLayout>
 
 
-    <ImageView
-            android:layout_width="100dp"
-            android:id="@+id/mRightIv"
-            android:scaleType="fitXY"
-            android:layout_height="200dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/mTimeTv"
+                android:textSize="12sp"
+                android:textColor="#666"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/mTitleTv"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/common_black"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:id="@+id/mSChatName"
+                android:text=""
+                android:layout_height="wrap_content"/>
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="  /  "
+                android:layout_toRightOf="@+id/mSChatName"
+                android:id="@+id/divi"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:text=""
+                android:layout_toRightOf="@+id/divi"
+                android:id="@+id/mChatName"
+                android:layout_height="wrap_content"/>
+
+
+        <ImageView
+                android:id="@+id/mCollecIv"
+                android:layout_width="16dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/home_un_collec"
+                android:layout_height="16dp"/>
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>

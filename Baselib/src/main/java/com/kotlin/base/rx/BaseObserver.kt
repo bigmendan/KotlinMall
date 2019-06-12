@@ -20,11 +20,17 @@ import com.kotlin.base.data.net.error.BaseThrowable
 abstract class BaseObserver<T>(private val baseView: BaseView) : Observer<BaseResp<T>> {
 
     private val mContext: Context = BaseApplication.context
+
+    // 添加 Disposable  用来主动取消订阅 ;
+    private lateinit var disposable: Disposable
+
     override fun onComplete() {
         baseView.hideLoading()
     }
 
     override fun onSubscribe(d: Disposable) {
+        this.disposable = d
+
         baseView.showLoading()
 
         if (!NetWorkUtils.isNetWorkAvailable()) {
@@ -44,14 +50,22 @@ abstract class BaseObserver<T>(private val baseView: BaseView) : Observer<BaseRe
     override fun onError(e: Throwable) {
         baseView.hideLoading()
 
+        /**
+         *  使用自定义 类 对网络错误 解析 ;
+         */
         val rx = BaseThrowable.retrofitException(e)
         baseView.onError(rx.message)
+
+        if (disposable.isDisposed) {
+            disposable.dispose()
+        }
     }
 
     abstract fun onSuccess(t: T?)
 
 
     // 如果这里需要 对 请求失败做处理 有了再说;
+
 
 }
 

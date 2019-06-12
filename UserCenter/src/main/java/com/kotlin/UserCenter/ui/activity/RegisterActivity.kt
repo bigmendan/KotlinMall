@@ -11,6 +11,7 @@ import com.kotlin.UserCenter.presenter.view.RegisterView
 import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.utils.StatusBarUtils
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
@@ -35,6 +36,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
 
         mVerifyCodeBtn.onClick(this)
         mRegisterBtn.onClick(this)
+
+
+        StatusBarUtils.darkMode(this)
+        StatusBarUtils.setPaddingSmart(this, mRegisterTv)
 
     }
 

@@ -9,4 +9,6 @@ interface HomeView : BaseView {
     fun bannerResult(list: List<BannerModel>)
     fun articleResult(t: ArticleModel)
 
+    fun collectionResult(b: Boolean)
+
 }
