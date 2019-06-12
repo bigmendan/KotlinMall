@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.android.arouter.launcher.ARouter
 
 import com.kotlin.WanAndroid.R
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.fragment.BaseFragment
+import com.kotlin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_trend.*
 
 
@@ -26,8 +28,11 @@ class TrendFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn.onClick {
-//            loge("Bugly 为什么崩溃退出")
+            //            loge("Bugly 为什么崩溃退出")
 //            CrashReport.testJavaCrash();
+            ARouter.getInstance().build(RouterPath.AVCenter.PATH_ZB)
+                .navigation()
+
         }
     }
 

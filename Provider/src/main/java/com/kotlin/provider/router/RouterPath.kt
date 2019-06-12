@@ -25,6 +25,12 @@ object RouterPath {
         }
     }
 
+    class AVCenter{
+        companion object{
+            const val  PATH_ZB = "/AV/ZB"
+        }
+    }
+
 
 
 }
