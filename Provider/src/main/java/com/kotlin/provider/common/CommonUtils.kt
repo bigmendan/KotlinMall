@@ -1,6 +1,5 @@
 package com.kotlin.provider.common
 
-import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.base.common.BaseConstant
 import com.kotlin.base.ext.loge
@@ -10,7 +9,7 @@ import com.kotlin.provider.router.RouterPath
 /*
     顶级函数，判断是否登录
  */
-fun isLogined(): Boolean {
+fun isLogin(): Boolean {
 
 
     loge("是否登录 ${AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0}")
@@ -22,7 +21,7 @@ fun isLogined(): Boolean {
     如果没有登录，进入登录界面
  */
 fun afterLogin(method: () -> Unit) {
-    if (isLogined()) {
+    if (isLogin()) {
         method()
     } else {
         ARouter.getInstance().build(RouterPath.UserCenter.PATH_LOGIN).navigation()

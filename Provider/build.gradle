@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-kapt{
+kapt {
     // 添加上 ARouter 配置
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
@@ -20,6 +20,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+
     }
 
     buildTypes {
@@ -32,9 +33,11 @@ android {
 }
 
 dependencies {
-
     api project(':Baselib')
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
+
+
+
 }
 repositories {
     mavenCentral()

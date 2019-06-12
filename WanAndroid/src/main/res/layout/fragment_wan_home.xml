@@ -6,17 +6,15 @@
               android:layout_height="match_parent"
               tools:context=".ui.fragment.HomeFragment">
 	
-	
-	<com.youth.banner.Banner
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 			android:layout_width="match_parent"
-			android:background="@color/common_blue"
-			android:id="@+id/mBanner"
-			android:layout_height="240dp"/>
-	
-	
-	<androidx.recyclerview.widget.RecyclerView
-			android:layout_width="match_parent"
-			android:id="@+id/mRecyclerView"
-			android:layout_height="match_parent"/>
+			android:id="@+id/mRefreshLayout"
+			android:layout_height="match_parent">
+		
+		<androidx.recyclerview.widget.RecyclerView
+				android:layout_width="match_parent"
+				android:id="@+id/mRecyclerView"
+				android:layout_height="match_parent"/>
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

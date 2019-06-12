@@ -6,13 +6,14 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.base.injection.component.AppComponent
 import com.kotlin.base.injection.component.DaggerAppComponent
 import com.kotlin.base.injection.module.AppModule
+import com.tencent.bugly.crashreport.CrashReport
 
 /**
  * @author : ${Zhang}
  * @Date   : 2019/4/22 12:09:10
  * @Des    :
  */
-class BaseApplication : Application() {
+open class BaseApplication : Application() {
 
     lateinit var appComponent: AppComponent
 
@@ -28,6 +29,7 @@ class BaseApplication : Application() {
 
         context = this
 
+        CrashReport.initCrashReport(applicationContext, "910e16f17e", true);
         ARouter.openLog()
         ARouter.openDebug()
         ARouter.init(this)

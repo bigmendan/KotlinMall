@@ -11,7 +11,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
 import com.kotlin.WanAndroid.R
 import com.kotlin.WanAndroid.data.module.ArticleData
 import com.kotlin.WanAndroid.data.module.ArticleModel
@@ -28,9 +27,7 @@ import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
 import com.kotlin.base.utils.dp2px
 import com.youth.banner.Banner
-import kotlinx.android.synthetic.main.activity_search_result.*
 import kotlinx.android.synthetic.main.fragment_wan_home.*
-import kotlinx.android.synthetic.main.fragment_wan_home.mRecyclerView
 
 /**
  *  首页 Fragment
