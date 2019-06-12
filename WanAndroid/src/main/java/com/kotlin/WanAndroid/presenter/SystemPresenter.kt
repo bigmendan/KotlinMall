@@ -20,7 +20,6 @@ class SystemPresenter @Inject constructor() : BasePresenter<SystemView>() {
     lateinit var repository: WanAndroidRepository
 
     fun getSystemTree() {
-        loge("请求体系 列表 = ")
         repository.getSystemTree()
             .execute(object : BaseObserver<List<SystemTreeModel>>(mView) {
                 override fun onSuccess(t: List<SystemTreeModel>?) {

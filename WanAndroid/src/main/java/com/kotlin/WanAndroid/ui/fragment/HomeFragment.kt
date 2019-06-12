@@ -25,6 +25,7 @@ import com.kotlin.base.ext.loge
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
 import com.kotlin.base.ui.fragment.BaseMvpFragment
+import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
 import com.kotlin.base.utils.dp2px
 import com.youth.banner.Banner
 import kotlinx.android.synthetic.main.fragment_wan_home.*
@@ -33,7 +34,17 @@ import kotlinx.android.synthetic.main.fragment_wan_home.*
  *  首页 Fragment
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : BaseMvpLazyFragment<HomePresenter>(), HomeView, SwipeRefreshLayout.OnRefreshListener {
+    override fun getContentView(): Int {
+        return R.layout.fragment_wan_home
+    }
+
+    override fun fetchData() {
+        loadData()
+        initRecyclerView()
+        mRefreshLayout.setOnRefreshListener(this)
+
+    }
 
 
     private lateinit var mBanner: Banner
@@ -46,25 +57,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
     private var page = 0
     private lateinit var wrapper: LoadMoreWrapper
     var allDatas = mutableListOf<ArticleData>()
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_wan_home, container, false)
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        loadData()
-        initRecyclerView()
-        mRefreshLayout.setOnRefreshListener(this)
-
-
-
-
-    }
 
 
     override fun injectionComponent() {
@@ -136,7 +128,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, SwipeRefreshLay
     }
 
     override fun collectionResult(b: Boolean) {
-        loge("这里就是收藏成功了")
     }
 
     private fun initBanner(list: MutableList<String>) {

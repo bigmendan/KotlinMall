@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
-
 import com.kotlin.WanAndroid.R
 import com.kotlin.WanAndroid.data.module.ProjectTreeModel
 import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
@@ -16,7 +15,6 @@ import com.kotlin.WanAndroid.presenter.ProjectPresenter
 import com.kotlin.WanAndroid.presenter.view.ProjectView
 import com.kotlin.WanAndroid.ui.adapter.HomeTabAdapter
 import com.kotlin.base.ext.loge
-import com.kotlin.base.ui.fragment.BaseMvpFragment
 import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
 import kotlinx.android.synthetic.main.fragment_project.*
 
@@ -25,6 +23,13 @@ import kotlinx.android.synthetic.main.fragment_project.*
  *  ProjectFragment
  */
 class ProjectFragment : BaseMvpLazyFragment<ProjectPresenter>(), ProjectView {
+    override fun getContentView(): Int {
+        return R.layout.fragment_project
+    }
+
+    override fun fetchData() {
+        loadData()
+    }
 
 
     override fun onCreateView(
@@ -35,9 +40,7 @@ class ProjectFragment : BaseMvpLazyFragment<ProjectPresenter>(), ProjectView {
     }
 
 
-    override fun initDatas() {
-        loadData()
-    }
+
 
 
     private fun loadData() {
@@ -105,7 +108,6 @@ class ProjectFragment : BaseMvpLazyFragment<ProjectPresenter>(), ProjectView {
 
         }
 
-        loge("nameArr = ${nameArr.size} ， fragmentList  = ${fragmentList.size}")
         initTabLayout(nameArr, fragmentList)
 
     }

@@ -91,7 +91,7 @@ class HomeActivity : BaseActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
 
                 var position = tab!!.position
-                Log.e("== ", "tab被选中 $position")
+//                Log.e("== ", "tab被选中 $position")
 
                 mHomeVp.currentItem = position
             }

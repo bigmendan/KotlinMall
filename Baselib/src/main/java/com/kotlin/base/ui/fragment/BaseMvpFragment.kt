@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 
 /**
- * 继承BaseMvpActivity 中需要引用BasePresenter,用个*
+ * 继承BaseMvpActivity 中需要引用BasePresenter,用个*    考虑考虑懒加载的问题 ;
  */
 open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
 

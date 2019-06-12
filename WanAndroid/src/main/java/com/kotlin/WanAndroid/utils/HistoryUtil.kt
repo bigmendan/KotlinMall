@@ -29,7 +29,7 @@ class HistoryUtil {
 
             //将改数组转换成ArrayList
             val historyList = tmpHistory.asList() as MutableList
-            loge("存储=== 初始读取搜索历史列表 = $historyList")
+//            loge("存储=== 初始读取搜索历史列表 = $historyList")
 
             if (historyList.isNotEmpty()) {
                 //1.移除之前重复添加的元素
@@ -42,7 +42,7 @@ class HistoryUtil {
 
                 //2.将新输入的文字添加集合的第0位也就是最前面
                 historyList.add(0, value)
-                loge("历史记录的 size = ${historyList.size}")
+//                loge("历史记录的 size = ${historyList.size}")
                 if (historyList.size > 8) {
                     //3.最多保存8条搜索记录 删除最早搜索的那一项
                     historyList.removeAt(historyList.size - 1)
@@ -52,7 +52,7 @@ class HistoryUtil {
                 for (i in historyList.indices) {
                     sb.append(historyList[i] + ",")
                 }
-                loge("存储 ==  如果是多条数据，打印数据$sb")
+//                loge("存储 ==  如果是多条数据，打印数据$sb")
                 //保存到sp
                 AppPrefsUtils.putString(ProviderConstant.SEARCH_HISTORY, sb.toString())
             } else {
@@ -77,7 +77,7 @@ class HistoryUtil {
                     .toTypedArray()
             val historyList = tmpHistory.asList() as MutableList
 
-            loge("读取 ==   历史记录= $historyList")
+//            loge("读取 ==   历史记录= $historyList")
 
             //如果没有搜索记录，split之后第0位是个空串的情况下
             if (historyList.size == 1 && historyList[0] == "") {

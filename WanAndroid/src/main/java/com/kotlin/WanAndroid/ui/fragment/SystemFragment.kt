@@ -17,7 +17,6 @@ import com.kotlin.WanAndroid.injection.component.DaggerWAComponent
 import com.kotlin.WanAndroid.presenter.SystemPresenter
 import com.kotlin.WanAndroid.presenter.view.SystemView
 import com.kotlin.WanAndroid.ui.adapter.SystemAdapter
-import com.kotlin.base.ui.fragment.BaseFragment
 import com.kotlin.base.ui.fragment.BaseMvpFragment
 import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
 import kotlinx.android.synthetic.main.fragment_system.*
@@ -27,31 +26,21 @@ import kotlinx.android.synthetic.main.fragment_system.*
  *  体系 Fragment
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-class SystemFragment : BaseMvpFragment<SystemPresenter>(), SystemView {
+class SystemFragment : BaseMvpLazyFragment<SystemPresenter>(), SystemView {
 
-
-    private lateinit var sysAdapter: SystemAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        var view = inflater.inflate(R.layout.fragment_system, container, false)
-
-        return view
+    override fun getContentView(): Int {
+        return R.layout.fragment_system
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun fetchData() {
         initRecyclerView()
         mPresenter.getSystemTree()
     }
 
-//    override fun initDatas() {
-//        initRecyclerView()
-//        mPresenter.getSystemTree()
-//    }
+
+    private lateinit var sysAdapter: SystemAdapter
+
+
 
 
     private fun initRecyclerView() {
