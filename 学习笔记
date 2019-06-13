@@ -179,7 +179,7 @@ RxBus 的使用:
     模块间通讯  跨模块接口调用
      kotlin 中配置：
         baseLib 中添加依赖 api com.alibaba:arouter-api:${ext.ARouter_api_version}
-        在需要用到夸模块通讯的 模块中 添加
+        在需要用到跨模块通讯的 模块中 添加
             kapt{
                  // 添加上 ARouter 配置
                 arguments {
