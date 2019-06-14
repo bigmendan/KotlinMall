@@ -2,10 +2,13 @@ package com.kotlin.base.common
 
 import android.app.Application
 import android.content.Context
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.base.injection.component.AppComponent
 import com.kotlin.base.injection.component.DaggerAppComponent
 import com.kotlin.base.injection.module.AppModule
+import com.tencent.bugly.Bugly.applicationContext
 import com.tencent.bugly.crashreport.CrashReport
 
 /**
@@ -40,5 +43,9 @@ open class BaseApplication : Application() {
         appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
 
 }

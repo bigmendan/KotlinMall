@@ -7,4 +7,11 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.ZBActivity">
 
+
+    <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="直播页面"
+            android:textSize="20sp"
+            android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
