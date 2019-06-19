@@ -36,6 +36,9 @@ open class BaseApplication : Application() {
         ARouter.openLog()
         ARouter.openDebug()
         ARouter.init(this)
+
+
+
     }
 
     private fun initAppInjection() {

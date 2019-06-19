@@ -28,10 +28,6 @@ class TrendFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn.onClick {
-            //            loge("Bugly 为什么崩溃退出")
-//            CrashReport.testJavaCrash();
-            ARouter.getInstance().build(RouterPath.AVCenter.PATH_ZB)
-                .navigation()
 
         }
     }

@@ -46,9 +46,7 @@ dependencies {
     kapt rootProject.ext.dependencies["ARouter-Compilder"]
     implementation project(':WanAndroid')
 
-    if(isAvModule.toBoolean()){
-        implementation project(':AvCenter')
-    }
+//
 
 
 }
