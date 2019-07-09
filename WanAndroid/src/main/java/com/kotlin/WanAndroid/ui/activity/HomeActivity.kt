@@ -81,6 +81,9 @@ class HomeActivity : BaseActivity() {
         mHomeVp.adapter = homeTabAdapter
         mTab.setupWithViewPager(mHomeVp)
 
+        // 设置 viewPager 缓存页面的个数 ;
+        mHomeVp.offscreenPageLimit = 4
+
         mTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab?) {
             }

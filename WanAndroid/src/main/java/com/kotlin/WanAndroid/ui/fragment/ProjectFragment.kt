@@ -14,22 +14,25 @@ import com.kotlin.WanAndroid.injection.module.WAModule
 import com.kotlin.WanAndroid.presenter.ProjectPresenter
 import com.kotlin.WanAndroid.presenter.view.ProjectView
 import com.kotlin.WanAndroid.ui.adapter.HomeTabAdapter
-import com.kotlin.base.ext.loge
-import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
+import com.kotlin.base.ui.fragment.BaseMvpLazy2Fragment
 import kotlinx.android.synthetic.main.fragment_project.*
 
 
 /**
  *  ProjectFragment
  */
-class ProjectFragment : BaseMvpLazyFragment<ProjectPresenter>(), ProjectView {
-    override fun getContentView(): Int {
+class ProjectFragment : BaseMvpLazy2Fragment<ProjectPresenter>(), ProjectView {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_project
     }
 
-    override fun fetchData() {
+    override fun initView() {
+    }
+
+    override fun lazyLoad() {
         loadData()
     }
+
 
 
     override fun onCreateView(

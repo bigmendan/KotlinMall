@@ -27,7 +27,6 @@ import kotlinx.android.synthetic.main.fragment_system.*
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 class SystemFragment : BaseMvpLazyFragment<SystemPresenter>(), SystemView {
-
     override fun getContentView(): Int {
         return R.layout.fragment_system
     }
@@ -35,12 +34,23 @@ class SystemFragment : BaseMvpLazyFragment<SystemPresenter>(), SystemView {
     override fun fetchData() {
         initRecyclerView()
         mPresenter.getSystemTree()
+
     }
+//    override fun getLayoutId(): Int {
+//        return R.layout.fragment_system
+//    }
+//
+//    override fun initView() {
+//        initRecyclerView()
+//
+//    }
+//
+//    override fun lazyLoad() {
+//        mPresenter.getSystemTree()
+//    }
 
 
     private lateinit var sysAdapter: SystemAdapter
-
-
 
 
     private fun initRecyclerView() {

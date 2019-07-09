@@ -21,10 +21,8 @@ import com.kotlin.WanAndroid.presenter.HomePresenter
 import com.kotlin.WanAndroid.presenter.view.HomeView
 import com.kotlin.WanAndroid.ui.adapter.HomeArticleAdapter
 import com.kotlin.WanAndroid.utils.GlideImageLoader
-import com.kotlin.base.ext.loge
 import com.kotlin.base.listener.RecyclerViewScrollListener
 import com.kotlin.base.ui.adapter.LoadMoreWrapper
-import com.kotlin.base.ui.fragment.BaseMvpFragment
 import com.kotlin.base.ui.fragment.BaseMvpLazyFragment
 import com.kotlin.base.utils.dp2px
 import com.youth.banner.Banner
@@ -40,11 +38,22 @@ class HomeFragment : BaseMvpLazyFragment<HomePresenter>(), HomeView, SwipeRefres
     }
 
     override fun fetchData() {
-        loadData()
         initRecyclerView()
         mRefreshLayout.setOnRefreshListener(this)
-
+        loadData()
     }
+//    override fun getLayoutId(): Int {
+//        return R.layout.fragment_wan_home
+//    }
+//
+//    override fun initView() {
+//        initRecyclerView()
+//        mRefreshLayout.setOnRefreshListener(this)
+//    }
+//
+//    override fun lazyLoad() {
+//        loadData()
+//    }
 
 
     private lateinit var mBanner: Banner

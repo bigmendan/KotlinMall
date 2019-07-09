@@ -16,7 +16,10 @@ import javax.inject.Inject
 
 
 /**
- * 继承BaseMvpActivity 中需要引用BasePresenter,用个*   数据懒加载
+ * 继承BaseMvpActivity 中需要引用BasePresenter,用个*
+ *
+ *  这个懒加载没有判断数据是否已经被加载过，每次Fragment切换回来都重新加载一边数据，
+ *  但是不会预加载，稍稍费了点流量。
  */
 open abstract class BaseMvpLazyFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
 

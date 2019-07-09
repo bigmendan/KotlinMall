@@ -12,7 +12,7 @@ import com.kotlin.provider.router.RouterPath
 fun isLogin(): Boolean {
 
 
-    loge("是否登录 ${AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0}")
+//    loge("是否登录 ${AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0}")
     return AppPrefsUtils.getInt(BaseConstant.KEY_SP_TOKEN) != 0
 }
 

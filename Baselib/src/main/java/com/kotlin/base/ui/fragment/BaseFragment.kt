@@ -12,6 +12,19 @@ import com.trello.rxlifecycle3.components.RxFragment
 open class BaseFragment : Fragment() {
 
 
+    /*
+        视图是否加载完成
+     */
+    private var isViewPrepare = false
+
+
+    /*
+       数据是否加载过了
+     */
+    private var hasLoadData = false
+
+
+
 
 
 }
